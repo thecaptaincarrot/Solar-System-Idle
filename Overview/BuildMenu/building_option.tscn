@@ -1,0 +1,78 @@
+[gd_scene load_steps=2 format=3 uid="uid://dryyhm4nephfb"]
+
+[ext_resource type="Script" path="res://BuildingOption.gd" id="1_7kgiw"]
+
+[node name="BuildingOption" type="Panel"]
+custom_minimum_size = Vector2(320, 160)
+script = ExtResource("1_7kgiw")
+multiplier = 10
+exponent_base = 2
+base_cost = 0
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 252.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 24
+text = "Lobbying Office"
+
+[node name="BuyButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -95.0
+offset_top = -44.0
+offset_right = -5.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Buy 1"
+
+[node name="Description" type="Label" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 42.0
+offset_right = 278.0
+offset_bottom = 68.0
+text = "Generates Income"
+
+[node name="CostContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 68.0
+offset_right = 226.0
+offset_bottom = 108.0
+
+[node name="Label" type="Label" parent="CostContainer"]
+layout_mode = 2
+text = "Cost: $"
+
+[node name="Cost" type="Label" parent="CostContainer"]
+layout_mode = 2
+text = "10"
+
+[node name="CostExponent" type="Label" parent="CostContainer"]
+layout_mode = 2
+text = "M"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 102.0
+offset_right = 83.0
+offset_bottom = 142.0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Current:"
+
+[node name="Number" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[connection signal="pressed" from="BuyButton" to="." method="_on_buy_button_pressed"]
