@@ -23,25 +23,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	update_resources()
+	pass
 
 
 func update_date():
 	$OverviewPanel/NumDays.text = str(days)
-
-
-func update_resources():
-	#money
-	$OverviewPanel/MoneyContainer/Money.text = str(Money.get_value())
-	$OverviewPanel/MoneyContainer/MoneyPerDay.text = str(snappedf(Money.get_per_tick(),.01))
-	#Data
-	$OverviewPanel/DataContainer/Data.text = str(Data.get_value())
-	$OverviewPanel/DataContainer/DataPerDay.text = str(snappedf(Data.get_per_tick(),.01))
-	#Research
-	$OverviewPanel/ResearchContainer/Research.text = str(Research.get_value())
-	
-	$OverviewPanel/ResearchContainer/ResearchPerDay.text = str(snappedf(Research.get_per_tick(),.01))
-
 
 
 func _on_tick_timer_timeout():

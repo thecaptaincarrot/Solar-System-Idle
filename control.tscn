@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtucx7t63yid1"]
+[gd_scene load_steps=8 format=3 uid="uid://dtucx7t63yid1"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_tn1u5"]
+[ext_resource type="PackedScene" uid="uid://bacbhpainxqfk" path="res://UI_Components/Resource_Holder.tscn" id="2_8bt6t"]
 [ext_resource type="PackedScene" uid="uid://dryyhm4nephfb" path="res://Overview/BuildMenu/building_option.tscn" id="2_78hfj"]
 [ext_resource type="Script" path="res://Overview/BuildMenu/BuildOptionContainer.gd" id="2_ponxe"]
+[ext_resource type="Resource" uid="uid://cy2bukhtj71do" path="res://Resources/Money.tres" id="3_fad5r"]
+[ext_resource type="Resource" uid="uid://8spowxb0dybp" path="res://Resources/Data.tres" id="4_nc8af"]
+[ext_resource type="Resource" uid="uid://cbkk3a43ts4eu" path="res://Resources/Research.tres" id="5_krlcn"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -34,114 +38,32 @@ offset_bottom = 23.0
 text = "0
 "
 
-[node name="MoneyContainer" type="HBoxContainer" parent="OverviewPanel"]
+[node name="MoneyContainer" parent="OverviewPanel" instance=ExtResource("2_8bt6t")]
 layout_mode = 0
-offset_top = 24.0
-offset_right = 181.0
-offset_bottom = 50.0
+offset_left = 5.0
+offset_top = 26.0
+offset_right = 257.0
+offset_bottom = 52.0
+resource = ExtResource("3_fad5r")
+identity = "Money"
 
-[node name="TextureRect" type="TextureRect" parent="OverviewPanel/MoneyContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="OverviewPanel/MoneyContainer"]
-layout_mode = 2
-text = "Money: $"
-
-[node name="Money" type="Label" parent="OverviewPanel/MoneyContainer"]
-layout_mode = 2
-text = "10.00"
-
-[node name="MoneyExponent" type="Label" parent="OverviewPanel/MoneyContainer"]
-layout_mode = 2
-text = "M"
-
-[node name="Label2" type="Label" parent="OverviewPanel/MoneyContainer"]
-layout_mode = 2
-text = "+"
-
-[node name="MoneyPerDay" type="Label" parent="OverviewPanel/MoneyContainer"]
-layout_mode = 2
-text = "0.00"
-
-[node name="MoneyPerDayExponent" type="Label" parent="OverviewPanel/MoneyContainer"]
-layout_mode = 2
-text = "M"
-
-[node name="Label3" type="Label" parent="OverviewPanel/MoneyContainer"]
-layout_mode = 2
-text = "/ Day"
-
-[node name="DataContainer" type="HBoxContainer" parent="OverviewPanel"]
+[node name="DataContainer" parent="OverviewPanel" instance=ExtResource("2_8bt6t")]
 layout_mode = 0
 offset_left = 262.0
 offset_top = 26.0
-offset_right = 510.0
+offset_right = 514.0
 offset_bottom = 52.0
+resource = ExtResource("4_nc8af")
+identity = "Data         "
 
-[node name="TextureRect" type="TextureRect" parent="OverviewPanel/DataContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="OverviewPanel/DataContainer"]
-layout_mode = 2
-text = "Data:"
-
-[node name="Data" type="Label" parent="OverviewPanel/DataContainer"]
-layout_mode = 2
-text = "0.00"
-
-[node name="DataExponent" type="Label" parent="OverviewPanel/DataContainer"]
-layout_mode = 2
-
-[node name="Label2" type="Label" parent="OverviewPanel/DataContainer"]
-layout_mode = 2
-text = "+"
-
-[node name="DataPerDay" type="Label" parent="OverviewPanel/DataContainer"]
-layout_mode = 2
-text = "0.00"
-
-[node name="DataPerDayExponent" type="Label" parent="OverviewPanel/DataContainer"]
-layout_mode = 2
-
-[node name="Label3" type="Label" parent="OverviewPanel/DataContainer"]
-layout_mode = 2
-text = "/ Day"
-
-[node name="ResearchContainer" type="HBoxContainer" parent="OverviewPanel"]
+[node name="ResearchContainer" parent="OverviewPanel" instance=ExtResource("2_8bt6t")]
 layout_mode = 0
-offset_left = 262.0
+offset_left = 266.0
 offset_top = 52.0
-offset_right = 510.0
+offset_right = 518.0
 offset_bottom = 78.0
-
-[node name="TextureRect" type="TextureRect" parent="OverviewPanel/ResearchContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="OverviewPanel/ResearchContainer"]
-layout_mode = 2
-text = "Research"
-
-[node name="Research" type="Label" parent="OverviewPanel/ResearchContainer"]
-layout_mode = 2
-text = "0.00"
-
-[node name="ResearchExponent" type="Label" parent="OverviewPanel/ResearchContainer"]
-layout_mode = 2
-
-[node name="Label2" type="Label" parent="OverviewPanel/ResearchContainer"]
-layout_mode = 2
-text = "+"
-
-[node name="ResearchPerDay" type="Label" parent="OverviewPanel/ResearchContainer"]
-layout_mode = 2
-text = "0.00"
-
-[node name="ResearchPerDayExponent" type="Label" parent="OverviewPanel/ResearchContainer"]
-layout_mode = 2
-
-[node name="Label3" type="Label" parent="OverviewPanel/ResearchContainer"]
-layout_mode = 2
-text = "/ Day"
+resource = ExtResource("5_krlcn")
+identity = "Research"
 
 [node name="OreContainer" type="HBoxContainer" parent="OverviewPanel"]
 layout_mode = 0
@@ -181,11 +103,11 @@ text = "Overview"
 layout_mode = 2
 text = "Research"
 
-[node name="ResearchNavButton2" type="Button" parent="OverviewPanel/NavigationButtons"]
+[node name="DesignNavButton" type="Button" parent="OverviewPanel/NavigationButtons"]
 layout_mode = 2
 text = "Design"
 
-[node name="ResearchNavButton3" type="Button" parent="OverviewPanel/NavigationButtons"]
+[node name="LaunchNavButton" type="Button" parent="OverviewPanel/NavigationButtons"]
 layout_mode = 2
 text = "Launch"
 
@@ -197,10 +119,11 @@ offset_right = 350.0
 offset_bottom = 1073.0
 
 [node name="OverviewLeft" type="MarginContainer" parent="LeftPanel"]
-layout_mode = 1
-anchors_preset = 15
+visible = false
+layout_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -31.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 8
@@ -234,6 +157,29 @@ title = "Labs"
 description = "Generates research"
 multiplier = 1.0
 exponent_base = 1.0
+
+[node name="ResearchLeft" type="MarginContainer" parent="LeftPanel"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LeftPanel/ResearchLeft"]
+layout_mode = 2
+
+[node name="ResearchOptionContainer" type="VBoxContainer" parent="LeftPanel/ResearchLeft/ScrollContainer"]
+layout_mode = 2
+script = ExtResource("2_ponxe")
+
+[node name="Panel" type="Panel" parent="LeftPanel/ResearchLeft/ScrollContainer/ResearchOptionContainer"]
+custom_minimum_size = Vector2(320, 160)
+layout_mode = 2
 
 [node name="TickTimer" type="Timer" parent="."]
 autostart = true
