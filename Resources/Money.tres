@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cy2bukhtj71do"]
+
+[ext_resource type="Script" path="res://Resources/Money_Resource.gd" id="1_7blu0"]
+
+[resource]
+script = ExtResource("1_7blu0")
+name = "MONEY"

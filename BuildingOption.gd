@@ -1,8 +1,10 @@
 @tool
 extends Panel
 
-const BUY_INCREMENTS= [1,5,10,25]
+#Resources
+var Money = preload("res://Resources/Money.tres")
 
+const BUY_INCREMENTS= [1,5,10,25]
 
 @export var building_id = "lobbying_offices"
 
@@ -73,10 +75,7 @@ func update_num():
 
 func _on_buy_button_pressed():
 	
-	if get_cost() <= Resources.money:
-		Resources.money -= get_cost()
+	if Money.spend(get_cost()):
 		Buildings.build(building_id, buy_quantity)
 	
 	update_cost()
-	
-	

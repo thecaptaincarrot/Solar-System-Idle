@@ -1,12 +1,23 @@
 extends Control
 
+#Resources
+var Money = preload("res://Resources/Money.tres")
+var Data = preload("res://Resources/Data.tres")
+var Research = preload("res://Resources/Research.tres")
+
+
+var ResourceList = [Money,Data,Research]
+
+
 var days = 0
 
 signal Tick
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Tick.connect(Callable(Resources,"update_tick"))
+	for resource in ResourceList:
+		resource.initialize()
+	
 	pass # Replace with function body.
 
 
@@ -21,19 +32,26 @@ func update_date():
 
 func update_resources():
 	#money
-	$OverviewPanel/MoneyContainer/Money.text = str(Resources.money)
-	$OverviewPanel/MoneyContainer/MoneyPerDay.text = str(snapped(Resources.get_money_per_day(),.01))
+	$OverviewPanel/MoneyContainer/Money.text = str(Money.get_value())
+	$OverviewPanel/MoneyContainer/MoneyPerDay.text = str(snappedf(Money.get_per_tick(),.01))
+	#Data
+	$OverviewPanel/DataContainer/Data.text = str(Data.get_value())
+	$OverviewPanel/DataContainer/DataPerDay.text = str(snappedf(Data.get_per_tick(),.01))
+	#Research
+	$OverviewPanel/ResearchContainer/Research.text = str(Research.get_value())
 	
-	$OverviewPanel/DataContainer/Data.text = str(Resources.data)
-	$OverviewPanel/DataContainer/DataPerDay.text = str(snapped(Resources.get_data_per_day(),.01))
-	
-	
+	$OverviewPanel/ResearchContainer/ResearchPerDay.text = str(snappedf(Research.get_per_tick(),.01))
+
 
 
 func _on_tick_timer_timeout():
 	days = days + 1
 	
+	print("Hola")
 	emit_signal("Tick")
+	
+	for resource in ResourceList:
+		resource.tick_update()
 	
 	update_date()
 	

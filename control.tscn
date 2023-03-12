@@ -224,6 +224,16 @@ layout_mode = 2
 building_id = "telescopes"
 title = "Telescope"
 description = "Generates Data"
+multiplier = 1.0
+exponent_base = 1.0
+
+[node name="BuildingOption3" parent="LeftPanel/OverviewLeft/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
+layout_mode = 2
+building_id = "labs"
+title = "Labs"
+description = "Generates research"
+multiplier = 1.0
+exponent_base = 1.0
 
 [node name="TickTimer" type="Timer" parent="."]
 autostart = true

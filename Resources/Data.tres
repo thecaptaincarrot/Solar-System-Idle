@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://8spowxb0dybp"]
+
+[ext_resource type="Script" path="res://Resources/Data_Resource.gd" id="1_8na2u"]
+[ext_resource type="Resource" uid="uid://cbkk3a43ts4eu" path="res://Resources/Research.tres" id="2_0o540"]
+
+[resource]
+script = ExtResource("1_8na2u")
+name = "DATA"
+sink = ExtResource("2_0o540")
