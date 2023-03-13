@@ -1,6 +1,11 @@
 @tool
 extends Panel
 
+#Prereqs
+var unlocked = true
+
+@export var ResearchPrereqs : Array[ResearchTopic]
+
 #Resources
 var Money = preload("res://Resources/Money.tres")
 
@@ -25,6 +30,11 @@ signal Build
 func _ready():
 	$Title.text = title
 	$Description.text = description
+	
+	if ResearchPrereqs:
+		unlocked = false
+		hide()
+	
 	update_cost()
 
 
@@ -33,20 +43,32 @@ func _process(delta):
 	if Engine.is_editor_hint():
 		$Title.text = title
 		$Description.text = description
-	
-	#Buy Quantity
-	var quantity_index = 0
-	
-	if Input.is_key_pressed(KEY_SHIFT):
-		quantity_index += 1
-	if Input.is_key_pressed(KEY_CTRL):
-		quantity_index += 2
-	
-	buy_quantity = BUY_INCREMENTS[quantity_index]
-	$BuyButton.text = "Buy " + str(buy_quantity)
-	
-	update_num()
-	update_cost()
+	else:
+		#Prereqs
+		if !unlocked:
+			var to_unlock = true
+			for topic in ResearchPrereqs:
+				if !topic.get_researched():
+					to_unlock = false
+			
+			if to_unlock:
+				unlocked = true
+				show()
+		
+		
+		#Buy Quantity
+		var quantity_index = 0
+		
+		if Input.is_key_pressed(KEY_SHIFT):
+			quantity_index += 1
+		if Input.is_key_pressed(KEY_CTRL):
+			quantity_index += 2
+		
+		buy_quantity = BUY_INCREMENTS[quantity_index]
+		$BuyButton.text = "Buy " + str(buy_quantity)
+		
+		update_num()
+		update_cost()
 
 
 

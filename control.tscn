@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dtucx7t63yid1"]
+[gd_scene load_steps=22 format=3 uid="uid://dtucx7t63yid1"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_tn1u5"]
 [ext_resource type="PackedScene" uid="uid://bacbhpainxqfk" path="res://UI_Components/Resource_Holder.tscn" id="2_8bt6t"]
@@ -7,8 +7,20 @@
 [ext_resource type="Resource" uid="uid://cy2bukhtj71do" path="res://Resources/Money.tres" id="3_fad5r"]
 [ext_resource type="Resource" uid="uid://8spowxb0dybp" path="res://Resources/Data.tres" id="4_nc8af"]
 [ext_resource type="Resource" uid="uid://cbkk3a43ts4eu" path="res://Resources/Research.tres" id="5_krlcn"]
+[ext_resource type="Resource" uid="uid://bok2ax6sj474o" path="res://Resources/Ore.tres" id="6_r6ya4"]
+[ext_resource type="Script" path="res://UI_Components/Design/Design.gd" id="7_khrki"]
+[ext_resource type="Script" path="res://UI_Components/Design/ModuleContainer.gd" id="8_imqdy"]
 [ext_resource type="PackedScene" uid="uid://bii5uov4240q0" path="res://UI_Components/ResearchTab/research_option.tscn" id="8_w6dkj"]
 [ext_resource type="Resource" uid="uid://dqdabcosxvbrb" path="res://Research/Mines.tres" id="9_t7op7"]
+[ext_resource type="Texture2D" uid="uid://ijtqdxhlm7px" path="res://Textures/LaunchPad.png" id="9_yrlpr"]
+[ext_resource type="PackedScene" uid="uid://cp0gjc18q7ldl" path="res://UI_Components/Design/module_option.tscn" id="11_8xvpy"]
+[ext_resource type="Resource" uid="uid://h2ny7kaues1m" path="res://Modules/BasicCommSat.tres" id="12_r1i2b"]
+[ext_resource type="Script" path="res://RocketBuilder.gd" id="12_y3w3r"]
+[ext_resource type="Script" path="res://UI_Components/Design/ModulesContainer.gd" id="13_xa5wf"]
+[ext_resource type="Script" path="res://UI_Components/Design/RightDesignPanel.gd" id="14_onrsj"]
+[ext_resource type="Script" path="res://UI_Components/Launch/RocketBox.gd" id="15_f8wll"]
+[ext_resource type="Script" path="res://UI_Components/Launch/Launch.gd" id="15_jetlc"]
+[ext_resource type="PackedScene" uid="uid://cyeug2a1p4gme" path="res://UI_Components/Launch/launch_option.tscn" id="15_xd2gd"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -18,6 +30,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tn1u5")
+metadata/_edit_lock_ = true
 
 [node name="OverviewPanel" type="Panel" parent="."]
 layout_mode = 0
@@ -67,23 +80,14 @@ offset_bottom = 78.0
 resource = ExtResource("5_krlcn")
 identity = "Research"
 
-[node name="OreContainer" type="HBoxContainer" parent="OverviewPanel"]
+[node name="OreContainer" parent="OverviewPanel" instance=ExtResource("2_8bt6t")]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 50.0
-offset_right = 185.0
-offset_bottom = 76.0
-
-[node name="TextureRect" type="TextureRect" parent="OverviewPanel/OreContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="OverviewPanel/OreContainer"]
-layout_mode = 2
-text = "Ore:"
-
-[node name="Money" type="Label" parent="OverviewPanel/OreContainer"]
-layout_mode = 2
-text = "0"
+offset_left = 9.0
+offset_top = 52.0
+offset_right = 262.0
+offset_bottom = 78.0
+resource = ExtResource("6_r6ya4")
+identity = "Ore"
 
 [node name="NavigationButtons" type="HBoxContainer" parent="OverviewPanel"]
 layout_mode = 1
@@ -113,11 +117,325 @@ text = "Design"
 layout_mode = 2
 text = "Launch"
 
-[node name="LeftPanel" type="Panel" parent="."]
+[node name="Design" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("7_khrki")
+metadata/_edit_lock_ = true
+
+[node name="LeftPanel" type="Panel" parent="Design"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 194.0
+offset_right = 351.0
+offset_bottom = 1073.0
+
+[node name="DesignLeft" type="MarginContainer" parent="Design/LeftPanel"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Design/LeftPanel/DesignLeft"]
+layout_mode = 2
+
+[node name="ModuleContainer" type="VBoxContainer" parent="Design/LeftPanel/DesignLeft/ScrollContainer"]
+layout_mode = 2
+script = ExtResource("8_imqdy")
+
+[node name="ModuleOption" parent="Design/LeftPanel/DesignLeft/ScrollContainer/ModuleContainer" instance=ExtResource("11_8xvpy")]
+layout_mode = 2
+
+[node name="ModuleOption2" parent="Design/LeftPanel/DesignLeft/ScrollContainer/ModuleContainer" instance=ExtResource("11_8xvpy")]
+layout_mode = 2
+ModuleResource = ExtResource("12_r1i2b")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Design"]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 149.0
+offset_right = 1379.0
+offset_bottom = 1077.0
+
+[node name="RocketContainer" type="Control" parent="Design/ScrollContainer"]
+custom_minimum_size = Vector2(1024, 932)
+layout_mode = 2
+
+[node name="LaunchPad" type="TextureRect" parent="Design/ScrollContainer/RocketContainer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -512.0
+offset_top = -256.0
+offset_right = 512.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("9_yrlpr")
+
+[node name="RocketBuilder" type="Control" parent="Design/ScrollContainer/RocketContainer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("12_y3w3r")
+
+[node name="ModulesContainer" type="Control" parent="Design/ScrollContainer/RocketContainer/RocketBuilder"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -256.0
+offset_bottom = -256.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("13_xa5wf")
+
+[node name="RightPanel" type="Panel" parent="Design"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -538.0
+offset_top = -938.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("14_onrsj")
+
+[node name="MarginContainer" type="MarginContainer" parent="Design/RightPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 12.0
+offset_right = -13.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Design/RightPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="RocketNameEdit" type="TextEdit" parent="Design/RightPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+placeholder_text = "Rocket Name"
+
+[node name="MassBox" type="HBoxContainer" parent="Design/RightPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/MassBox"]
+layout_mode = 2
+text = "Mass:"
+
+[node name="Mass" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/MassBox"]
+layout_mode = 2
+text = "10.0"
+
+[node name="Label3" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/MassBox"]
+layout_mode = 2
+text = "Mg"
+
+[node name="ThrustBox" type="HBoxContainer" parent="Design/RightPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/ThrustBox"]
+layout_mode = 2
+text = "Trust"
+
+[node name="Thrust" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/ThrustBox"]
+layout_mode = 2
+text = "10.00"
+
+[node name="Label3" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/ThrustBox"]
+layout_mode = 2
+text = "Generic Thrust Units"
+
+[node name="MPDBox" type="HBoxContainer" parent="Design/RightPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/MPDBox"]
+layout_mode = 2
+text = "Money Per Day: $"
+
+[node name="MoneyPerDay" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/MPDBox"]
+layout_mode = 2
+text = "10.00"
+
+[node name="MPD Exponent" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/MPDBox"]
+layout_mode = 2
+text = "M"
+
+[node name="MoneyBox" type="HBoxContainer" parent="Design/RightPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/MoneyBox"]
+layout_mode = 2
+text = "Cost: $"
+
+[node name="MoneyCost" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/MoneyBox"]
+layout_mode = 2
+text = "10.0"
+
+[node name="Label3" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/MoneyBox"]
+layout_mode = 2
+text = "M"
+
+[node name="OreBox" type="HBoxContainer" parent="Design/RightPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/OreBox"]
+layout_mode = 2
+text = "Ore Required:"
+
+[node name="OreCost" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/OreBox"]
+layout_mode = 2
+text = "10.0"
+
+[node name="Label3" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/OreBox"]
+layout_mode = 2
+text = "t"
+
+[node name="SaveDesign" type="Button" parent="Design/RightPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -122.0
+offset_top = -55.0
+offset_right = -21.0
+offset_bottom = -24.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Save Design"
+
+[node name="Launch" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("15_jetlc")
+metadata/_edit_lock_ = true
+
+[node name="LeftPanel" type="Panel" parent="Launch"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -887.0
 offset_right = 350.0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Launch/LeftPanel"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 342.0
+offset_bottom = 880.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Launch/LeftPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="RocketBox" type="VBoxContainer" parent="Launch/LeftPanel/MarginContainer/ScrollContainer"]
+layout_mode = 2
+script = ExtResource("15_f8wll")
+
+[node name="LaunchOption" parent="Launch/LeftPanel/MarginContainer/ScrollContainer/RocketBox" instance=ExtResource("15_xd2gd")]
+layout_mode = 2
+
+[node name="RightPanel" type="Panel" parent="Launch"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -538.0
+offset_top = -941.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Launch"]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 149.0
+offset_right = 1376.0
+offset_bottom = 1079.0
+
+[node name="RocketContainer" type="Control" parent="Launch/ScrollContainer"]
+custom_minimum_size = Vector2(1024, 932)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Launch/ScrollContainer/RocketContainer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -512.0
+offset_top = -256.0
+offset_right = 512.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("9_yrlpr")
+
+[node name="RocketBuilder" type="Control" parent="Launch/ScrollContainer/RocketContainer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ModulesContainer" type="Control" parent="Launch/ScrollContainer/RocketContainer/RocketBuilder"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -256.0
+offset_bottom = -256.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="LeftPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 10.0
+offset_top = 194.0
+offset_right = 351.0
 offset_bottom = 1073.0
 
 [node name="OverviewLeft" type="MarginContainer" parent="LeftPanel"]
@@ -160,7 +478,18 @@ description = "Generates research"
 multiplier = 1.0
 exponent_base = 1.0
 
+[node name="BuildingOption4" parent="LeftPanel/OverviewLeft/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
+visible = false
+layout_mode = 2
+ResearchPrereqs = Array[Resource("res://Research/Research_Class.gd")]([ExtResource("9_t7op7")])
+building_id = "mines"
+title = "Mines"
+description = "Generates Ore"
+multiplier = 1.0
+exponent_base = 1.0
+
 [node name="ResearchLeft" type="MarginContainer" parent="LeftPanel"]
+visible = false
 layout_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -182,7 +511,38 @@ layout_mode = 2
 layout_mode = 2
 research_resource = ExtResource("9_t7op7")
 
+[node name="DesignLeft" type="MarginContainer" parent="LeftPanel"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LeftPanel/DesignLeft"]
+layout_mode = 2
+
+[node name="ModuleContainer" type="VBoxContainer" parent="LeftPanel/DesignLeft/ScrollContainer"]
+layout_mode = 2
+
+[node name="ModuleOption" parent="LeftPanel/DesignLeft/ScrollContainer/ModuleContainer" instance=ExtResource("11_8xvpy")]
+layout_mode = 2
+
+[node name="ModuleOption2" parent="LeftPanel/DesignLeft/ScrollContainer/ModuleContainer" instance=ExtResource("11_8xvpy")]
+layout_mode = 2
+ModuleResource = ExtResource("12_r1i2b")
+
 [node name="TickTimer" type="Timer" parent="."]
 autostart = true
 
+[connection signal="pressed" from="OverviewPanel/NavigationButtons/OverviewNavButton" to="." method="_on_overview_nav_button_pressed"]
+[connection signal="pressed" from="OverviewPanel/NavigationButtons/ResearchNavButton" to="." method="_on_research_nav_button_pressed"]
+[connection signal="pressed" from="OverviewPanel/NavigationButtons/DesignNavButton" to="." method="_on_design_nav_button_pressed"]
+[connection signal="pressed" from="OverviewPanel/NavigationButtons/LaunchNavButton" to="." method="_on_launch_nav_button_pressed"]
+[connection signal="RocketChanged" from="Design/ScrollContainer/RocketContainer/RocketBuilder" to="Design/RightPanel" method="_on_rocket_builder_rocket_changed"]
+[connection signal="pressed" from="Design/RightPanel/SaveDesign" to="Design" method="_on_save_design_pressed"]
 [connection signal="timeout" from="TickTimer" to="." method="_on_tick_timer_timeout"]

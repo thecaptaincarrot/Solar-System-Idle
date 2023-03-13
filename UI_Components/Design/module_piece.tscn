@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1dqkm71slnva"]
+
+[ext_resource type="Texture2D" uid="uid://bh20dg1crmmi5" path="res://Modules/Textures/Booster.png" id="1_jv5j8"]
+[ext_resource type="Script" path="res://UI_Components/Design/ModulePiece.gd" id="2_jkjsj"]
+[ext_resource type="Resource" uid="uid://c3gqvo4awr6ao" path="res://Modules/BasicBooster.tres" id="3_gyrpt"]
+
+[node name="ModulePiece" type="TextureRect"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -320.0
+offset_right = 128.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_jv5j8")
+script = ExtResource("2_jkjsj")
+ModuleResource = ExtResource("3_gyrpt")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -27.0
+offset_right = 71.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Remove"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

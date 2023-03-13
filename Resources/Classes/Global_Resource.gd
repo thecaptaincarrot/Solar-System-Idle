@@ -1,3 +1,4 @@
+
 extends Resource
 class_name Global_Resource
 
@@ -18,7 +19,6 @@ func initialize():
 
 
 func tick_update():
-	print(name)
 	value += get_per_tick()
 
 

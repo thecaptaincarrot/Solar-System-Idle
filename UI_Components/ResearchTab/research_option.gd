@@ -13,8 +13,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if !Engine.is_editor_hint():
-		if research_resource.get_researched() and is_visible_in_tree():
+		if research_resource.get_researched() and research_resource.get_unlocked():
 			$ResearchButton.hide()
+			$Complete.show()
 		
 		if research_resource.get_unlocked():
 			show()
@@ -32,4 +33,4 @@ func resource_set(new_resource):
 
 
 func _on_research_button_pressed():
-	pass # Replace with function body.
+	research_resource.research()

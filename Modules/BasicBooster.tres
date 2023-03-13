@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ThrustModule" load_steps=3 format=3 uid="uid://c3gqvo4awr6ao"]
+
+[ext_resource type="Script" path="res://Modules/BaseClasses/ThrustModule.gd" id="1_n7x8d"]
+[ext_resource type="Texture2D" uid="uid://bh20dg1crmmi5" path="res://Modules/Textures/Booster.png" id="2_k70kk"]
+
+[resource]
+script = ExtResource("1_n7x8d")
+fuel_consumption = 5.0
+thrust = 15.0
+name = "Thrust Module"
+description = "Makes You Go Up"
+research_prereqs = Array[Resource("res://Research/Research_Class.gd")]([])
+money_cost = 50.0
+ore_cost = 10.0
+mass = 10.0
+texture = ExtResource("2_k70kk")

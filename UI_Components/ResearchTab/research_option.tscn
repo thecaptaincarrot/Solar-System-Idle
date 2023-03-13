@@ -49,4 +49,13 @@ offset_right = 315.0
 offset_bottom = 155.0
 text = "Research"
 
+[node name="Complete" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 223.0
+offset_top = 124.0
+offset_right = 308.0
+offset_bottom = 150.0
+text = "Completed"
+
 [connection signal="pressed" from="ResearchButton" to="." method="_on_research_button_pressed"]

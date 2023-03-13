@@ -33,7 +33,6 @@ func get_unlocked():
 	for prereq in research_prereqs:
 		if !prereq.get_researched():
 			to_unlock = false
-	print(title)
 	if to_unlock:
 		unlocked = true
 	
