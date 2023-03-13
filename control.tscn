@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtucx7t63yid1"]
+[gd_scene load_steps=10 format=3 uid="uid://dtucx7t63yid1"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_tn1u5"]
 [ext_resource type="PackedScene" uid="uid://bacbhpainxqfk" path="res://UI_Components/Resource_Holder.tscn" id="2_8bt6t"]
@@ -7,6 +7,8 @@
 [ext_resource type="Resource" uid="uid://cy2bukhtj71do" path="res://Resources/Money.tres" id="3_fad5r"]
 [ext_resource type="Resource" uid="uid://8spowxb0dybp" path="res://Resources/Data.tres" id="4_nc8af"]
 [ext_resource type="Resource" uid="uid://cbkk3a43ts4eu" path="res://Resources/Research.tres" id="5_krlcn"]
+[ext_resource type="PackedScene" uid="uid://bii5uov4240q0" path="res://UI_Components/ResearchTab/research_option.tscn" id="8_w6dkj"]
+[ext_resource type="Resource" uid="uid://dqdabcosxvbrb" path="res://Research/Mines.tres" id="9_t7op7"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -175,11 +177,10 @@ layout_mode = 2
 
 [node name="ResearchOptionContainer" type="VBoxContainer" parent="LeftPanel/ResearchLeft/ScrollContainer"]
 layout_mode = 2
-script = ExtResource("2_ponxe")
 
-[node name="Panel" type="Panel" parent="LeftPanel/ResearchLeft/ScrollContainer/ResearchOptionContainer"]
-custom_minimum_size = Vector2(320, 160)
+[node name="ResearchOption" parent="LeftPanel/ResearchLeft/ScrollContainer/ResearchOptionContainer" instance=ExtResource("8_w6dkj")]
 layout_mode = 2
+research_resource = ExtResource("9_t7op7")
 
 [node name="TickTimer" type="Timer" parent="."]
 autostart = true

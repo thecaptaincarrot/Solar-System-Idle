@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://bii5uov4240q0"]
+
+[ext_resource type="Script" path="res://UI_Components/ResearchTab/research_option.gd" id="1_lw5sm"]
+
+[node name="ResearchOption" type="Panel"]
+custom_minimum_size = Vector2(320, 160)
+script = ExtResource("1_lw5sm")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 151.0
+offset_bottom = 31.0
+text = "RESEARCH OPTION"
+
+[node name="Description" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 31.0
+offset_right = 310.0
+offset_bottom = 77.0
+text = "DESCRIPTIONDESCRIPTIONDESCRIPTION"
+
+[node name="CostBox" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 77.0
+offset_right = 45.0
+offset_bottom = 117.0
+
+[node name="Label" type="Label" parent="CostBox"]
+layout_mode = 2
+text = "Cost:"
+
+[node name="Cost" type="Label" parent="CostBox"]
+layout_mode = 2
+text = "100"
+
+[node name="Label3" type="Label" parent="CostBox"]
+layout_mode = 2
+text = "RP"
+
+[node name="ResearchButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 214.0
+offset_top = 117.0
+offset_right = 315.0
+offset_bottom = 155.0
+text = "Research"
+
+[connection signal="pressed" from="ResearchButton" to="." method="_on_research_button_pressed"]
