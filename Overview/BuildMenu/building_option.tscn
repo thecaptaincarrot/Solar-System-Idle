@@ -5,9 +5,6 @@
 [node name="BuildingOption" type="Panel"]
 custom_minimum_size = Vector2(320, 160)
 script = ExtResource("1_7kgiw")
-multiplier = 10
-exponent_base = 2
-base_cost = 0
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0

@@ -6,7 +6,7 @@ var Money = preload("res://Resources/Money.tres")
 var Research = preload("res://Resources/Research.tres")
 
 @export var title : String
-@export var description : String
+@export_multiline var description : String
 
 @export var research_cost = 100.0
 var current_research = 0.0 #Unused

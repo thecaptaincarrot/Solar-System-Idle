@@ -335,6 +335,7 @@ grow_vertical = 0
 text = "Save Design"
 
 [node name="Launch" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -431,7 +432,6 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="LeftPanel" type="Panel" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 10.0
 offset_top = 194.0
@@ -439,7 +439,6 @@ offset_right = 351.0
 offset_bottom = 1073.0
 
 [node name="OverviewLeft" type="MarginContainer" parent="LeftPanel"]
-visible = false
 layout_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -460,7 +459,8 @@ script = ExtResource("2_ponxe")
 
 [node name="BuildingOption" parent="LeftPanel/OverviewLeft/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
 layout_mode = 2
-multiplier = 2.0
+multiplier = 1.0
+exponent_base = 1.0
 
 [node name="BuildingOption2" parent="LeftPanel/OverviewLeft/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
 layout_mode = 2
@@ -512,6 +512,7 @@ layout_mode = 2
 research_resource = ExtResource("9_t7op7")
 
 [node name="DesignLeft" type="MarginContainer" parent="LeftPanel"]
+visible = false
 layout_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0

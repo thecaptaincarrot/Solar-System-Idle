@@ -4,7 +4,7 @@ extends Panel
 #Prereqs
 var unlocked = true
 
-@export var ResearchPrereqs : Array[ResearchTopic]
+@export var BuildingResource : Building
 
 #Resources
 var Money = preload("res://Resources/Money.tres")
@@ -31,7 +31,7 @@ func _ready():
 	$Title.text = title
 	$Description.text = description
 	
-	if ResearchPrereqs:
+	if !BuildingResource.get_unlocked():
 		unlocked = false
 		hide()
 	
@@ -45,15 +45,9 @@ func _process(delta):
 		$Description.text = description
 	else:
 		#Prereqs
-		if !unlocked:
-			var to_unlock = true
-			for topic in ResearchPrereqs:
-				if !topic.get_researched():
-					to_unlock = false
-			
-			if to_unlock:
-				unlocked = true
-				show()
+		if BuildingResource.get_unlocked():
+			unlocked = true
+			show()
 		
 		
 		#Buy Quantity
