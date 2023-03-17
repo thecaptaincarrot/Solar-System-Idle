@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwfgl10vtej5e"]
+
+[ext_resource type="Texture2D" uid="uid://bfghji0hwg2d4" path="res://Textures/Satellite.png" id="1_xv3ev"]
+[ext_resource type="Script" path="res://UI_Components/OrbitalView/Satellite.gd" id="2_31h7j"]
+
+[node name="Satellite" type="Sprite2D"]
+rotation = -1.08385
+scale = Vector2(15, 15)
+texture = ExtResource("1_xv3ev")
+offset = Vector2(128, 0)
+script = ExtResource("2_31h7j")

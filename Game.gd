@@ -7,7 +7,7 @@ var Research = preload("res://Resources/Research.tres")
 var Ore = preload("res://Resources/Ore.tres")
 
 
-var ResourceList = [Money,Data,Research]
+var ResourceList = [Money,Data,Research, Ore]
 
 
 var days = 0
@@ -37,6 +37,7 @@ func hide_menus():
 	$LeftPanel.show()
 	$Design.hide()
 	$Launch.hide()
+	$Orbital.hide()
 
 
 func _on_tick_timer_timeout():
@@ -75,3 +76,10 @@ func _on_launch_nav_button_pressed():
 	$LeftPanel.hide()
 	$Launch.show()
 	$Launch._on_open()
+
+
+func _on_orbital_nav_button_pressed():
+	hide_menus()
+	$LeftPanel.hide()
+	$Orbital.show()
+	$Orbital._on_open()

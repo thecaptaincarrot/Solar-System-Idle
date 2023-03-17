@@ -2,7 +2,7 @@ extends Resource
 class_name Building
 
 
-var number = 0 #number of buildings built
+var level = 0 #number of buildings built
 var unlocked = false
 
 @export var ResearchPrereqs : Array[ResearchTopic]
@@ -39,17 +39,21 @@ func get_unlocked():
 	return unlocked
 
 
-func get_number():
-	return number
+func get_level():
+	return level
 
 
 func get_cost(multiplier):
 	#recalculate cost
 	var sum = 0
 	
-	for i in range(number, number + multiplier):
+	for i in range(level, level + multiplier):
 		sum += multiplier * (pow(exponent_base,i)) + base_cost
 	
 	var cost = snapped(sum,.01)
 	
 	return cost
+
+func build(multiplier):
+	level += multiplier
+	

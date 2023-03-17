@@ -9,3 +9,58 @@ func print_modules():
 	print(name)
 	for module in modules:
 		print(module.name)
+
+
+func get_modules():
+	return modules
+
+
+func get_mass():
+	var sum = 0.0
+	for module in modules:
+		sum += module.mass
+	
+	return sum
+
+
+func get_money_cost():
+	var sum = 0.0
+	for module in modules:
+		sum += module.money_cost
+	
+	return sum
+
+
+func get_ore_cost():
+	var sum = 0.0
+	for module in modules:
+		sum += module.ore_cost
+	
+	return sum
+
+
+func get_thrust():
+	var sum = 0.0
+	for module in modules:
+		if module is ThrustModule:
+			sum += module.thrust
+	
+	return sum
+
+
+func get_fuel_consumption():
+	var sum = 0.0
+	for module in modules:
+		if module is ThrustModule:
+			sum += module.fuel_consumption
+	
+	return sum
+
+
+func get_money_per_day():
+	var sum = 0.0
+	for module in modules:
+		if module is UtilModule:
+			sum += module.money_per_day
+	
+	return sum

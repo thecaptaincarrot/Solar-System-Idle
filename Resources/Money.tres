@@ -1,7 +1,9 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cy2bukhtj71do"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cy2bukhtj71do"]
 
 [ext_resource type="Script" path="res://Resources/Money_Resource.gd" id="1_7blu0"]
+[ext_resource type="Resource" uid="uid://cj8fletrfg2xn" path="res://Buildings/LobbyingOffice.tres" id="1_ljeq3"]
 
 [resource]
 script = ExtResource("1_7blu0")
+LobbyOfficeResource = ExtResource("1_ljeq3")
 name = "MONEY"

@@ -43,7 +43,6 @@ func get_per_tick():
 				sink.unlimit_per_tick()
 		else:
 			sink.unlimit_per_tick()
-	
 	return per_tick
 
 

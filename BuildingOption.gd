@@ -11,16 +11,8 @@ var Money = preload("res://Resources/Money.tres")
 
 const BUY_INCREMENTS= [1,5,10,25]
 
-@export var building_id = "lobbying_offices"
-
-@export var title = "Lobbying Office"
-@export var description = "Generates Income"
 
 var cost = 0.0
-
-@export var multiplier = 10.0
-@export var exponent_base = 2.0
-@export var base_cost = 0.0 #In millions
 
 var buy_quantity = 1
 
@@ -28,8 +20,8 @@ signal Build
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Title.text = title
-	$Description.text = description
+	$Title.text = BuildingResource.name
+	$Description.text = BuildingResource.description
 	
 	if !BuildingResource.get_unlocked():
 		unlocked = false
@@ -41,8 +33,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Engine.is_editor_hint():
-		$Title.text = title
-		$Description.text = description
+		$Title.text = BuildingResource.name
+		$Description.text = BuildingResource.description
 	else:
 		#Prereqs
 		if BuildingResource.get_unlocked():
@@ -65,33 +57,17 @@ func _process(delta):
 		update_cost()
 
 
-
-func get_cost():
-	var level = Buildings.get_level(building_id)
-	
-	#recalculate cost
-	var sum = 0
-	
-	for i in range(level, level + buy_quantity):
-		sum += multiplier * (pow(exponent_base,i)) + base_cost
-	
-	cost = snapped(sum,.01)
-	
-	return cost
-
-
 func update_cost():
-	get_cost()
+	cost = BuildingResource.get_cost(buy_quantity)
 	$CostContainer/Cost.text = str(cost)
 
 
 func update_num():
-	var level = Buildings.get_level(building_id)
-	$HBoxContainer/Number.text = str(level)
+	$HBoxContainer/Number.text = str(BuildingResource.level)
 
 func _on_buy_button_pressed():
 	
-	if Money.spend(get_cost()):
-		Buildings.build(building_id, buy_quantity)
+	if Money.spend(BuildingResource.get_cost(buy_quantity)):
+		BuildingResource.build(buy_quantity)
 	
 	update_cost()

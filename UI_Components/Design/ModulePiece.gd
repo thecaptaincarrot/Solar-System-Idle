@@ -20,5 +20,9 @@ func set_module(new_module):
 	texture = ModuleResource.texture
 
 
+func hide_button():
+	$Button.hide()
+
+
 func _on_button_pressed():
 	emit_signal("Remove",self)

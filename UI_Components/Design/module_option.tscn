@@ -54,7 +54,7 @@ layout_mode = 2
 
 [node name="OreCost" type="Label" parent="VBoxContainer/OreBox"]
 layout_mode = 2
-text = "000"
+text = "10"
 
 [node name="Label" type="Label" parent="VBoxContainer/OreBox"]
 layout_mode = 2
@@ -69,7 +69,7 @@ text = "$"
 
 [node name="MoneyCost" type="Label" parent="VBoxContainer/MoneyBox"]
 layout_mode = 2
-text = "10.00"
+text = "50"
 
 [node name="MoneyExponent" type="Label" parent="VBoxContainer/MoneyBox"]
 layout_mode = 2

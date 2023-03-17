@@ -2,7 +2,7 @@ extends Resource
 class_name ResearchTopic
 
 #Resource resources
-var Money = preload("res://Resources/Money.tres")
+var Money = load("res://Resources/Money.tres")
 var Research = preload("res://Resources/Research.tres")
 
 @export var title : String

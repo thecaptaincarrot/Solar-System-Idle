@@ -21,13 +21,12 @@ Buildings="*res://Statistics/Buildings.gd"
 Resources="*res://Statistics/Resources.gd"
 GlobalStats="*res://Autoloads/GlobalStats.gd"
 SavedRockets="*res://Autoloads/SavedRockets.gd"
+RocketsInSpace="*res://Autoloads/RocketsInSpace.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/window_width_override=1280
-window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 
 [rendering]

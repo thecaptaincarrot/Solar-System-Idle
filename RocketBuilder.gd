@@ -15,7 +15,7 @@ func _process(delta):
 	pass
 
 
-func add_to_rocket(ModuleResource):
+func add_to_rocket(ModuleResource, launch = false):
 	if get_num_modules() >= GlobalStats.max_ship_modules:
 		return
 	
@@ -27,6 +27,9 @@ func add_to_rocket(ModuleResource):
 	
 	new_module.Remove.connect(remove_module)
 	
+	if launch:
+		new_module.hide_button()
+	
 	emit_signal("RocketChanged", $ModulesContainer.get_module_resources())
 
 
@@ -36,6 +39,12 @@ func remove_module(module_to_remove):
 	
 	$ModulesContainer.update_module_positions()
 	emit_signal("RocketChanged", $ModulesContainer.get_module_resources())
+
+
+func clear_modules():
+	for module in $ModulesContainer.get_children():
+		remove_module(module)
+
 
 
 func get_num_modules():

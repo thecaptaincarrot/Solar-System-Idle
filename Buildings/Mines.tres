@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Building" load_steps=2 format=3 uid="uid://cjxmyhp12377k"]
+
+[ext_resource type="Script" path="res://Buildings/BaseBuilding.gd" id="1_148xq"]
+
+[resource]
+script = ExtResource("1_148xq")
+ResearchPrereqs = Array[Resource("res://Research/Research_Class.gd")]([])
+BuildingPrereqs = {}
+name = "Mines"
+description = "Generates Ore"
+multiplier = 1.0
+exponent_base = 1.0
+base_cost = 1.0
