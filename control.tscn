@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dtucx7t63yid1"]
+[gd_scene load_steps=41 format=3 uid="uid://dtucx7t63yid1"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_tn1u5"]
 [ext_resource type="Texture2D" uid="uid://d1qxs7itsei36" path="res://IDK.png" id="2_0xf61"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://8spowxb0dybp" path="res://Resources/Data.tres" id="4_nc8af"]
 [ext_resource type="Resource" uid="uid://bok2ax6sj474o" path="res://Resources/Ore.tres" id="6_r6ya4"]
 [ext_resource type="Script" path="res://UI_Components/Design/Design.gd" id="7_khrki"]
+[ext_resource type="Resource" uid="uid://oc1m8t260wcv" path="res://Research/Placeholder.tres" id="7_yr0ju"]
 [ext_resource type="PackedScene" uid="uid://bii5uov4240q0" path="res://UI_Components/ResearchTab/research_option.tscn" id="8_w6dkj"]
 [ext_resource type="Resource" uid="uid://dqdabcosxvbrb" path="res://Research/Mines.tres" id="9_t7op7"]
 [ext_resource type="Texture2D" uid="uid://ijtqdxhlm7px" path="res://Textures/LaunchPad.png" id="9_yrlpr"]
@@ -34,6 +35,7 @@
 [ext_resource type="Resource" uid="uid://bhvxg7ndygfya" path="res://Buildings/Refinery.tres" id="23_8lu0n"]
 [ext_resource type="Resource" uid="uid://cjxmyhp12377k" path="res://Buildings/Mines.tres" id="23_bh75r"]
 [ext_resource type="Script" path="res://UI_Components/Date.gd" id="26_q7fmr"]
+[ext_resource type="Script" path="res://Test/ResearchLeft.gd" id="30_cusqq"]
 [ext_resource type="Resource" uid="uid://cxr65644nkdrf" path="res://Resources/Alloys.tres" id="32_irdel"]
 [ext_resource type="Resource" uid="uid://bakyqrxnb3r4" path="res://Resources/Volatiles.tres" id="33_nwnac"]
 [ext_resource type="Resource" uid="uid://g2u7kei0i2ap" path="res://Resources/Fuel.tres" id="34_ql58d"]
@@ -142,6 +144,30 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_lock_ = true
+
+[node name="ResearchOption" parent="Research" instance=ExtResource("8_w6dkj")]
+layout_mode = 2
+offset_left = 391.0
+offset_top = 199.0
+offset_right = 711.0
+offset_bottom = 359.0
+research_resource = ExtResource("9_t7op7")
+
+[node name="ResearchOption2" parent="Research" instance=ExtResource("8_w6dkj")]
+layout_mode = 2
+offset_left = 390.0
+offset_top = 369.0
+offset_right = 710.0
+offset_bottom = 529.0
+research_resource = ExtResource("7_yr0ju")
+
+[node name="ResearchOption3" parent="Research" instance=ExtResource("8_w6dkj")]
+layout_mode = 2
+offset_left = 391.0
+offset_top = 540.0
+offset_right = 711.0
+offset_bottom = 700.0
+research_resource = ExtResource("7_yr0ju")
 
 [node name="Design" type="Control" parent="."]
 visible = false
@@ -956,16 +982,48 @@ theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
+script = ExtResource("30_cusqq")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="LeftPanel/ResearchLeft"]
+[node name="ResearchOptionContainer" type="VBoxContainer" parent="LeftPanel/ResearchLeft"]
 layout_mode = 2
 
-[node name="ResearchOptionContainer" type="VBoxContainer" parent="LeftPanel/ResearchLeft/ScrollContainer"]
+[node name="Label" type="Label" parent="LeftPanel/ResearchLeft/ResearchOptionContainer"]
+layout_mode = 2
+text = "Number of Research Labs: 1"
+
+[node name="Label2" type="Label" parent="LeftPanel/ResearchLeft/ResearchOptionContainer"]
+layout_mode = 2
+text = "Funding:"
+
+[node name="HSlider" type="HSlider" parent="LeftPanel/ResearchLeft/ResearchOptionContainer"]
+layout_mode = 2
+max_value = 10.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LeftPanel/ResearchLeft/ResearchOptionContainer"]
 layout_mode = 2
 
-[node name="ResearchOption" parent="LeftPanel/ResearchLeft/ScrollContainer/ResearchOptionContainer" instance=ExtResource("8_w6dkj")]
+[node name="Label3" type="Label" parent="LeftPanel/ResearchLeft/ResearchOptionContainer/HBoxContainer"]
 layout_mode = 2
-research_resource = ExtResource("9_t7op7")
+text = "Cost Per Day: $"
+
+[node name="CostPerDay" type="Label" parent="LeftPanel/ResearchLeft/ResearchOptionContainer/HBoxContainer"]
+layout_mode = 2
+text = "10"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="LeftPanel/ResearchLeft/ResearchOptionContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="LeftPanel/ResearchLeft/ResearchOptionContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Research Generated Per Day:"
+
+[node name="ResearchPerDay" type="Label" parent="LeftPanel/ResearchLeft/ResearchOptionContainer/HBoxContainer2"]
+layout_mode = 2
+text = "1"
+
+[node name="Label4" type="Label" parent="LeftPanel/ResearchLeft/ResearchOptionContainer/HBoxContainer2"]
+layout_mode = 2
+text = "RP"
 
 [node name="DesignLeft" type="MarginContainer" parent="LeftPanel"]
 visible = false
@@ -1119,6 +1177,7 @@ autostart = true
 [connection signal="value_changed" from="Design/RightPanel/MarginContainer/VBoxContainer/HSlider" to="Design/RightPanel" method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="Design/RightPanel/SaveDesign" to="Design" method="_on_save_design_pressed"]
 [connection signal="pressed" from="Launch/RightPanel/Launch" to="Launch" method="_on_launch_pressed"]
+[connection signal="value_changed" from="LeftPanel/ResearchLeft/ResearchOptionContainer/HSlider" to="LeftPanel/ResearchLeft" method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="OverviewPanel/NavigationButtons/OverviewNavButton" to="." method="_on_overview_nav_button_pressed"]
 [connection signal="pressed" from="OverviewPanel/NavigationButtons/ResearchNavButton" to="." method="_on_research_nav_button_pressed"]
 [connection signal="pressed" from="OverviewPanel/NavigationButtons/DesignNavButton" to="." method="_on_design_nav_button_pressed"]
