@@ -20,6 +20,7 @@ layout_mode = 2
 text = "10.00"
 
 [node name="ValueExponent" type="Label" parent="."]
+visible = false
 layout_mode = 2
 text = "M"
 
@@ -32,6 +33,7 @@ layout_mode = 2
 text = "0.00"
 
 [node name="PerDayExponent" type="Label" parent="."]
+visible = false
 layout_mode = 2
 text = "M"
 

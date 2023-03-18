@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Building" load_steps=2 format=3 uid="uid://ctp7qlqn0bt3b"]
+
+[ext_resource type="Script" path="res://Buildings/BaseBuilding.gd" id="1_xhltu"]
+
+[resource]
+script = ExtResource("1_xhltu")
+ResearchPrereqs = Array[Resource("res://Research/Research_Class.gd")]([])
+BuildingPrereqs = {}
+name = "Smelter"
+description = "Turns Ore into Alloys"
+multiplier = 1.0
+exponent_base = 1.0
+base_cost = 1.0

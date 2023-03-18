@@ -5,9 +5,12 @@ var Money = preload("res://Resources/Money.tres")
 var Data = preload("res://Resources/Data.tres")
 var Research = preload("res://Resources/Research.tres")
 var Ore = preload("res://Resources/Ore.tres")
+var Alloys = preload("res://Resources/Alloys.tres")
+var Volatiles = preload("res://Resources/Volatiles.tres")
+var Fuel = preload("res://Resources/Fuel.tres")
 
 
-var ResourceList = [Money,Data,Research, Ore]
+var ResourceList = [Money,Data,Research, Ore,Alloys,Volatiles,Fuel]
 
 
 var days = 0
@@ -38,6 +41,8 @@ func hide_menus():
 	$Design.hide()
 	$Launch.hide()
 	$Orbital.hide()
+	$Overview.hide()
+	$Research.hide()
 
 
 func _on_tick_timer_timeout():
@@ -55,6 +60,7 @@ func _on_tick_timer_timeout():
 
 func _on_overview_nav_button_pressed():
 	hide_menus()
+	$Overview.show()
 	$LeftPanel/OverviewLeft.show()
 	pass # Replace with function body.
 
@@ -62,6 +68,7 @@ func _on_overview_nav_button_pressed():
 func _on_research_nav_button_pressed():
 	hide_menus()
 	$LeftPanel/ResearchLeft.show()
+	$Research.show()
 	pass # Replace with function body.
 
 

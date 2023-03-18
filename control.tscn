@@ -1,12 +1,14 @@
-[gd_scene load_steps=29 format=3 uid="uid://dtucx7t63yid1"]
+[gd_scene load_steps=39 format=3 uid="uid://dtucx7t63yid1"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_tn1u5"]
+[ext_resource type="Texture2D" uid="uid://d1qxs7itsei36" path="res://IDK.png" id="2_0xf61"]
 [ext_resource type="PackedScene" uid="uid://bacbhpainxqfk" path="res://UI_Components/Resource_Holder.tscn" id="2_8bt6t"]
 [ext_resource type="PackedScene" uid="uid://dryyhm4nephfb" path="res://Overview/BuildMenu/building_option.tscn" id="2_78hfj"]
 [ext_resource type="Script" path="res://Overview/BuildMenu/BuildOptionContainer.gd" id="2_ponxe"]
+[ext_resource type="Texture2D" uid="uid://c1rj06c18f50s" path="res://Textures/OilWell.png" id="3_c1unq"]
 [ext_resource type="Resource" uid="uid://cy2bukhtj71do" path="res://Resources/Money.tres" id="3_fad5r"]
+[ext_resource type="Texture2D" uid="uid://5bctktc516q6" path="res://Textures/mining-icon.png" id="4_g2dio"]
 [ext_resource type="Resource" uid="uid://8spowxb0dybp" path="res://Resources/Data.tres" id="4_nc8af"]
-[ext_resource type="Resource" uid="uid://cbkk3a43ts4eu" path="res://Resources/Research.tres" id="5_krlcn"]
 [ext_resource type="Resource" uid="uid://bok2ax6sj474o" path="res://Resources/Ore.tres" id="6_r6ya4"]
 [ext_resource type="Script" path="res://UI_Components/Design/Design.gd" id="7_khrki"]
 [ext_resource type="PackedScene" uid="uid://bii5uov4240q0" path="res://UI_Components/ResearchTab/research_option.tscn" id="8_w6dkj"]
@@ -20,13 +22,21 @@
 [ext_resource type="Script" path="res://UI_Components/Launch/RocketBox.gd" id="15_f8wll"]
 [ext_resource type="Script" path="res://UI_Components/Launch/Launch.gd" id="15_jetlc"]
 [ext_resource type="PackedScene" uid="uid://cyeug2a1p4gme" path="res://UI_Components/Launch/launch_option.tscn" id="15_xd2gd"]
+[ext_resource type="Script" path="res://UI_Components/Launch/LaunchProgress.gd" id="16_g37en"]
 [ext_resource type="Script" path="res://UI_Components/Launch/RightPanel.gd" id="17_0kydw"]
 [ext_resource type="Script" path="res://UI_Components/OrbitalView/OrbitalView.gd" id="18_88sx1"]
 [ext_resource type="Texture2D" uid="uid://dvnnfblnw762r" path="res://Textures/Earf.png" id="18_fnudd"]
 [ext_resource type="Resource" uid="uid://cj8fletrfg2xn" path="res://Buildings/LobbyingOffice.tres" id="20_nr3vh"]
+[ext_resource type="Resource" uid="uid://ctp7qlqn0bt3b" path="res://Buildings/Smelter.tres" id="21_r7lhq"]
 [ext_resource type="Resource" uid="uid://p3jg302bexnw" path="res://Buildings/Telescope.tres" id="21_wpobg"]
 [ext_resource type="Resource" uid="uid://cacdutxndso6x" path="res://Buildings/Laboratory.tres" id="22_34iig"]
+[ext_resource type="Resource" uid="uid://0bmdmb6ps6lx" path="res://Buildings/OilWell.tres" id="22_gm5uk"]
+[ext_resource type="Resource" uid="uid://bhvxg7ndygfya" path="res://Buildings/Refinery.tres" id="23_8lu0n"]
 [ext_resource type="Resource" uid="uid://cjxmyhp12377k" path="res://Buildings/Mines.tres" id="23_bh75r"]
+[ext_resource type="Script" path="res://UI_Components/Date.gd" id="26_q7fmr"]
+[ext_resource type="Resource" uid="uid://cxr65644nkdrf" path="res://Resources/Alloys.tres" id="32_irdel"]
+[ext_resource type="Resource" uid="uid://bakyqrxnb3r4" path="res://Resources/Volatiles.tres" id="33_nwnac"]
+[ext_resource type="Resource" uid="uid://g2u7kei0i2ap" path="res://Resources/Fuel.tres" id="34_ql58d"]
 
 [sub_resource type="GDScript" id="GDScript_fthym"]
 script/source = "extends VBoxContainer
@@ -49,6 +59,88 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tn1u5")
+metadata/_edit_lock_ = true
+
+[node name="Overview" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="Idk" type="Sprite2D" parent="Overview"]
+position = Vector2(1067, 1269)
+scale = Vector2(3.3463, 1)
+texture = ExtResource("2_0xf61")
+
+[node name="OilWell" type="Sprite2D" parent="Overview/Idk"]
+position = Vector2(148.821, -537)
+scale = Vector2(0.0562927, 0.188372)
+texture = ExtResource("3_c1unq")
+
+[node name="OilWell2" type="Sprite2D" parent="Overview/Idk"]
+position = Vector2(99.2144, -565)
+scale = Vector2(0.0562927, 0.188372)
+texture = ExtResource("3_c1unq")
+
+[node name="OilWell3" type="Sprite2D" parent="Overview/Idk"]
+position = Vector2(190.36, -505)
+scale = Vector2(0.0562927, 0.188372)
+texture = ExtResource("3_c1unq")
+
+[node name="Mining-icon" type="Sprite2D" parent="Overview/Idk"]
+position = Vector2(-172.429, -509)
+scale = Vector2(0.0820918, 0.274704)
+texture = ExtResource("4_g2dio")
+
+[node name="Mining-icon2" type="Sprite2D" parent="Overview/Idk"]
+position = Vector2(-123.121, -433)
+scale = Vector2(0.0820918, 0.274704)
+texture = ExtResource("4_g2dio")
+
+[node name="Mining-icon3" type="Sprite2D" parent="Overview/Idk"]
+position = Vector2(-199.624, -363)
+scale = Vector2(0.0820918, 0.274704)
+texture = ExtResource("4_g2dio")
+
+[node name="Label" type="Label" parent="Overview"]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 199.0
+offset_right = 624.0
+offset_bottom = 239.0
+theme_override_font_sizes/font_size = 27
+text = "Earth"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Overview"]
+layout_mode = 0
+offset_left = 572.0
+offset_top = 207.0
+offset_right = 602.0
+offset_bottom = 238.0
+text = "➡"
+
+[node name="Button2" type="Button" parent="Overview"]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 208.0
+offset_right = 478.0
+offset_bottom = 239.0
+text = "⬅"
+
+[node name="Research" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 metadata/_edit_lock_ = true
 
 [node name="Design" type="Control" parent="."]
@@ -253,6 +345,60 @@ text = "10.0"
 layout_mode = 2
 text = "t"
 
+[node name="OptionButton" type="OptionButton" parent="Design/RightPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+item_count = 2
+selected = 0
+popup/item_0/text = "Low Earth Orbit"
+popup/item_0/id = 0
+popup/item_1/text = "Moon"
+popup/item_1/id = 1
+
+[node name="Insufficient" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer"]
+self_modulate = Color(0.972549, 0, 0.180392, 1)
+layout_mode = 2
+text = "Insufficient ΔV"
+
+[node name="Label" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Fuel Economy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Design/RightPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 5.0
+
+[node name="TTDBox" type="HBoxContainer" parent="Design/RightPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/TTDBox"]
+layout_mode = 2
+text = "Time to Destination"
+
+[node name="TimeToDestination" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/TTDBox"]
+layout_mode = 2
+text = "5.0"
+
+[node name="Label2" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/TTDBox"]
+layout_mode = 2
+text = "Days"
+
+[node name="ConsumptionBox" type="HBoxContainer" parent="Design/RightPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/ConsumptionBox"]
+layout_mode = 2
+text = "Fuel Needed:"
+
+[node name="FuelNeeded" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/ConsumptionBox"]
+layout_mode = 2
+text = "10.0"
+
+[node name="Label2" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/ConsumptionBox"]
+layout_mode = 2
+text = "kGal"
+
 [node name="SaveDesign" type="Button" parent="Design/RightPanel"]
 layout_mode = 1
 anchors_preset = 3
@@ -269,6 +415,7 @@ grow_vertical = 0
 text = "Save Design"
 
 [node name="Launch" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -293,7 +440,7 @@ layout_mode = 0
 offset_left = 9.0
 offset_top = 9.0
 offset_right = 342.0
-offset_bottom = 880.0
+offset_bottom = 856.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Launch/LeftPanel/MarginContainer"]
 layout_mode = 2
@@ -304,6 +451,15 @@ script = ExtResource("15_f8wll")
 
 [node name="LaunchOption" parent="Launch/LeftPanel/MarginContainer/ScrollContainer/RocketBox" instance=ExtResource("15_xd2gd")]
 layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="Launch/LeftPanel"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 851.0
+offset_right = 168.0
+offset_bottom = 882.0
+text = "Show Obsolete
+"
 
 [node name="RightPanel" type="Panel" parent="Launch"]
 layout_mode = 1
@@ -418,21 +574,124 @@ text = "Destination:"
 
 [node name="DestinationOption" type="OptionButton" parent="Launch/RightPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+item_count = 2
+selected = 0
+popup/item_0/text = "Low Earth Orbit"
+popup/item_0/id = 0
+popup/item_1/text = "Moon"
+popup/item_1/id = 1
 
-[node name="FuelRequiredBox" type="HBoxContainer" parent="Launch/RightPanel/MarginContainer/VBoxContainer"]
+[node name="Insufficient" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer"]
+self_modulate = Color(0.972549, 0, 0.180392, 1)
+layout_mode = 2
+text = "Insufficient ΔV"
+
+[node name="Label" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Fuel Economy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Launch/RightPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 5.0
+
+[node name="TTDBox" type="HBoxContainer" parent="Launch/RightPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/FuelRequiredBox"]
+[node name="Label" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/TTDBox"]
 layout_mode = 2
-text = "Fuel Required:"
+text = "Time to Destination"
 
-[node name="FuelRequired" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/FuelRequiredBox"]
+[node name="TimeToDestination" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/TTDBox"]
 layout_mode = 2
-text = "10.00"
+text = "5.0"
 
-[node name="Label2" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/FuelRequiredBox"]
+[node name="Label2" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/TTDBox"]
 layout_mode = 2
-text = "M^3"
+text = "Days"
+
+[node name="ConsumptionBox" type="HBoxContainer" parent="Launch/RightPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/ConsumptionBox"]
+layout_mode = 2
+text = "Fuel Needed:"
+
+[node name="FuelNeeded" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/ConsumptionBox"]
+layout_mode = 2
+text = "10.0"
+
+[node name="Label2" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/ConsumptionBox"]
+layout_mode = 2
+text = "kGal"
+
+[node name="BuildTimeBox" type="HBoxContainer" parent="Launch/RightPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/BuildTimeBox"]
+layout_mode = 2
+text = "Time to Build:"
+
+[node name="FuelNeeded" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/BuildTimeBox"]
+layout_mode = 2
+text = "30.0"
+
+[node name="Label2" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/BuildTimeBox"]
+layout_mode = 2
+text = "Days"
+
+[node name="CargoPanel" type="Panel" parent="Launch/RightPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/CargoPanel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 2.0
+offset_right = 54.0
+offset_bottom = 28.0
+text = "Cargo"
+
+[node name="CheckBox" type="CheckBox" parent="Launch/RightPanel/MarginContainer/VBoxContainer/CargoPanel"]
+layout_mode = 0
+offset_left = 60.0
+offset_right = 187.0
+offset_bottom = 31.0
+text = "Leave Empty"
+
+[node name="SpinBox" type="SpinBox" parent="Launch/RightPanel/MarginContainer/VBoxContainer/CargoPanel"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 34.0
+offset_right = 93.0625
+offset_bottom = 65.0
+
+[node name="OptionButton" type="OptionButton" parent="Launch/RightPanel/MarginContainer/VBoxContainer/CargoPanel"]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 35.0
+offset_right = 372.0
+offset_bottom = 66.0
+item_count = 5
+popup/item_0/text = "Oxygen"
+popup/item_0/id = 0
+popup/item_1/text = "Food"
+popup/item_1/id = 1
+popup/item_2/text = "Water"
+popup/item_2/id = 2
+popup/item_3/text = "Ore"
+popup/item_3/id = 3
+popup/item_4/text = "Alloys"
+popup/item_4/id = 4
+
+[node name="Button" type="Button" parent="Launch/RightPanel/MarginContainer/VBoxContainer/CargoPanel"]
+layout_mode = 0
+offset_left = 386.0
+offset_top = 36.0
+offset_right = 404.0
+offset_bottom = 67.0
+text = "+"
 
 [node name="Launch" type="Button" parent="Launch/RightPanel"]
 layout_mode = 1
@@ -460,6 +719,47 @@ offset_right = 65.5
 offset_bottom = -2.0
 grow_horizontal = 2
 text = "Not Enough Resources"
+
+[node name="CheckBox" type="CheckBox" parent="Launch/RightPanel"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 889.0
+offset_right = 184.0
+offset_bottom = 920.0
+text = "Auto-Launch"
+
+[node name="SpinBox" type="SpinBox" parent="Launch/RightPanel/CheckBox"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 22.0
+offset_top = -15.5
+offset_right = 105.063
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Launch/RightPanel/CheckBox/SpinBox"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -23.5313
+offset_top = -22.0
+offset_right = 16.4688
+offset_bottom = 1.0
+grow_horizontal = 2
+text = "Number to Launch"
+
+[node name="CheckBox2" type="CheckBox" parent="Launch/RightPanel/CheckBox"]
+layout_mode = 0
+offset_left = 236.0
+offset_right = 276.0
+offset_bottom = 31.0
+text = "	∞"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Launch"]
 layout_mode = 0
@@ -512,6 +812,55 @@ grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("13_xa5wf")
 
+[node name="LaunchProgress" type="ProgressBar" parent="Launch"]
+visible = false
+layout_mode = 0
+offset_left = 659.0
+offset_top = 434.0
+offset_right = 1151.0
+offset_bottom = 461.0
+max_value = 10.0
+script = ExtResource("16_g37en")
+
+[node name="Label" type="Label" parent="Launch/LaunchProgress"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -33.0
+offset_right = 20.0
+offset_bottom = -10.0
+grow_horizontal = 2
+text = "Launching..."
+
+[node name="Label2" type="Label" parent="Launch/LaunchProgress"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -47.0
+offset_top = 25.0
+offset_right = 47.0
+offset_bottom = 51.0
+grow_horizontal = 2
+text = "T- 00:10"
+
+[node name="Button" type="Button" parent="Launch/LaunchProgress"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -29.0
+offset_top = 29.0
+offset_right = 23.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Abort"
+
 [node name="Orbital" type="Control" parent="."]
 visible = false
 show_behind_parent = true
@@ -542,7 +891,6 @@ scale = Vector2(0.0698242, 0.0698242)
 texture = ExtResource("18_fnudd")
 
 [node name="LeftPanel" type="Panel" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 10.0
 offset_top = 194.0
@@ -550,6 +898,7 @@ offset_right = 351.0
 offset_bottom = 1073.0
 
 [node name="OverviewLeft" type="MarginContainer" parent="LeftPanel"]
+visible = false
 layout_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -581,12 +930,22 @@ layout_mode = 2
 BuildingResource = ExtResource("22_34iig")
 
 [node name="BuildingOption4" parent="LeftPanel/OverviewLeft/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
-visible = false
 layout_mode = 2
 BuildingResource = ExtResource("23_bh75r")
 
+[node name="BuildingOption5" parent="LeftPanel/OverviewLeft/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
+layout_mode = 2
+BuildingResource = ExtResource("21_r7lhq")
+
+[node name="BuildingOption6" parent="LeftPanel/OverviewLeft/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
+layout_mode = 2
+BuildingResource = ExtResource("22_gm5uk")
+
+[node name="BuildingOption7" parent="LeftPanel/OverviewLeft/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
+layout_mode = 2
+BuildingResource = ExtResource("23_8lu0n")
+
 [node name="ResearchLeft" type="MarginContainer" parent="LeftPanel"]
-visible = false
 layout_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -642,13 +1001,14 @@ offset_right = 807.0
 offset_bottom = 143.0
 
 [node name="Date" type="Label" parent="OverviewPanel"]
-visible = false
 layout_mode = 0
 offset_right = 146.0
 offset_bottom = 23.0
-text = "Date: January 1 1970"
+text = "Date: January 1 1970 00:00"
+script = ExtResource("26_q7fmr")
 
 [node name="NumDays" type="Label" parent="OverviewPanel"]
+visible = false
 layout_mode = 0
 offset_right = 146.0
 offset_bottom = 23.0
@@ -665,6 +1025,7 @@ resource = ExtResource("3_fad5r")
 identity = "Money"
 
 [node name="DataContainer" parent="OverviewPanel" instance=ExtResource("2_8bt6t")]
+visible = false
 layout_mode = 0
 offset_left = 262.0
 offset_top = 26.0
@@ -675,12 +1036,12 @@ identity = "Data         "
 
 [node name="ResearchContainer" parent="OverviewPanel" instance=ExtResource("2_8bt6t")]
 layout_mode = 0
-offset_left = 266.0
-offset_top = 52.0
+offset_left = 265.0
+offset_top = 22.0
 offset_right = 518.0
-offset_bottom = 78.0
-resource = ExtResource("5_krlcn")
-identity = "Research"
+offset_bottom = 48.0
+resource = ExtResource("4_nc8af")
+identity = "Data"
 
 [node name="OreContainer" parent="OverviewPanel" instance=ExtResource("2_8bt6t")]
 layout_mode = 0
@@ -690,6 +1051,33 @@ offset_right = 262.0
 offset_bottom = 78.0
 resource = ExtResource("6_r6ya4")
 identity = "Ore"
+
+[node name="AlloyContainer" parent="OverviewPanel" instance=ExtResource("2_8bt6t")]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 76.0
+offset_right = 256.0
+offset_bottom = 102.0
+resource = ExtResource("32_irdel")
+identity = "Alloys"
+
+[node name="OreContainer2" parent="OverviewPanel" instance=ExtResource("2_8bt6t")]
+layout_mode = 0
+offset_left = 262.0
+offset_top = 52.0
+offset_right = 515.0
+offset_bottom = 78.0
+resource = ExtResource("33_nwnac")
+identity = "Volatiles"
+
+[node name="AlloyContainer2" parent="OverviewPanel" instance=ExtResource("2_8bt6t")]
+layout_mode = 0
+offset_left = 266.0
+offset_top = 76.0
+offset_right = 519.0
+offset_bottom = 102.0
+resource = ExtResource("34_ql58d")
+identity = "Fuel"
 
 [node name="NavigationButtons" type="HBoxContainer" parent="OverviewPanel"]
 layout_mode = 1
@@ -727,6 +1115,8 @@ text = "Orbital"
 autostart = true
 
 [connection signal="RocketChanged" from="Design/ScrollContainer/RocketContainer/RocketBuilder" to="Design/RightPanel" method="_on_rocket_builder_rocket_changed"]
+[connection signal="item_selected" from="Design/RightPanel/MarginContainer/VBoxContainer/OptionButton" to="Design" method="_on_option_button_item_selected"]
+[connection signal="value_changed" from="Design/RightPanel/MarginContainer/VBoxContainer/HSlider" to="Design/RightPanel" method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="Design/RightPanel/SaveDesign" to="Design" method="_on_save_design_pressed"]
 [connection signal="pressed" from="Launch/RightPanel/Launch" to="Launch" method="_on_launch_pressed"]
 [connection signal="pressed" from="OverviewPanel/NavigationButtons/OverviewNavButton" to="." method="_on_overview_nav_button_pressed"]

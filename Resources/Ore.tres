@@ -1,9 +1,11 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bok2ax6sj474o"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bok2ax6sj474o"]
 
 [ext_resource type="Resource" uid="uid://cjxmyhp12377k" path="res://Buildings/Mines.tres" id="1_7uor4"]
 [ext_resource type="Script" path="res://Resources/Ore_Resource2.gd" id="1_uoty5"]
+[ext_resource type="Resource" uid="uid://cxr65644nkdrf" path="res://Resources/Alloys.tres" id="3_oxta5"]
 
 [resource]
 script = ExtResource("1_uoty5")
 MineResource = ExtResource("1_7uor4")
 name = "Ore"
+sink = ExtResource("3_oxta5")

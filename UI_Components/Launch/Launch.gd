@@ -57,4 +57,6 @@ func _on_launch_pressed():
 		
 		RocketsInSpace.rocket_launched(StagedRocket)
 		
+		$LaunchProgress.show()
+		$LaunchProgress.running = true
 		

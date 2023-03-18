@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Building" load_steps=2 format=3 uid="uid://bhvxg7ndygfya"]
+
+[ext_resource type="Script" path="res://Buildings/BaseBuilding.gd" id="1_lw7s8"]
+
+[resource]
+script = ExtResource("1_lw7s8")
+ResearchPrereqs = Array[Resource("res://Research/Research_Class.gd")]([])
+BuildingPrereqs = {}
+name = "Refinery"
+description = "Turns Volatiles into Fuel"
+multiplier = 1.0
+exponent_base = 1.0
+base_cost = 1.0

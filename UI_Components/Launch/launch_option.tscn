@@ -1,9 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://cyeug2a1p4gme"]
+[gd_scene load_steps=3 format=3 uid="uid://cyeug2a1p4gme"]
 
 [ext_resource type="Script" path="res://UI_Components/Launch/LaunchOption.gd" id="1_xttmm"]
+[ext_resource type="Texture2D" uid="uid://s4802nskvmiw" path="res://Textures/PlaceholderRocket.png" id="2_oofhb"]
 
 [node name="LaunchOption" type="Panel"]
-custom_minimum_size = Vector2(332, 80)
+custom_minimum_size = Vector2(332, 160)
+offset_right = 332.0
+offset_bottom = 153.0
 script = ExtResource("1_xttmm")
 
 [node name="Title" type="Label" parent="."]
@@ -16,10 +19,36 @@ text = "TITLE"
 
 [node name="Launch" type="Button" parent="."]
 layout_mode = 0
-offset_left = 183.0
-offset_top = 43.0
-offset_right = 324.0
-offset_bottom = 74.0
+offset_left = 186.0
+offset_top = 118.0
+offset_right = 327.0
+offset_bottom = 149.0
 text = "Stage For Launch"
+
+[node name="PlaceholderRocket" type="Sprite2D" parent="."]
+position = Vector2(37, 87)
+scale = Vector2(0.236264, 0.236264)
+texture = ExtResource("2_oofhb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 77.0
+offset_top = 31.0
+offset_right = 117.0
+offset_bottom = 71.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Placeholder Information
+Cost: 420 Ore, $69
+Idk, how much can we fit here?"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 294.0
+offset_top = 7.0
+offset_right = 324.0
+offset_bottom = 38.0
+text = "🗑"
 
 [connection signal="pressed" from="Launch" to="." method="_on_launch_pressed"]

@@ -29,3 +29,10 @@ func _on_save_design_pressed():
 	var module_list = $ScrollContainer/RocketContainer/RocketBuilder/ModulesContainer.get_module_resources()
 	
 	SavedRockets.save_rocket(rocket_name,module_list)
+
+
+func _on_option_button_item_selected(index):
+	if index == 0:
+		$RightPanel/MarginContainer/VBoxContainer/Insufficient.hide()
+	else:
+		$RightPanel/MarginContainer/VBoxContainer/Insufficient.show()

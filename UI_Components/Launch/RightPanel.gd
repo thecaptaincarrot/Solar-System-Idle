@@ -32,3 +32,4 @@ func update_fields(RocketResource):
 	$MarginContainer/VBoxContainer/MoneyBox/MoneyCost.text =str(RocketResource.get_money_cost())
 	
 	$MarginContainer/VBoxContainer/OreBox/OreCost.text = str(RocketResource.get_ore_cost())
+

@@ -35,3 +35,8 @@ func _on_rocket_builder_rocket_changed(modules_list):
 	$MarginContainer/VBoxContainer/MPDBox/MoneyPerDay.text = str(total_mpd)
 	$MarginContainer/VBoxContainer/MoneyBox/MoneyCost.text = str(total_money_cost)
 	$MarginContainer/VBoxContainer/OreBox/OreCost.text = str(total_ore_cost)
+
+
+func _on_h_slider_value_changed(value):
+	$MarginContainer/VBoxContainer/TTDBox/TimeToDestination.text = str(6.0 - value)
+	$MarginContainer/VBoxContainer/ConsumptionBox/FuelNeeded.text = str(10.0 + 10.0 * value)
