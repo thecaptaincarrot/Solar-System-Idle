@@ -32,7 +32,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Engine.is_editor_hint():
+	if Engine.is_editor_hint() and BuildingResource:
 		$Title.text = BuildingResource.name
 		$Description.text = BuildingResource.description
 	else:
