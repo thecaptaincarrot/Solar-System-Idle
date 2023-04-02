@@ -55,7 +55,7 @@ func _on_tick_timer_timeout():
 		resource.tick_update()
 	
 	update_date()
-	
+	$Research.tick()
 
 
 func _on_overview_nav_button_pressed():

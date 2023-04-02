@@ -6,7 +6,9 @@ extends Panel
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	research_resource.get_unlocked()
+	if research_resource:
+		research_resource.get_unlocked()
+		$ProgressBar.max_value = research_resource.research_cost
 	pass # Replace with function body.
 
 

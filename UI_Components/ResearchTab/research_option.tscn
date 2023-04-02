@@ -58,4 +58,11 @@ offset_right = 308.0
 offset_bottom = 150.0
 text = "Completed"
 
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 125.0
+offset_right = 206.0
+offset_bottom = 152.0
+
 [connection signal="pressed" from="ResearchButton" to="." method="_on_research_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dtucx7t63yid1"]
+[gd_scene load_steps=42 format=3 uid="uid://chxis1k6a62cp"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_tn1u5"]
 [ext_resource type="Texture2D" uid="uid://d1qxs7itsei36" path="res://IDK.png" id="2_0xf61"]
@@ -9,11 +9,12 @@
 [ext_resource type="Resource" uid="uid://cy2bukhtj71do" path="res://Resources/Money.tres" id="3_fad5r"]
 [ext_resource type="Texture2D" uid="uid://5bctktc516q6" path="res://Textures/mining-icon.png" id="4_g2dio"]
 [ext_resource type="Resource" uid="uid://8spowxb0dybp" path="res://Resources/Data.tres" id="4_nc8af"]
+[ext_resource type="Script" path="res://UI_Components/ResearchTab/Research.gd" id="5_co6l7"]
+[ext_resource type="Resource" uid="uid://dqdabcosxvbrb" path="res://Research/TerrestrialBuildings/Mines.tres" id="6_cb7vf"]
 [ext_resource type="Resource" uid="uid://bok2ax6sj474o" path="res://Resources/Ore.tres" id="6_r6ya4"]
 [ext_resource type="Script" path="res://UI_Components/Design/Design.gd" id="7_khrki"]
 [ext_resource type="Resource" uid="uid://oc1m8t260wcv" path="res://Research/Placeholder.tres" id="7_yr0ju"]
 [ext_resource type="PackedScene" uid="uid://bii5uov4240q0" path="res://UI_Components/ResearchTab/research_option.tscn" id="8_w6dkj"]
-[ext_resource type="Resource" uid="uid://dqdabcosxvbrb" path="res://Research/Mines.tres" id="9_t7op7"]
 [ext_resource type="Texture2D" uid="uid://ijtqdxhlm7px" path="res://Textures/LaunchPad.png" id="9_yrlpr"]
 [ext_resource type="PackedScene" uid="uid://cp0gjc18q7ldl" path="res://UI_Components/Design/module_option.tscn" id="11_8xvpy"]
 [ext_resource type="Resource" uid="uid://h2ny7kaues1m" path="res://Modules/BasicCommSat.tres" id="12_r1i2b"]
@@ -143,6 +144,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("5_co6l7")
 metadata/_edit_lock_ = true
 
 [node name="ResearchOption" parent="Research" instance=ExtResource("8_w6dkj")]
@@ -151,7 +153,7 @@ offset_left = 391.0
 offset_top = 199.0
 offset_right = 711.0
 offset_bottom = 359.0
-research_resource = ExtResource("9_t7op7")
+research_resource = ExtResource("6_cb7vf")
 
 [node name="ResearchOption2" parent="Research" instance=ExtResource("8_w6dkj")]
 layout_mode = 2
