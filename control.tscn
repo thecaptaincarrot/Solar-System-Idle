@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://chxis1k6a62cp"]
+[gd_scene load_steps=41 format=3 uid="uid://chxis1k6a62cp"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_tn1u5"]
 [ext_resource type="Texture2D" uid="uid://d1qxs7itsei36" path="res://IDK.png" id="2_0xf61"]
@@ -31,7 +31,6 @@
 [ext_resource type="Resource" uid="uid://cj8fletrfg2xn" path="res://Buildings/LobbyingOffice.tres" id="20_nr3vh"]
 [ext_resource type="Resource" uid="uid://ctp7qlqn0bt3b" path="res://Buildings/Smelter.tres" id="21_r7lhq"]
 [ext_resource type="Resource" uid="uid://p3jg302bexnw" path="res://Buildings/Telescope.tres" id="21_wpobg"]
-[ext_resource type="Resource" uid="uid://cacdutxndso6x" path="res://Buildings/Laboratory.tres" id="22_34iig"]
 [ext_resource type="Resource" uid="uid://0bmdmb6ps6lx" path="res://Buildings/OilWell.tres" id="22_gm5uk"]
 [ext_resource type="Resource" uid="uid://bhvxg7ndygfya" path="res://Buildings/Refinery.tres" id="23_8lu0n"]
 [ext_resource type="Resource" uid="uid://cjxmyhp12377k" path="res://Buildings/Mines.tres" id="23_bh75r"]
@@ -65,7 +64,6 @@ script = ExtResource("1_tn1u5")
 metadata/_edit_lock_ = true
 
 [node name="Overview" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -137,6 +135,7 @@ offset_bottom = 239.0
 text = "⬅"
 
 [node name="Research" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -926,7 +925,6 @@ offset_right = 351.0
 offset_bottom = 1073.0
 
 [node name="OverviewLeft" type="MarginContainer" parent="LeftPanel"]
-visible = false
 layout_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -952,10 +950,6 @@ BuildingResource = ExtResource("20_nr3vh")
 [node name="BuildingOption2" parent="LeftPanel/OverviewLeft/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
 layout_mode = 2
 BuildingResource = ExtResource("21_wpobg")
-
-[node name="BuildingOption3" parent="LeftPanel/OverviewLeft/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
-layout_mode = 2
-BuildingResource = ExtResource("22_34iig")
 
 [node name="BuildingOption4" parent="LeftPanel/OverviewLeft/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
 layout_mode = 2
@@ -1179,6 +1173,7 @@ autostart = true
 [connection signal="value_changed" from="Design/RightPanel/MarginContainer/VBoxContainer/HSlider" to="Design/RightPanel" method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="Design/RightPanel/SaveDesign" to="Design" method="_on_save_design_pressed"]
 [connection signal="pressed" from="Launch/RightPanel/Launch" to="Launch" method="_on_launch_pressed"]
+[connection signal="value_changed" from="LeftPanel/ResearchLeft/ResearchOptionContainer/HSlider" to="Research" method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="LeftPanel/ResearchLeft/ResearchOptionContainer/HSlider" to="LeftPanel/ResearchLeft" method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="OverviewPanel/NavigationButtons/OverviewNavButton" to="." method="_on_overview_nav_button_pressed"]
 [connection signal="pressed" from="OverviewPanel/NavigationButtons/ResearchNavButton" to="." method="_on_research_nav_button_pressed"]

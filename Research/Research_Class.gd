@@ -4,6 +4,7 @@ class_name ResearchTopic
 #Resource resources
 var Money = load("res://Resources/Money.tres")
 var Research = preload("res://Resources/Research.tres")
+var DataResource = load("res://Resources/Data.tres")
 
 @export var title : String
 @export_multiline var description : String
@@ -25,15 +26,18 @@ func research():
 
 func research_tick(research_amount): #This should split up when there are multiple data types
 	#Returns how much data is used
+	if research_amount > DataResource.value:
+		research_amount = DataResource.value
+	
 	if current_research + research_amount >= research_cost:
 		var used_research = research_amount - current_research
 		
 		current_research = research_cost
 		research()
-		return used_research
+		return [used_research, true]
 	else:
 		current_research += research_amount
-		return research_amount
+		return [research_amount, false]
 
 
 

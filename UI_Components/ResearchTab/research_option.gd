@@ -3,6 +3,7 @@ extends Panel
 
 @export var research_resource : ResearchTopic : set = resource_set
 
+signal ResearchSignal
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,6 +21,9 @@ func _process(delta):
 			$Complete.show()
 		
 		if research_resource.get_unlocked():
+			$ProgressBar.value = research_resource.current_research
+		
+		if research_resource.get_unlocked():
 			show()
 		else:
 			hide()
@@ -35,4 +39,4 @@ func resource_set(new_resource):
 
 
 func _on_research_button_pressed():
-	research_resource.research()
+	emit_signal("ResearchSignal", research_resource)
