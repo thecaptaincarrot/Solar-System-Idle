@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dtucx7t63yid1"]
+[gd_scene load_steps=41 format=3 uid="uid://chxis1k6a62cp"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_tn1u5"]
 [ext_resource type="Texture2D" uid="uid://d1qxs7itsei36" path="res://IDK.png" id="2_0xf61"]
@@ -9,10 +9,12 @@
 [ext_resource type="Resource" uid="uid://cy2bukhtj71do" path="res://Resources/Money.tres" id="3_fad5r"]
 [ext_resource type="Texture2D" uid="uid://5bctktc516q6" path="res://Textures/mining-icon.png" id="4_g2dio"]
 [ext_resource type="Resource" uid="uid://8spowxb0dybp" path="res://Resources/Data.tres" id="4_nc8af"]
+[ext_resource type="Script" path="res://UI_Components/ResearchTab/Research.gd" id="5_co6l7"]
+[ext_resource type="Resource" uid="uid://dqdabcosxvbrb" path="res://Research/TerrestrialBuildings/Mines.tres" id="6_cb7vf"]
 [ext_resource type="Resource" uid="uid://bok2ax6sj474o" path="res://Resources/Ore.tres" id="6_r6ya4"]
 [ext_resource type="Script" path="res://UI_Components/Design/Design.gd" id="7_khrki"]
+[ext_resource type="Resource" uid="uid://oc1m8t260wcv" path="res://Research/Placeholder.tres" id="7_yr0ju"]
 [ext_resource type="PackedScene" uid="uid://bii5uov4240q0" path="res://UI_Components/ResearchTab/research_option.tscn" id="8_w6dkj"]
-[ext_resource type="Resource" uid="uid://dqdabcosxvbrb" path="res://Research/Mines.tres" id="9_t7op7"]
 [ext_resource type="Texture2D" uid="uid://ijtqdxhlm7px" path="res://Textures/LaunchPad.png" id="9_yrlpr"]
 [ext_resource type="PackedScene" uid="uid://cp0gjc18q7ldl" path="res://UI_Components/Design/module_option.tscn" id="11_8xvpy"]
 [ext_resource type="Resource" uid="uid://h2ny7kaues1m" path="res://Modules/BasicCommSat.tres" id="12_r1i2b"]
@@ -29,11 +31,11 @@
 [ext_resource type="Resource" uid="uid://cj8fletrfg2xn" path="res://Buildings/LobbyingOffice.tres" id="20_nr3vh"]
 [ext_resource type="Resource" uid="uid://ctp7qlqn0bt3b" path="res://Buildings/Smelter.tres" id="21_r7lhq"]
 [ext_resource type="Resource" uid="uid://p3jg302bexnw" path="res://Buildings/Telescope.tres" id="21_wpobg"]
-[ext_resource type="Resource" uid="uid://cacdutxndso6x" path="res://Buildings/Laboratory.tres" id="22_34iig"]
 [ext_resource type="Resource" uid="uid://0bmdmb6ps6lx" path="res://Buildings/OilWell.tres" id="22_gm5uk"]
 [ext_resource type="Resource" uid="uid://bhvxg7ndygfya" path="res://Buildings/Refinery.tres" id="23_8lu0n"]
 [ext_resource type="Resource" uid="uid://cjxmyhp12377k" path="res://Buildings/Mines.tres" id="23_bh75r"]
 [ext_resource type="Script" path="res://UI_Components/Date.gd" id="26_q7fmr"]
+[ext_resource type="Script" path="res://Test/ResearchLeft.gd" id="30_cusqq"]
 [ext_resource type="Resource" uid="uid://cxr65644nkdrf" path="res://Resources/Alloys.tres" id="32_irdel"]
 [ext_resource type="Resource" uid="uid://bakyqrxnb3r4" path="res://Resources/Volatiles.tres" id="33_nwnac"]
 [ext_resource type="Resource" uid="uid://g2u7kei0i2ap" path="res://Resources/Fuel.tres" id="34_ql58d"]
@@ -62,7 +64,6 @@ script = ExtResource("1_tn1u5")
 metadata/_edit_lock_ = true
 
 [node name="Overview" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -133,7 +134,58 @@ offset_right = 478.0
 offset_bottom = 239.0
 text = "⬅"
 
+[node name="LeftPanel" type="Panel" parent="Overview"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 194.0
+offset_right = 351.0
+offset_bottom = 1073.0
+
+[node name="OverviewLeft" type="MarginContainer" parent="Overview/LeftPanel"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Overview/LeftPanel/OverviewLeft"]
+layout_mode = 2
+
+[node name="BuildOptionContainer" type="VBoxContainer" parent="Overview/LeftPanel/OverviewLeft/ScrollContainer"]
+layout_mode = 2
+script = ExtResource("2_ponxe")
+
+[node name="BuildingOption" parent="Overview/LeftPanel/OverviewLeft/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
+layout_mode = 2
+BuildingResource = ExtResource("20_nr3vh")
+
+[node name="BuildingOption2" parent="Overview/LeftPanel/OverviewLeft/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
+layout_mode = 2
+BuildingResource = ExtResource("21_wpobg")
+
+[node name="BuildingOption4" parent="Overview/LeftPanel/OverviewLeft/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
+layout_mode = 2
+BuildingResource = ExtResource("23_bh75r")
+
+[node name="BuildingOption5" parent="Overview/LeftPanel/OverviewLeft/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
+layout_mode = 2
+BuildingResource = ExtResource("21_r7lhq")
+
+[node name="BuildingOption6" parent="Overview/LeftPanel/OverviewLeft/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
+layout_mode = 2
+BuildingResource = ExtResource("22_gm5uk")
+
+[node name="BuildingOption7" parent="Overview/LeftPanel/OverviewLeft/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
+layout_mode = 2
+BuildingResource = ExtResource("23_8lu0n")
+
 [node name="Research" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -141,7 +193,98 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("5_co6l7")
 metadata/_edit_lock_ = true
+
+[node name="LeftPanel" type="Panel" parent="Research"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 194.0
+offset_right = 351.0
+offset_bottom = 1073.0
+
+[node name="ResearchLeft" type="MarginContainer" parent="Research/LeftPanel"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("30_cusqq")
+
+[node name="ResearchOptionContainer" type="VBoxContainer" parent="Research/LeftPanel/ResearchLeft"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Research/LeftPanel/ResearchLeft/ResearchOptionContainer"]
+layout_mode = 2
+text = "Number of Research Labs: 1"
+
+[node name="Label2" type="Label" parent="Research/LeftPanel/ResearchLeft/ResearchOptionContainer"]
+layout_mode = 2
+text = "Funding:"
+
+[node name="HSlider" type="HSlider" parent="Research/LeftPanel/ResearchLeft/ResearchOptionContainer"]
+layout_mode = 2
+max_value = 10.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Research/LeftPanel/ResearchLeft/ResearchOptionContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="Research/LeftPanel/ResearchLeft/ResearchOptionContainer/HBoxContainer"]
+layout_mode = 2
+text = "Cost Per Day: $"
+
+[node name="CostPerDay" type="Label" parent="Research/LeftPanel/ResearchLeft/ResearchOptionContainer/HBoxContainer"]
+layout_mode = 2
+text = "10"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Research/LeftPanel/ResearchLeft/ResearchOptionContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="Research/LeftPanel/ResearchLeft/ResearchOptionContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Research Generated Per Day:"
+
+[node name="ResearchPerDay" type="Label" parent="Research/LeftPanel/ResearchLeft/ResearchOptionContainer/HBoxContainer2"]
+layout_mode = 2
+text = "1"
+
+[node name="Label4" type="Label" parent="Research/LeftPanel/ResearchLeft/ResearchOptionContainer/HBoxContainer2"]
+layout_mode = 2
+text = "RP"
+
+[node name="MiddlePanel" type="Control" parent="Research"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ResearchOption" parent="Research/MiddlePanel" instance=ExtResource("8_w6dkj")]
+layout_mode = 2
+offset_left = 391.0
+offset_top = 199.0
+offset_right = 711.0
+offset_bottom = 359.0
+research_resource = ExtResource("6_cb7vf")
+
+[node name="ResearchOption2" parent="Research/MiddlePanel" instance=ExtResource("8_w6dkj")]
+layout_mode = 2
+offset_left = 390.0
+offset_top = 369.0
+offset_right = 710.0
+offset_bottom = 529.0
+research_resource = ExtResource("7_yr0ju")
+
+[node name="ResearchOption3" parent="Research/MiddlePanel" instance=ExtResource("8_w6dkj")]
+layout_mode = 2
+offset_left = 391.0
+offset_top = 540.0
+offset_right = 711.0
+offset_bottom = 700.0
+research_resource = ExtResource("7_yr0ju")
 
 [node name="Design" type="Control" parent="."]
 visible = false
@@ -890,109 +1033,6 @@ position = Vector2(982, 569)
 scale = Vector2(0.0698242, 0.0698242)
 texture = ExtResource("18_fnudd")
 
-[node name="LeftPanel" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 194.0
-offset_right = 351.0
-offset_bottom = 1073.0
-
-[node name="OverviewLeft" type="MarginContainer" parent="LeftPanel"]
-visible = false
-layout_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -31.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="ScrollContainer" type="ScrollContainer" parent="LeftPanel/OverviewLeft"]
-layout_mode = 2
-
-[node name="BuildOptionContainer" type="VBoxContainer" parent="LeftPanel/OverviewLeft/ScrollContainer"]
-layout_mode = 2
-script = ExtResource("2_ponxe")
-
-[node name="BuildingOption" parent="LeftPanel/OverviewLeft/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
-layout_mode = 2
-BuildingResource = ExtResource("20_nr3vh")
-
-[node name="BuildingOption2" parent="LeftPanel/OverviewLeft/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
-layout_mode = 2
-BuildingResource = ExtResource("21_wpobg")
-
-[node name="BuildingOption3" parent="LeftPanel/OverviewLeft/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
-layout_mode = 2
-BuildingResource = ExtResource("22_34iig")
-
-[node name="BuildingOption4" parent="LeftPanel/OverviewLeft/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
-layout_mode = 2
-BuildingResource = ExtResource("23_bh75r")
-
-[node name="BuildingOption5" parent="LeftPanel/OverviewLeft/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
-layout_mode = 2
-BuildingResource = ExtResource("21_r7lhq")
-
-[node name="BuildingOption6" parent="LeftPanel/OverviewLeft/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
-layout_mode = 2
-BuildingResource = ExtResource("22_gm5uk")
-
-[node name="BuildingOption7" parent="LeftPanel/OverviewLeft/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
-layout_mode = 2
-BuildingResource = ExtResource("23_8lu0n")
-
-[node name="ResearchLeft" type="MarginContainer" parent="LeftPanel"]
-layout_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -31.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="ScrollContainer" type="ScrollContainer" parent="LeftPanel/ResearchLeft"]
-layout_mode = 2
-
-[node name="ResearchOptionContainer" type="VBoxContainer" parent="LeftPanel/ResearchLeft/ScrollContainer"]
-layout_mode = 2
-
-[node name="ResearchOption" parent="LeftPanel/ResearchLeft/ScrollContainer/ResearchOptionContainer" instance=ExtResource("8_w6dkj")]
-layout_mode = 2
-research_resource = ExtResource("9_t7op7")
-
-[node name="DesignLeft" type="MarginContainer" parent="LeftPanel"]
-visible = false
-layout_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -31.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="ScrollContainer" type="ScrollContainer" parent="LeftPanel/DesignLeft"]
-layout_mode = 2
-
-[node name="ModuleContainer" type="VBoxContainer" parent="LeftPanel/DesignLeft/ScrollContainer"]
-layout_mode = 2
-
-[node name="ModuleOption" parent="LeftPanel/DesignLeft/ScrollContainer/ModuleContainer" instance=ExtResource("11_8xvpy")]
-layout_mode = 2
-
-[node name="ModuleOption2" parent="LeftPanel/DesignLeft/ScrollContainer/ModuleContainer" instance=ExtResource("11_8xvpy")]
-layout_mode = 2
-ModuleResource = ExtResource("12_r1i2b")
-
 [node name="OverviewPanel" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 8.0
@@ -1114,6 +1154,8 @@ text = "Orbital"
 [node name="TickTimer" type="Timer" parent="."]
 autostart = true
 
+[connection signal="value_changed" from="Research/LeftPanel/ResearchLeft/ResearchOptionContainer/HSlider" to="Research" method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="Research/LeftPanel/ResearchLeft/ResearchOptionContainer/HSlider" to="Research/LeftPanel/ResearchLeft" method="_on_h_slider_value_changed"]
 [connection signal="RocketChanged" from="Design/ScrollContainer/RocketContainer/RocketBuilder" to="Design/RightPanel" method="_on_rocket_builder_rocket_changed"]
 [connection signal="item_selected" from="Design/RightPanel/MarginContainer/VBoxContainer/OptionButton" to="Design" method="_on_option_button_item_selected"]
 [connection signal="value_changed" from="Design/RightPanel/MarginContainer/VBoxContainer/HSlider" to="Design/RightPanel" method="_on_h_slider_value_changed"]
