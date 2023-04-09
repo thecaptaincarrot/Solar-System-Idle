@@ -35,9 +35,6 @@ func update_date():
 
 
 func hide_menus():
-	for child in $LeftPanel.get_children():
-		child.hide()
-	$LeftPanel.show()
 	$Design.hide()
 	$Launch.hide()
 	$Orbital.hide()
@@ -61,32 +58,25 @@ func _on_tick_timer_timeout():
 func _on_overview_nav_button_pressed():
 	hide_menus()
 	$Overview.show()
-	$LeftPanel/OverviewLeft.show()
-	pass # Replace with function body.
 
 
 func _on_research_nav_button_pressed():
 	hide_menus()
-	$LeftPanel/ResearchLeft.show()
 	$Research.show()
-	pass # Replace with function body.
 
 
 func _on_design_nav_button_pressed():
 	hide_menus()
-	$LeftPanel.hide()
 	$Design.show()
 
 
 func _on_launch_nav_button_pressed():
 	hide_menus()
-	$LeftPanel.hide()
 	$Launch.show()
 	$Launch._on_open()
 
 
 func _on_orbital_nav_button_pressed():
 	hide_menus()
-	$LeftPanel.hide()
 	$Orbital.show()
 	$Orbital._on_open()

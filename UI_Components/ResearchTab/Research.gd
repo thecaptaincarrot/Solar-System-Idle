@@ -8,7 +8,7 @@ var research_increment = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for N in get_children():
+	for N in $MiddlePanel.get_children():
 		N.connect("ResearchSignal",new_topic)
 
 
