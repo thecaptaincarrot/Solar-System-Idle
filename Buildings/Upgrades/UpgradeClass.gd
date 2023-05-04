@@ -1,5 +1,15 @@
+@tool
 extends Resource
 class_name Upgrade
+
+#Building Definitions
+var LobbyingOffice = preload("res://Buildings/LobbyingOffice.tres")
+var Mine = preload("res://Buildings/Mines.tres")
+var OilWell = preload("res://Buildings/OilWell.tres")
+var Refinery = preload("res://Buildings/Refinery.tres")
+var Smelter = preload("res://Buildings/Smelter.tres")
+var Telescope = preload("res://Buildings/Telescope.tres")
+
 
 @export var name = "DEFAULT"
 @export_multiline var description : String
@@ -9,11 +19,17 @@ class_name Upgrade
 
 @export var cost = {"Money" : 0, "Ore" : 0, "Alloy" : 0 , "Volatiles" : 0, "Fuel" : 0}
 
+@export var LobbyingOfficeUpgrades = {"Source": preload("res://Buildings/LobbyingOffice.tres"), "Adder" : 0.0 , "Multiplier" : 0.0, "CostMultiplier" : 1.0}
+@export var MineUpgrades = {"Source": preload("res://Buildings/Mines.tres"),"Adder" : 0.0 , "Multiplier" : 0.0, "CostMultiplier" : 1.0}
+@export var OilWellUpgrades = {"Source": preload("res://Buildings/OilWell.tres"),"Adder" : 0.0 , "Multiplier" : 0.0, "CostMultiplier" : 1.0}
+@export var RefineryUpgrades = {"Source": preload("res://Buildings/Refinery.tres"),"Adder" : 0.0 , "Multiplier" : 0.0, "CostMultiplier" : 1.0}
+@export var SmelterUpgrades = {"Source": preload("res://Buildings/Smelter.tres"),"Adder" : 0.0 , "Multiplier" : 0.0, "CostMultiplier" : 1.0}
+@export var TelescopeUpgrades = {"Source": preload("res://Buildings/Telescope.tres"),"Adder" : 0.0 , "Multiplier" : 0.0, "CostMultiplier" : 1.0}
+
+
+
 var unlocked = false
 var bought = false
-
-func _ready():
-	get_unlocked()
 
 
 func get_unlocked():
@@ -38,4 +54,11 @@ func get_bought():
 
 
 func buy():
+	var all_upgrades = [LobbyingOfficeUpgrades,MineUpgrades,OilWellUpgrades,\
+					RefineryUpgrades,SmelterUpgrades,TelescopeUpgrades]
 	bought = true
+	for upgrade_dict in all_upgrades:
+		var upgrade_building = upgrade_dict["Source"]
+		upgrade_building.upgrade(upgrade_dict)
+		print(upgrade_building)
+	print(LobbyingOfficeUpgrades)

@@ -80,3 +80,8 @@ func _on_orbital_nav_button_pressed():
 	hide_menus()
 	$Orbital.show()
 	$Orbital._on_open()
+
+
+func _on_upgradetest_pressed():
+	var upgrade = load("res://Buildings/Upgrades/tESTrESOURCES.tres")
+	upgrade.buy()

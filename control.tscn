@@ -223,6 +223,14 @@ offset_right = 318.0
 offset_bottom = 875.0
 text = "Upgrade"
 
+[node name="UPGRADETEST" type="Button" parent="Overview"]
+layout_mode = 0
+offset_left = 938.0
+offset_top = 478.0
+offset_right = 946.0
+offset_bottom = 486.0
+text = "UPGRADE"
+
 [node name="Research" type="Control" parent="."]
 visible = false
 layout_mode = 1
@@ -1195,6 +1203,7 @@ autostart = true
 
 [connection signal="pressed" from="Overview/LeftPanel/BuildButton" to="Overview" method="_on_build_button_pressed"]
 [connection signal="pressed" from="Overview/LeftPanel/UpgradeButton" to="Overview" method="_on_upgrade_button_pressed"]
+[connection signal="pressed" from="Overview/UPGRADETEST" to="." method="_on_upgradetest_pressed"]
 [connection signal="value_changed" from="Research/LeftPanel/ResearchLeft/ResearchOptionContainer/HSlider" to="Research" method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="Research/LeftPanel/ResearchLeft/ResearchOptionContainer/HSlider" to="Research/LeftPanel/ResearchLeft" method="_on_h_slider_value_changed"]
 [connection signal="RocketChanged" from="Design/ScrollContainer/RocketContainer/RocketBuilder" to="Design/RightPanel" method="_on_rocket_builder_rocket_changed"]

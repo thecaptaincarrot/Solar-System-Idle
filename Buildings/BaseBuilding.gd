@@ -20,7 +20,9 @@ var unlocked = false
 
 @export var base_resource_output = 0.0
 var resource_output_multiplier = 1.0
-var reousrce_output_adder = 0.0
+var resourrce_output_adder = 0.0
+
+var cost_multiplier = 1.0
 
 func _ready():
 	get_unlocked()
@@ -48,7 +50,7 @@ func get_level():
 
 
 func get_resource_output():
-	return level * (base_resource_output + reousrce_output_adder) * resource_output_multiplier
+	return level * (base_resource_output + resourrce_output_adder) * resource_output_multiplier
 
 
 func get_cost(multiplier):
@@ -58,9 +60,19 @@ func get_cost(multiplier):
 	for i in range(level, level + multiplier):
 		sum += multiplier * (pow(exponent_base,i)) + base_cost
 	
-	var cost = snapped(sum,.01)
+	var cost = snapped(sum * cost_multiplier,.01)
 	
 	return cost
 
 func build(multiplier):
 	level += multiplier
+
+
+func upgrade(upgrade_dict):
+	print(upgrade_dict)
+	resource_output_multiplier += upgrade_dict["Multiplier"]
+	resourrce_output_adder += upgrade_dict["Adder"]
+	
+	cost_multiplier *= upgrade_dict["CostMultiplier"]
+	
+	print(name,upgrade_dict, resource_output_multiplier, resourrce_output_adder, cost_multiplier)
