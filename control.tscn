@@ -1,9 +1,10 @@
-[gd_scene load_steps=41 format=3 uid="uid://chxis1k6a62cp"]
+[gd_scene load_steps=42 format=3 uid="uid://chxis1k6a62cp"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_tn1u5"]
 [ext_resource type="Texture2D" uid="uid://d1qxs7itsei36" path="res://IDK.png" id="2_0xf61"]
 [ext_resource type="PackedScene" uid="uid://bacbhpainxqfk" path="res://UI_Components/Resource_Holder.tscn" id="2_8bt6t"]
 [ext_resource type="PackedScene" uid="uid://dryyhm4nephfb" path="res://Overview/BuildMenu/building_option.tscn" id="2_78hfj"]
+[ext_resource type="Script" path="res://Overview.gd" id="2_lugm6"]
 [ext_resource type="Script" path="res://Overview/BuildMenu/BuildOptionContainer.gd" id="2_ponxe"]
 [ext_resource type="Texture2D" uid="uid://c1rj06c18f50s" path="res://Textures/OilWell.png" id="3_c1unq"]
 [ext_resource type="Resource" uid="uid://cy2bukhtj71do" path="res://Resources/Money.tres" id="3_fad5r"]
@@ -70,6 +71,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_lugm6")
 metadata/_edit_lock_ = true
 
 [node name="Idk" type="Sprite2D" parent="Overview"]
@@ -118,7 +120,7 @@ text = "Earth"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="Overview"]
+[node name="RightBodyButton" type="Button" parent="Overview"]
 layout_mode = 0
 offset_left = 572.0
 offset_top = 207.0
@@ -126,7 +128,7 @@ offset_right = 602.0
 offset_bottom = 238.0
 text = "➡"
 
-[node name="Button2" type="Button" parent="Overview"]
+[node name="LeftBodyButton" type="Button" parent="Overview"]
 layout_mode = 0
 offset_left = 448.0
 offset_top = 208.0
@@ -141,7 +143,7 @@ offset_top = 194.0
 offset_right = 351.0
 offset_bottom = 1073.0
 
-[node name="OverviewLeft" type="MarginContainer" parent="Overview/LeftPanel"]
+[node name="Build" type="MarginContainer" parent="Overview/LeftPanel"]
 layout_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -153,36 +155,73 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Overview/LeftPanel/OverviewLeft"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Overview/LeftPanel/Build"]
 layout_mode = 2
 
-[node name="BuildOptionContainer" type="VBoxContainer" parent="Overview/LeftPanel/OverviewLeft/ScrollContainer"]
+[node name="BuildOptionContainer" type="VBoxContainer" parent="Overview/LeftPanel/Build/ScrollContainer"]
 layout_mode = 2
 script = ExtResource("2_ponxe")
 
-[node name="BuildingOption" parent="Overview/LeftPanel/OverviewLeft/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
+[node name="BuildingOption" parent="Overview/LeftPanel/Build/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
 layout_mode = 2
 BuildingResource = ExtResource("20_nr3vh")
 
-[node name="BuildingOption2" parent="Overview/LeftPanel/OverviewLeft/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
+[node name="BuildingOption2" parent="Overview/LeftPanel/Build/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
 layout_mode = 2
 BuildingResource = ExtResource("21_wpobg")
 
-[node name="BuildingOption4" parent="Overview/LeftPanel/OverviewLeft/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
+[node name="BuildingOption4" parent="Overview/LeftPanel/Build/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
 layout_mode = 2
 BuildingResource = ExtResource("23_bh75r")
 
-[node name="BuildingOption5" parent="Overview/LeftPanel/OverviewLeft/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
+[node name="BuildingOption5" parent="Overview/LeftPanel/Build/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
 layout_mode = 2
 BuildingResource = ExtResource("21_r7lhq")
 
-[node name="BuildingOption6" parent="Overview/LeftPanel/OverviewLeft/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
+[node name="BuildingOption6" parent="Overview/LeftPanel/Build/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
 layout_mode = 2
 BuildingResource = ExtResource("22_gm5uk")
 
-[node name="BuildingOption7" parent="Overview/LeftPanel/OverviewLeft/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
+[node name="BuildingOption7" parent="Overview/LeftPanel/Build/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
 layout_mode = 2
 BuildingResource = ExtResource("23_8lu0n")
+
+[node name="Upgrade" type="MarginContainer" parent="Overview/LeftPanel"]
+visible = false
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Overview/LeftPanel/Upgrade"]
+layout_mode = 2
+
+[node name="UpgradeOptionContainer" type="VBoxContainer" parent="Overview/LeftPanel/Upgrade/ScrollContainer"]
+layout_mode = 2
+script = ExtResource("2_ponxe")
+
+[node name="BuildButton" type="Button" parent="Overview/LeftPanel"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 843.0
+offset_right = 148.0
+offset_bottom = 875.0
+text = "Build
+"
+
+[node name="UpgradeButton" type="Button" parent="Overview/LeftPanel"]
+layout_mode = 0
+offset_left = 173.0
+offset_top = 843.0
+offset_right = 318.0
+offset_bottom = 875.0
+text = "Upgrade"
 
 [node name="Research" type="Control" parent="."]
 visible = false
@@ -1154,6 +1193,8 @@ text = "Orbital"
 [node name="TickTimer" type="Timer" parent="."]
 autostart = true
 
+[connection signal="pressed" from="Overview/LeftPanel/BuildButton" to="Overview" method="_on_build_button_pressed"]
+[connection signal="pressed" from="Overview/LeftPanel/UpgradeButton" to="Overview" method="_on_upgrade_button_pressed"]
 [connection signal="value_changed" from="Research/LeftPanel/ResearchLeft/ResearchOptionContainer/HSlider" to="Research" method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="Research/LeftPanel/ResearchLeft/ResearchOptionContainer/HSlider" to="Research/LeftPanel/ResearchLeft" method="_on_h_slider_value_changed"]
 [connection signal="RocketChanged" from="Design/ScrollContainer/RocketContainer/RocketBuilder" to="Design/RightPanel" method="_on_rocket_builder_rocket_changed"]

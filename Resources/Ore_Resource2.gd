@@ -8,6 +8,6 @@ func initialize():
 
 
 func get_base_per_tick():
-	per_tick = MineResource.get_level() * 1
+	per_tick = MineResource.get_resource_output() * 1
 	return per_tick
 

@@ -7,6 +7,6 @@ func initialize():
 
 
 func get_base_per_tick():
-	per_tick = RefineryResource.get_level() * 1
+	per_tick = RefineryResource.get_resource_output()
 	
 	return per_tick

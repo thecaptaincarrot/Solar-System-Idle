@@ -7,6 +7,6 @@ func initialize():
 
 
 func get_base_per_tick():
-	per_tick = SmelterResource.get_level() * 1
+	per_tick = SmelterResource.get_resource_output() * 1
 	
 	return per_tick

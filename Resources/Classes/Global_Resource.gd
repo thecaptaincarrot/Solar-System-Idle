@@ -13,6 +13,8 @@ var global = true
 
 @export var sink : Resource
 
+var multiplier = 1.0
+
 func initialize():
 	value = 0.0
 

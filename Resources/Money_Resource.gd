@@ -7,7 +7,7 @@ func initialize():
 
 
 func get_base_per_tick():
-	per_tick = LobbyOfficeResource.get_level() * 1
+	per_tick = LobbyOfficeResource.get_resource_output()
 	
 	per_tick += RocketsInSpace.get_money_per_day()
 	

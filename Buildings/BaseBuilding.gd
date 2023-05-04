@@ -18,6 +18,9 @@ var unlocked = false
 @export var exponent_base = 1.0
 @export var base_cost = 1.0
 
+@export var base_resource_output = 0.0
+var resource_output_multiplier = 1.0
+var reousrce_output_adder = 0.0
 
 func _ready():
 	get_unlocked()
@@ -44,6 +47,10 @@ func get_level():
 	return level
 
 
+func get_resource_output():
+	return level * (base_resource_output + reousrce_output_adder) * resource_output_multiplier
+
+
 func get_cost(multiplier):
 	#recalculate cost
 	var sum = 0
@@ -57,4 +64,3 @@ func get_cost(multiplier):
 
 func build(multiplier):
 	level += multiplier
-	

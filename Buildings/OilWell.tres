@@ -11,3 +11,4 @@ description = "Produces Volatiles"
 multiplier = 1.0
 exponent_base = 1.0
 base_cost = 1.0
+base_resource_output = 0.01
