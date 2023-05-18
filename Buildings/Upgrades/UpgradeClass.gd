@@ -17,8 +17,15 @@ var Telescope = preload("res://Buildings/Telescope.tres")
 @export var ResearchPrereqs : Array[ResearchTopic]
 @export var BuildingPrereqs : Dictionary #Building Class : int number needed to unlock
 
-@export var cost = {"Money" : 0, "Ore" : 0, "Alloy" : 0 , "Volatiles" : 0, "Fuel" : 0}
+@export_group("Cost", "cost_")
+@export var cost_money = 0
+@export var cost_ore = 0
+@export var cost_alloy = 0
+@export var cost_volatiles = 0
+@export var cost_fuel = 0
 
+@export_group("Upgrades")
+@export_subgroup("LobbyingOffice")
 @export var LobbyingOfficeUpgrades = {"Source": preload("res://Buildings/LobbyingOffice.tres"), "Adder" : 0.0 , "Multiplier" : 0.0, "CostMultiplier" : 1.0}
 @export var MineUpgrades = {"Source": preload("res://Buildings/Mines.tres"),"Adder" : 0.0 , "Multiplier" : 0.0, "CostMultiplier" : 1.0}
 @export var OilWellUpgrades = {"Source": preload("res://Buildings/OilWell.tres"),"Adder" : 0.0 , "Multiplier" : 0.0, "CostMultiplier" : 1.0}

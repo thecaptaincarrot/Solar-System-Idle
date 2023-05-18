@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://chxis1k6a62cp"]
+[gd_scene load_steps=43 format=3 uid="uid://chxis1k6a62cp"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_tn1u5"]
 [ext_resource type="Texture2D" uid="uid://d1qxs7itsei36" path="res://IDK.png" id="2_0xf61"]
@@ -21,6 +21,7 @@
 [ext_resource type="Resource" uid="uid://h2ny7kaues1m" path="res://Modules/BasicCommSat.tres" id="12_r1i2b"]
 [ext_resource type="Script" path="res://RocketBuilder.gd" id="12_y3w3r"]
 [ext_resource type="Script" path="res://UI_Components/Design/ModulesContainer.gd" id="13_xa5wf"]
+[ext_resource type="Script" path="res://Overview/BuildMenu/UpgradeOptionContainer.gd" id="14_i4tst"]
 [ext_resource type="Script" path="res://UI_Components/Design/RightDesignPanel.gd" id="14_onrsj"]
 [ext_resource type="Script" path="res://UI_Components/Launch/RocketBox.gd" id="15_f8wll"]
 [ext_resource type="Script" path="res://UI_Components/Launch/Launch.gd" id="15_jetlc"]
@@ -144,6 +145,7 @@ offset_right = 351.0
 offset_bottom = 1073.0
 
 [node name="Build" type="MarginContainer" parent="Overview/LeftPanel"]
+visible = false
 layout_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -187,7 +189,6 @@ layout_mode = 2
 BuildingResource = ExtResource("23_8lu0n")
 
 [node name="Upgrade" type="MarginContainer" parent="Overview/LeftPanel"]
-visible = false
 layout_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -205,6 +206,95 @@ layout_mode = 2
 [node name="UpgradeOptionContainer" type="VBoxContainer" parent="Overview/LeftPanel/Upgrade/ScrollContainer"]
 layout_mode = 2
 script = ExtResource("2_ponxe")
+
+[node name="UpgradeOption" type="Panel" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer"]
+custom_minimum_size = Vector2(320, 160)
+layout_mode = 2
+script = ExtResource("14_i4tst")
+
+[node name="Title" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 252.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 24
+text = "Lobbying Office"
+
+[node name="BuyButton" type="Button" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -95.0
+offset_top = -44.0
+offset_right = -5.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Buy 1"
+
+[node name="Description" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 42.0
+offset_right = 278.0
+offset_bottom = 68.0
+text = "Generates Income"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 68.0
+offset_right = 89.0
+offset_bottom = 108.0
+
+[node name="CostContainer" type="HBoxContainer" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/CostContainer"]
+layout_mode = 2
+text = "Cost: $"
+
+[node name="Cost" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/CostContainer"]
+layout_mode = 2
+text = "2"
+
+[node name="CostExponent" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/CostContainer"]
+layout_mode = 2
+text = "M"
+
+[node name="CostContainer2" type="HBoxContainer" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/CostContainer2"]
+layout_mode = 2
+text = "Cost: $"
+
+[node name="Cost" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/CostContainer2"]
+layout_mode = 2
+text = "2"
+
+[node name="CostExponent" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/CostContainer2"]
+layout_mode = 2
+text = "M"
+
+[node name="CostContainer3" type="HBoxContainer" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/CostContainer3"]
+layout_mode = 2
+text = "Cost: $"
+
+[node name="Cost" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/CostContainer3"]
+layout_mode = 2
+text = "2"
+
+[node name="CostExponent" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/CostContainer3"]
+layout_mode = 2
+text = "M"
 
 [node name="BuildButton" type="Button" parent="Overview/LeftPanel"]
 layout_mode = 0
@@ -1201,6 +1291,7 @@ text = "Orbital"
 [node name="TickTimer" type="Timer" parent="."]
 autostart = true
 
+[connection signal="pressed" from="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/BuyButton" to="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption" method="_on_buy_button_pressed" flags=18]
 [connection signal="pressed" from="Overview/LeftPanel/BuildButton" to="Overview" method="_on_build_button_pressed"]
 [connection signal="pressed" from="Overview/LeftPanel/UpgradeButton" to="Overview" method="_on_upgrade_button_pressed"]
 [connection signal="pressed" from="Overview/UPGRADETEST" to="." method="_on_upgradetest_pressed"]

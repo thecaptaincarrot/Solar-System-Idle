@@ -1,59 +1,19 @@
-[gd_resource type="Resource" script_class="Upgrade" load_steps=8 format=3 uid="uid://drr38pyn6bgpn"]
+[gd_resource type="Resource" script_class="Upgrade" load_steps=3 format=3 uid="uid://drr38pyn6bgpn"]
 
 [ext_resource type="Resource" uid="uid://cj8fletrfg2xn" path="res://Buildings/LobbyingOffice.tres" id="1_12nek"]
 [ext_resource type="Script" path="res://Buildings/Upgrades/UpgradeClass.gd" id="1_o3gkn"]
-[ext_resource type="Resource" uid="uid://cjxmyhp12377k" path="res://Buildings/Mines.tres" id="2_8o3wq"]
-[ext_resource type="Resource" uid="uid://0bmdmb6ps6lx" path="res://Buildings/OilWell.tres" id="3_ps321"]
-[ext_resource type="Resource" uid="uid://bhvxg7ndygfya" path="res://Buildings/Refinery.tres" id="4_sqo13"]
-[ext_resource type="Resource" uid="uid://ctp7qlqn0bt3b" path="res://Buildings/Smelter.tres" id="5_n3k2s"]
-[ext_resource type="Resource" uid="uid://p3jg302bexnw" path="res://Buildings/Telescope.tres" id="6_wee67"]
 
 [resource]
 script = ExtResource("1_o3gkn")
 name = "DEFAULT"
-description = ""
+description = "Makes lobbying offices too good"
 ResearchPrereqs = Array[Resource("res://Research/Research_Class.gd")]([])
 BuildingPrereqs = {}
-cost = {
-"Alloy": 0,
-"Fuel": 0,
-"Money": 0,
-"Ore": 0,
-"Volatiles": 0
-}
-LobbyingOfficeUpgrades = {
-"Adder": 0.0,
-"CostMultiplier": 0.1,
-"Multiplier": 10.0,
-"Source": ExtResource("1_12nek")
-}
-MineUpgrades = {
-"Adder": 0.0,
-"CostMultiplier": 1.0,
-"Multiplier": 0.0,
-"Source": ExtResource("2_8o3wq")
-}
-OilWellUpgrades = {
-"Adder": 0.0,
-"CostMultiplier": 1.0,
-"Multiplier": 0.0,
-"Source": ExtResource("3_ps321")
-}
-RefineryUpgrades = {
-"Adder": 0.0,
-"CostMultiplier": 1.0,
-"Multiplier": 0.0,
-"Source": ExtResource("4_sqo13")
-}
-SmelterUpgrades = {
-"Adder": 0.0,
-"CostMultiplier": 1.0,
-"Multiplier": 0.0,
-"Source": ExtResource("5_n3k2s")
-}
-TelescopeUpgrades = {
-"Adder": 0.0,
-"CostMultiplier": 1.0,
-"Multiplier": 0.0,
-"Source": ExtResource("6_wee67")
-}
+cost_money = 0
+cost_ore = 0
+cost_alloy = 0
+cost_volatiles = 0
+cost_fuel = 0
+adder_lobbyingoffice = ExtResource("1_12nek")
+multiplier_lobbyingoffice = null
+costmult_lobbyingoffice = null

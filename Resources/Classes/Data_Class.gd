@@ -4,3 +4,4 @@ class_name Data
 @export var DataType = "DEFAULT"
 
 @export var DataColor : Color
+
