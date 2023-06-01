@@ -25,7 +25,6 @@ var Telescope = preload("res://Buildings/Telescope.tres")
 @export var cost_fuel = 0
 
 @export_group("Upgrades")
-@export_subgroup("LobbyingOffice")
 @export var LobbyingOfficeUpgrades = {"Source": preload("res://Buildings/LobbyingOffice.tres"), "Adder" : 0.0 , "Multiplier" : 0.0, "CostMultiplier" : 1.0}
 @export var MineUpgrades = {"Source": preload("res://Buildings/Mines.tres"),"Adder" : 0.0 , "Multiplier" : 0.0, "CostMultiplier" : 1.0}
 @export var OilWellUpgrades = {"Source": preload("res://Buildings/OilWell.tres"),"Adder" : 0.0 , "Multiplier" : 0.0, "CostMultiplier" : 1.0}
@@ -68,4 +67,8 @@ func buy():
 		var upgrade_building = upgrade_dict["Source"]
 		upgrade_building.upgrade(upgrade_dict)
 		print(upgrade_building)
-	print(LobbyingOfficeUpgrades)
+
+
+func get_cost():
+	return {"money": cost_money, "ore" : cost_ore, "alloy" : cost_alloy,\
+	"volatiles" : cost_volatiles,"fuel" : cost_fuel}

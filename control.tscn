@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://chxis1k6a62cp"]
+[gd_scene load_steps=44 format=3 uid="uid://chxis1k6a62cp"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_tn1u5"]
 [ext_resource type="Texture2D" uid="uid://d1qxs7itsei36" path="res://IDK.png" id="2_0xf61"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" path="res://UI_Components/Design/RightDesignPanel.gd" id="14_onrsj"]
 [ext_resource type="Script" path="res://UI_Components/Launch/RocketBox.gd" id="15_f8wll"]
 [ext_resource type="Script" path="res://UI_Components/Launch/Launch.gd" id="15_jetlc"]
+[ext_resource type="Resource" uid="uid://drr38pyn6bgpn" path="res://Buildings/Upgrades/tESTrESOURCES.tres" id="15_nl8wp"]
 [ext_resource type="PackedScene" uid="uid://cyeug2a1p4gme" path="res://UI_Components/Launch/launch_option.tscn" id="15_xd2gd"]
 [ext_resource type="Script" path="res://UI_Components/Launch/LaunchProgress.gd" id="16_g37en"]
 [ext_resource type="Script" path="res://UI_Components/Launch/RightPanel.gd" id="17_0kydw"]
@@ -208,9 +209,10 @@ layout_mode = 2
 script = ExtResource("2_ponxe")
 
 [node name="UpgradeOption" type="Panel" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer"]
-custom_minimum_size = Vector2(320, 160)
+custom_minimum_size = Vector2(320, 240)
 layout_mode = 2
 script = ExtResource("14_i4tst")
+UpgradeResource = ExtResource("15_nl8wp")
 
 [node name="Title" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption"]
 layout_mode = 0
@@ -219,7 +221,7 @@ offset_top = 5.0
 offset_right = 252.0
 offset_bottom = 28.0
 theme_override_font_sizes/font_size = 24
-text = "Lobbying Office"
+text = "DEFAULT"
 
 [node name="BuyButton" type="Button" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption"]
 layout_mode = 1
@@ -234,7 +236,7 @@ offset_right = -5.0
 offset_bottom = -4.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "Buy 1"
+text = "Buy"
 
 [node name="Description" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption"]
 layout_mode = 0
@@ -242,7 +244,7 @@ offset_left = 4.0
 offset_top = 42.0
 offset_right = 278.0
 offset_bottom = 68.0
-text = "Generates Income"
+text = "Makes lobbying offices too good"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption"]
 layout_mode = 0
@@ -251,50 +253,80 @@ offset_top = 68.0
 offset_right = 89.0
 offset_bottom = 108.0
 
-[node name="CostContainer" type="HBoxContainer" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer"]
+[node name="MoneyCostContainer" type="HBoxContainer" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/CostContainer"]
+[node name="Label" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/MoneyCostContainer"]
 layout_mode = 2
 text = "Cost: $"
 
-[node name="Cost" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/CostContainer"]
+[node name="Cost" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/MoneyCostContainer"]
 layout_mode = 2
 text = "2"
 
-[node name="CostExponent" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/CostContainer"]
+[node name="CostExponent" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/MoneyCostContainer"]
 layout_mode = 2
 text = "M"
 
-[node name="CostContainer2" type="HBoxContainer" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer"]
+[node name="OreCostContainer" type="HBoxContainer" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/CostContainer2"]
+[node name="Label" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/OreCostContainer"]
 layout_mode = 2
-text = "Cost: $"
+text = "Cost: "
 
-[node name="Cost" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/CostContainer2"]
+[node name="Cost" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/OreCostContainer"]
 layout_mode = 2
 text = "2"
 
-[node name="CostExponent" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/CostContainer2"]
+[node name="CostExponent" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/OreCostContainer"]
 layout_mode = 2
-text = "M"
+text = "Ore"
 
-[node name="CostContainer3" type="HBoxContainer" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer"]
+[node name="AlloyCostContainer" type="HBoxContainer" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/CostContainer3"]
+[node name="Label" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/AlloyCostContainer"]
 layout_mode = 2
-text = "Cost: $"
+text = "Cost: "
 
-[node name="Cost" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/CostContainer3"]
+[node name="Cost" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/AlloyCostContainer"]
 layout_mode = 2
 text = "2"
 
-[node name="CostExponent" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/CostContainer3"]
+[node name="CostExponent" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/AlloyCostContainer"]
 layout_mode = 2
-text = "M"
+text = "Alloys"
+
+[node name="VolatileCostContainer" type="HBoxContainer" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/VolatileCostContainer"]
+layout_mode = 2
+text = "Cost: "
+
+[node name="Cost" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/VolatileCostContainer"]
+layout_mode = 2
+text = "2"
+
+[node name="CostExponent" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/VolatileCostContainer"]
+layout_mode = 2
+text = "Volatiles"
+
+[node name="FuelCostContainer" type="HBoxContainer" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/FuelCostContainer"]
+layout_mode = 2
+text = "Cost: "
+
+[node name="Cost" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/FuelCostContainer"]
+layout_mode = 2
+text = "2"
+
+[node name="CostExponent" type="Label" parent="Overview/LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer/UpgradeOption/VBoxContainer/FuelCostContainer"]
+layout_mode = 2
+text = "Fuel"
 
 [node name="BuildButton" type="Button" parent="Overview/LeftPanel"]
 layout_mode = 0

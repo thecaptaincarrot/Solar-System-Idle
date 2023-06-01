@@ -8,6 +8,10 @@ var unlocked = true
 
 #Resources
 var Money = preload("res://Resources/Money.tres")
+var Ore = preload("res://Resources/Ore.tres")
+var Alloy = preload("res://Resources/Alloys.tres")
+var Volatiles = preload("res://Resources/Volatiles.tres")
+var Fuel = preload("res://Resources/Fuel.tres")
 
 var cost = 0.0
 
@@ -40,16 +44,53 @@ func _process(delta):
 
 
 func update_cost():
-	cost = UpgradeResource.get_cost(buy_quantity)
-	$CostContainer/Cost.text = str(cost)
+	cost = UpgradeResource.get_cost()
+	if cost["money"] != 0:
+		$VBoxContainer/MoneyCostContainer/Cost.text = str(cost["money"])
+	else:
+		$VBoxContainer/MoneyCostContainer.hide()
+	
+	if cost["ore"] != 0:
+		$VBoxContainer/OreCostContainer/Cost.text = str(cost["ore"])
+	else:
+		$VBoxContainer/OreCostContainer.hide()
+	
+	if cost["alloy"] != 0:
+		$VBoxContainer/AlloyCostContainer/Cost.text = str(cost["alloy"])
+	else:
+		$VBoxContainer/AlloyCostContainer.hide()
+	
+	if cost["volatiles"] != 0:
+		$VBoxContainer/VolatileCostContainer/Cost.text = str(cost["volatiles"])
+	else:
+		$VBoxContainer/VolatileCostContainer.hide()
+	
+	if cost["fuel"] != 0:
+		$VBoxContainer/FuelCostContainer/Cost.text = str(cost["fuel"])
+	else:
+		$VBoxContainer/FuelCostContainer.hide()
 
 
 func update_num():
 	$HBoxContainer/Number.text = str(UpgradeResource.level)
 
 func _on_buy_button_pressed():
-	
-	if Money.spend(UpgradeResource.get_cost(buy_quantity)):
-		UpgradeResource.build(buy_quantity)
-	
-	update_cost()
+	#Check Cost
+	if cost["money"] <= Money.value and\
+		cost["ore"] <= Ore.value and\
+		cost["alloy"] <= Alloy.value and \
+		cost["volatiles"] <= Volatiles.value and\
+		cost["fuel"] <= Fuel.value:
+		
+		Money.spend(cost["money"])
+		Ore.spend(cost["ore"])
+		Alloy.spend(cost["alloy"])
+		Fuel.spend(cost["fuel"])
+		Volatiles.spend(cost["volatiles"])
+		
+		UpgradeResource.buy()
+		
+		$BuyButton.disabled = true
+		$BuyButton.text = "Bought"
+		
+		update_cost()
