@@ -26,5 +26,6 @@ func get_level(ID):
 
 
 func build(ID, quantity):
+	#Buildings need to take in more information from planet to get current cost indicator
 	var current_level = get(ID)
 	set(ID, current_level + quantity)

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BasePlanet" load_steps=3 format=3 uid="uid://lrji6kc33yv0"]
+
+[ext_resource type="Resource" uid="uid://ctp7qlqn0bt3b" path="res://Buildings/Smelter.tres" id="1_jyka5"]
+[ext_resource type="Script" path="res://Locations/BaseClasses/BasePlanet.gd" id="1_wx8f2"]
+
+[resource]
+script = ExtResource("1_wx8f2")
+name = "PLANETNAME"
+orbital_distance = 152000000
+surface_gravity = 9.8
+atmospheric_density = 1.293
+data_mult = 1.0
+buildings = Array[Resource("res://Buildings/BaseBuilding.gd")]([ExtResource("1_jyka5")])

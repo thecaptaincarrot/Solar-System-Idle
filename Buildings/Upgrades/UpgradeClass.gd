@@ -3,13 +3,9 @@ extends Resource
 class_name Upgrade
 
 #Building Definitions
-var LobbyingOffice = preload("res://Buildings/LobbyingOffice.tres")
-var Mine = preload("res://Buildings/Mines.tres")
-var OilWell = preload("res://Buildings/OilWell.tres")
-var Refinery = preload("res://Buildings/Refinery.tres")
-var Smelter = preload("res://Buildings/Smelter.tres")
-var Telescope = preload("res://Buildings/Telescope.tres")
 
+var AffectedBuilding : Building
+var AllBuildings = false
 
 @export var name = "DEFAULT"
 @export_multiline var description : String
@@ -25,14 +21,9 @@ var Telescope = preload("res://Buildings/Telescope.tres")
 @export var cost_fuel = 0
 
 @export_group("Upgrades")
-@export var LobbyingOfficeUpgrades = {"Source": preload("res://Buildings/LobbyingOffice.tres"), "Adder" : 0.0 , "Multiplier" : 0.0, "CostMultiplier" : 1.0}
-@export var MineUpgrades = {"Source": preload("res://Buildings/Mines.tres"),"Adder" : 0.0 , "Multiplier" : 0.0, "CostMultiplier" : 1.0}
-@export var OilWellUpgrades = {"Source": preload("res://Buildings/OilWell.tres"),"Adder" : 0.0 , "Multiplier" : 0.0, "CostMultiplier" : 1.0}
-@export var RefineryUpgrades = {"Source": preload("res://Buildings/Refinery.tres"),"Adder" : 0.0 , "Multiplier" : 0.0, "CostMultiplier" : 1.0}
-@export var SmelterUpgrades = {"Source": preload("res://Buildings/Smelter.tres"),"Adder" : 0.0 , "Multiplier" : 0.0, "CostMultiplier" : 1.0}
-@export var TelescopeUpgrades = {"Source": preload("res://Buildings/Telescope.tres"),"Adder" : 0.0 , "Multiplier" : 0.0, "CostMultiplier" : 1.0}
-
-
+@export var adder = 0.0
+@export var multiplier = 0.0
+@export var cost_multiplier = 1.0
 
 var unlocked = false
 var bought = false
@@ -60,13 +51,8 @@ func get_bought():
 
 
 func buy():
-	var all_upgrades = [LobbyingOfficeUpgrades,MineUpgrades,OilWellUpgrades,\
-					RefineryUpgrades,SmelterUpgrades,TelescopeUpgrades]
+	pass
 	bought = true
-	for upgrade_dict in all_upgrades:
-		var upgrade_building = upgrade_dict["Source"]
-		upgrade_building.upgrade(upgrade_dict)
-		print(upgrade_building)
 
 
 func get_cost():

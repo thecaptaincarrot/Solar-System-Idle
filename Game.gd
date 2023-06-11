@@ -9,6 +9,8 @@ var Alloys = preload("res://Resources/Alloys.tres")
 var Volatiles = preload("res://Resources/Volatiles.tres")
 var Fuel = preload("res://Resources/Fuel.tres")
 
+var Earth = preload("res://Locations/new_resource.tres")
+var Earth2 = preload("res://Locations/new_resource_2.tres")
 
 var ResourceList = [Money,Data,Research, Ore,Alloys,Volatiles,Fuel]
 
@@ -21,6 +23,11 @@ signal Tick
 func _ready():
 	for resource in ResourceList:
 		resource.initialize()
+	
+	Earth.initialize()
+	Earth2.initialize()
+	
+	
 	
 	pass # Replace with function body.
 

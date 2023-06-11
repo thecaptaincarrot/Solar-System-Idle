@@ -54,6 +54,7 @@ func get_resource_output():
 
 
 func get_cost(multiplier):
+	#Needs to get more inputs from the specific planetary location
 	#recalculate cost
 	var sum = 0
 	
