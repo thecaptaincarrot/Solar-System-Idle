@@ -22,6 +22,7 @@ Resources="*res://Statistics/Resources.gd"
 GlobalStats="*res://Autoloads/GlobalStats.gd"
 SavedRockets="*res://Autoloads/SavedRockets.gd"
 RocketsInSpace="*res://Autoloads/RocketsInSpace.gd"
+PlanetHandler="*res://Autoloads/PlanetHandler.gd"
 
 [display]
 

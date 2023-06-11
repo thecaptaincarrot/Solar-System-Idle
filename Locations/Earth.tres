@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Planet" load_steps=2 format=3 uid="uid://dog2q3vnwx17g"]
+
+[ext_resource type="Script" path="res://Locations/BaseClasses/BasePlanet.gd" id="1_yux0g"]
+
+[resource]
+script = ExtResource("1_yux0g")
+Name = "Earth"
+OrbitalDistance = 152000000
+SurfaceGravity = 9.8
+AtmosphericDensity = 1.293
+DataMult = 1.0
+UniqueBuildings = Array[Resource("res://Buildings/BaseBuilding.gd")]([])
+is_earth = false
+can_land = true
+can_breathe = true

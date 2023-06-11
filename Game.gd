@@ -9,11 +9,10 @@ var Alloys = preload("res://Resources/Alloys.tres")
 var Volatiles = preload("res://Resources/Volatiles.tres")
 var Fuel = preload("res://Resources/Fuel.tres")
 
-var Earth = preload("res://Locations/new_resource.tres")
-var Earth2 = preload("res://Locations/new_resource_2.tres")
+
+var current_planet : Planet
 
 var ResourceList = [Money,Data,Research, Ore,Alloys,Volatiles,Fuel]
-
 
 var days = 0
 
@@ -24,12 +23,8 @@ func _ready():
 	for resource in ResourceList:
 		resource.initialize()
 	
-	Earth.initialize()
-	Earth2.initialize()
-	
-	
-	
-	pass # Replace with function body.
+	current_planet = PlanetHandler.earth
+	current_planet.initialize()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
