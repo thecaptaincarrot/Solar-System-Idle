@@ -33,10 +33,10 @@ base_resource_output = 0.0
 [resource]
 script = ExtResource("1_yux0g")
 Name = "Earth"
-OrbitalDistance = null
-SurfaceGravity = null
-AtmosphericDensity = null
-DataMult = null
+OrbitalDistance = 152000000
+SurfaceGravity = 9.8
+AtmosphericDensity = 1.293
+DataMult = 1.0
 Buildings = Array[Resource("res://Buildings/BuildingClasses/BaseBuilding.gd")]([SubResource("Resource_co8fs")])
-is_earth = null
-can_land = null
+is_earth = false
+can_land = true
