@@ -29,4 +29,7 @@ func set_planet(new_planet : Planet):
 	for building in new_planet.Buildings:
 		var new_option = BUILDOPTION.instantiate()
 		new_option.BuildingResource = building
+		
+		new_option.Build.connect(Callable(new_planet,"build_request"))
+		
 		$LeftPanel/Build/ScrollContainer/BuildOptionContainer.add_child(new_option)

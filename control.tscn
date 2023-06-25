@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cvgv3iu1h6d6a"]
+[gd_scene load_steps=30 format=3 uid="uid://cvgv3iu1h6d6a"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_tn1u5"]
 [ext_resource type="Texture2D" uid="uid://d1qxs7itsei36" path="res://IDK.png" id="2_0xf61"]
@@ -27,7 +27,6 @@
 [ext_resource type="Script" path="res://UI_Components/OrbitalView/OrbitalView.gd" id="18_88sx1"]
 [ext_resource type="Texture2D" uid="uid://dvnnfblnw762r" path="res://Textures/Earf.png" id="18_fnudd"]
 [ext_resource type="Script" path="res://UI_Components/Date.gd" id="26_q7fmr"]
-[ext_resource type="Script" path="res://Buildings/BuildingClasses/BaseBuilding.gd" id="29_vupcn"]
 [ext_resource type="Script" path="res://Test/ResearchLeft.gd" id="30_cusqq"]
 
 [sub_resource type="GDScript" id="GDScript_fthym"]
@@ -42,41 +41,6 @@ func _ready():
 func _process(delta):
 	pass
 "
-
-[sub_resource type="Resource" id="Resource_3ap86"]
-script = ExtResource("29_vupcn")
-ResearchPrereqs = Array[Resource("res://Research/Research_Class.gd")]([])
-BuildingPrereqs = {}
-name = "Lobbying Office"
-description = "Generates Income"
-cost_curves = null
-multiplier = 1.0
-exponent_base = 1.0
-base_cost = 1.0
-base_resource_output = 1.0
-
-[sub_resource type="GDScript" id="GDScript_trsra"]
-script/source = "extends GlobalResource
-
-@export var LobbyOfficeResource : Building
-
-func initialize():
-	value = 100000.0
-
-
-#func get_base_per_tick():
-#	per_tick = LobbyOfficeResource.get_resource_output()
-#
-#	per_tick += RocketsInSpace.get_money_per_day()
-#
-#	return per_tick
-"
-
-[sub_resource type="Resource" id="Resource_83htt"]
-script = SubResource("GDScript_trsra")
-LobbyOfficeResource = SubResource("Resource_3ap86")
-name = "MONEY"
-value = 0.0
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -1109,7 +1073,6 @@ offset_left = 5.0
 offset_top = 26.0
 offset_right = 257.0
 offset_bottom = 52.0
-resource = SubResource("Resource_83htt")
 identity = "Money"
 
 [node name="LocalResources" type="Control" parent="TopPanel"]

@@ -6,6 +6,7 @@ class_name LocalResource
 func get_value():
 	return value
 
+
 func add_value(amount):
 	value += amount
 

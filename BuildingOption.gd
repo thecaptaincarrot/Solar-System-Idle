@@ -57,7 +57,7 @@ func update_cost():
 		new_cost.set_value(costs[cost])
 		$AllCosts.add_child(new_cost)
 	
-	custom_minimum_size.y = 160 + (20 * $AllCosts.get_child_count())
+	custom_minimum_size.y = 124 + (16 * $AllCosts.get_child_count())
 
 
 func update_num():
@@ -65,6 +65,6 @@ func update_num():
 
 
 func _on_buy_button_pressed():
-	BuildingResource.build(buy_quantity)
+	emit_signal("Build", BuildingResource, buy_quantity)
 	
 	update_cost()

@@ -3,12 +3,12 @@ extends Control
 #Resources
 var Money = preload("res://Resources/Money.tres")
 
-
 var current_planet : Planet : set = set_planet
 
 var days = 0
 
 signal Tick
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

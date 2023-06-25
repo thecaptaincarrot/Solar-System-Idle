@@ -1,8 +1,6 @@
-@tool
 extends HBoxContainer
 
 @export var resource = ""
-
 @export var identity = "DEFAULT"
 
 
@@ -14,10 +12,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if $Label.text != identity:
-		$Label.text = identity
+		$Label.text = identity + ':'
 	
-	if !Engine.is_editor_hint():
-		pass
 
 
 func _update():
@@ -26,5 +22,6 @@ func _update():
 
 func set_value(new_value):
 	$Value.text = str(new_value)
+
 
 #TODO: Tooltip defs

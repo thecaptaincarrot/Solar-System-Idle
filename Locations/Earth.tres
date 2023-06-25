@@ -17,7 +17,7 @@ script = ExtResource("1_s7503")
 resources_produced = {
 "alloy": 0,
 "fuel": 0,
-"ore": 0,
+"ore": 1,
 "volatiles": 0
 }
 ResearchPrereqs = Array[Resource("res://Research/Research_Class.gd")]([])

@@ -50,5 +50,28 @@ func tick():
 		building.on_tick()
 
 
+func build_request(building, quantity):
+	print([building,quantity])
+	
+	#See if all costs are satisfied
+	var cost_satisfied = false
+	for curve in building.cost_curves:
+		var resource = curve.resource
+		var cost = curve.get_cost(building.level,quantity)
+		print(resource,cost)
+		print(get(resource).value)
+		if get(resource).value < cost:
+			print("Not enough " + resource)
+			return false
+	
+	for curve in building.cost_curves:
+		var resource = curve.resource
+		var cost = curve.get_cost(building.level,quantity)
+		get(resource).spend(cost)
+	
+	building.build(quantity)
+	return true
+
+
 func get_resource_value(resource_name):
 	return get(resource_name.to_lower()).value
