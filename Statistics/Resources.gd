@@ -16,23 +16,3 @@ func _ready():
 func _process(delta):
 	pass
 
-
-func update_tick():
-	update_money()
-	update_data()
-
-
-func update_money():
-	money += get_money_per_day()
-
-
-func get_money_per_day():
-	return Buildings.get_level("lobbying_offices") * 1
-
-
-func update_data():
-	data += get_data_per_day()
-
-
-func get_data_per_day():
-	return Buildings.get_level("telescopes") * 1

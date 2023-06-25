@@ -1,6 +1,19 @@
-[gd_resource type="Resource" script_class="Planet" load_steps=2 format=3 uid="uid://dog2q3vnwx17g"]
+[gd_resource type="Resource" script_class="Planet" load_steps=4 format=3 uid="uid://dog2q3vnwx17g"]
 
+[ext_resource type="Script" path="res://Buildings/BuildingClasses/ProducerBuilding.gd" id="1_s7503"]
 [ext_resource type="Script" path="res://Locations/BaseClasses/BasePlanet.gd" id="1_yux0g"]
+
+[sub_resource type="Resource" id="Resource_knux0"]
+script = ExtResource("1_s7503")
+resources_produced = {}
+ResearchPrereqs = Array[Resource("res://Research/Research_Class.gd")]([])
+BuildingPrereqs = {}
+name = "Mine"
+description = "Digs up shit"
+multiplier = 1.0
+exponent_base = 1.0
+base_cost = 1.0
+base_resource_output = 0.0
 
 [resource]
 script = ExtResource("1_yux0g")
@@ -9,7 +22,6 @@ OrbitalDistance = 152000000
 SurfaceGravity = 9.8
 AtmosphericDensity = 1.293
 DataMult = 1.0
-UniqueBuildings = Array[Resource("res://Buildings/BaseBuilding.gd")]([])
+Buildings = Array[Resource("res://Buildings/BuildingClasses/BaseBuilding.gd")]([SubResource("Resource_knux0")])
 is_earth = false
 can_land = true
-can_breathe = true

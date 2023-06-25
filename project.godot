@@ -17,7 +17,6 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Buildings="*res://Statistics/Buildings.gd"
 Resources="*res://Statistics/Resources.gd"
 GlobalStats="*res://Autoloads/GlobalStats.gd"
 SavedRockets="*res://Autoloads/SavedRockets.gd"

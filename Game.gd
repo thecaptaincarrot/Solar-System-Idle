@@ -10,7 +10,7 @@ var Volatiles = preload("res://Resources/Volatiles.tres")
 var Fuel = preload("res://Resources/Fuel.tres")
 
 
-var current_planet : Planet
+var current_planet : Planet : set = set_planet
 
 var ResourceList = [Money,Data,Research, Ore,Alloys,Volatiles,Fuel]
 
@@ -23,7 +23,7 @@ func _ready():
 	for resource in ResourceList:
 		resource.initialize()
 	
-	current_planet = PlanetHandler.earth
+	set_planet(PlanetHandler.earth)
 	current_planet.initialize()
 
 
@@ -33,7 +33,7 @@ func _process(delta):
 
 
 func update_date():
-	$OverviewPanel/NumDays.text = str(days)
+	$TopPanel/NumDays.text = str(days)
 
 
 func hide_menus():
@@ -42,6 +42,12 @@ func hide_menus():
 	$Orbital.hide()
 	$Overview.hide()
 	$Research.hide()
+
+
+func set_planet(new_planet):
+	current_planet = new_planet
+	$TopPanel.current_planet = new_planet
+	$Overview.set_planet(new_planet)
 
 
 func _on_tick_timer_timeout():

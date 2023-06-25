@@ -28,6 +28,9 @@ func _ready():
 	get_unlocked()
 
 
+func on_tick():
+	pass
+
 func get_unlocked():
 	if unlocked:
 		return unlocked

@@ -1,7 +1,7 @@
 @tool
 extends HBoxContainer
 
-@export var resource : Resource
+@export var resource = ""
 
 @export var identity = "DEFAULT"
 
@@ -17,13 +17,14 @@ func _process(delta):
 		$Label.text = identity
 	
 	if !Engine.is_editor_hint():
-		_update()
+		pass
 
 
 func _update():
-	if resource:
-		$Value.text = str(resource.get_value())
-		
-		$PerDay.text = str(resource.get_per_tick())
+	pass
+
+
+func set_value(new_value):
+	$Value.text = str(new_value)
 
 #TODO: Tooltip defs
