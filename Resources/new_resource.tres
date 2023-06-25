@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CostCurve" load_steps=2 format=3 uid="uid://cca5emsll5bo3"]
+
+[ext_resource type="Script" path="res://Buildings/BuildingClasses/CostCurve.gd" id="1_64l6h"]
+
+[resource]
+script = ExtResource("1_64l6h")
+CurveForm = 0
+cost_resource = ""
+term1 = 1.0
+x_offset = 0.0
+y_offset = 100.0

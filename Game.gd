@@ -2,17 +2,9 @@ extends Control
 
 #Resources
 var Money = preload("res://Resources/Money.tres")
-var Data = preload("res://Resources/Data.tres")
-var Research = preload("res://Resources/Research.tres")
-var Ore = preload("res://Resources/Ore.tres")
-var Alloys = preload("res://Resources/Alloys.tres")
-var Volatiles = preload("res://Resources/Volatiles.tres")
-var Fuel = preload("res://Resources/Fuel.tres")
 
 
 var current_planet : Planet : set = set_planet
-
-var ResourceList = [Money,Data,Research, Ore,Alloys,Volatiles,Fuel]
 
 var days = 0
 
@@ -20,8 +12,8 @@ signal Tick
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for resource in ResourceList:
-		resource.initialize()
+	#tick signal connectiosn
+	$TickTimer.timeout.connect(Callable(PlanetHandler, "_on_tick"))
 	
 	set_planet(PlanetHandler.earth)
 	current_planet.initialize()
@@ -55,10 +47,7 @@ func _on_tick_timer_timeout():
 	
 	
 	emit_signal("Tick")
-	
-	for resource in ResourceList:
-		resource.tick_update()
-	
+
 	update_date()
 	$Research.tick()
 

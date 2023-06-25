@@ -13,7 +13,8 @@ var unlocked = false
 @export_multiline var description : String
 
 #Placeholder for cost curves
-@export_category("Cost Curve")
+@export var cost_curves : Array[CostCurve]
+
 @export var multiplier = 1.0
 @export var exponent_base = 1.0
 @export var base_cost = 1.0
@@ -56,17 +57,16 @@ func get_resource_output():
 	return level * (base_resource_output + resourrce_output_adder) * resource_output_multiplier
 
 
-func get_cost(multiplier):
-	#Needs to get more inputs from the specific planetary location
-	#recalculate cost
-	var sum = 0
-	
-	for i in range(level, level + multiplier):
-		sum += multiplier * (pow(exponent_base,i)) + base_cost
-	
-	var cost = snapped(sum * cost_multiplier,.01)
-	
-	return cost
+func get_cost(buy_quantity): #returns a dictionary of resource keys per the cost curve
+	var cost_dict = {}
+	for curve in cost_curves:
+		cost_dict[curve.resource] = curve.get_cost(level,buy_quantity)
+	return cost_dict
+
+
+func get_cost_curves():
+	return cost_curves
+
 
 func build(multiplier):
 	level += multiplier

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dryyhm4nephfb"]
+[gd_scene load_steps=3 format=3 uid="uid://dryyhm4nephfb"]
 
 [ext_resource type="Script" path="res://BuildingOption.gd" id="1_7kgiw"]
+[ext_resource type="PackedScene" uid="uid://t7km256q4yfx" path="res://Overview/BuildMenu/cost_container.tscn" id="2_sr4vo"]
 
 [node name="BuildingOption" type="Panel"]
 custom_minimum_size = Vector2(320, 160)
@@ -38,31 +39,34 @@ offset_right = 278.0
 offset_bottom = 68.0
 text = "Generates Income"
 
-[node name="CostContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
+[node name="CostLabel" type="Label" parent="."]
+layout_mode = 2
 offset_left = 4.0
 offset_top = 68.0
-offset_right = 226.0
-offset_bottom = 108.0
+offset_right = 56.0
+offset_bottom = 94.0
+text = "Cost:"
 
-[node name="Label" type="Label" parent="CostContainer"]
-layout_mode = 2
-text = "Cost: $"
+[node name="AllCosts" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 91.0
+offset_right = 100.0
+offset_bottom = 131.0
 
-[node name="Cost" type="Label" parent="CostContainer"]
+[node name="CostContainer" parent="AllCosts" instance=ExtResource("2_sr4vo")]
 layout_mode = 2
-text = "10"
-
-[node name="CostExponent" type="Label" parent="CostContainer"]
-layout_mode = 2
-text = "M"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 102.0
-offset_right = 83.0
-offset_bottom = 142.0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = -32.0
+offset_right = 86.0
+offset_bottom = -6.0
+grow_vertical = 0
 
 [node name="Label" type="Label" parent="HBoxContainer"]
 layout_mode = 2

@@ -1,15 +1,30 @@
-[gd_resource type="Resource" script_class="Planet" load_steps=4 format=3 uid="uid://dog2q3vnwx17g"]
+[gd_resource type="Resource" script_class="Planet" load_steps=6 format=3 uid="uid://dog2q3vnwx17g"]
 
+[ext_resource type="Script" path="res://Buildings/BuildingClasses/CostCurve.gd" id="1_ck7hu"]
 [ext_resource type="Script" path="res://Buildings/BuildingClasses/ProducerBuilding.gd" id="1_s7503"]
 [ext_resource type="Script" path="res://Locations/BaseClasses/BasePlanet.gd" id="1_yux0g"]
 
-[sub_resource type="Resource" id="Resource_knux0"]
+[sub_resource type="Resource" id="Resource_bq4as"]
+script = ExtResource("1_ck7hu")
+CurveForm = 1
+resource = "money"
+term1 = 5.0
+x_offset = 0.0
+y_offset = 5.0
+
+[sub_resource type="Resource" id="Resource_co8fs"]
 script = ExtResource("1_s7503")
-resources_produced = {}
+resources_produced = {
+"alloy": 0,
+"fuel": 0,
+"ore": 0,
+"volatiles": 0
+}
 ResearchPrereqs = Array[Resource("res://Research/Research_Class.gd")]([])
 BuildingPrereqs = {}
 name = "Mine"
-description = "Digs up shit"
+description = "It digs things"
+cost_curves = Array[ExtResource("1_ck7hu")]([SubResource("Resource_bq4as")])
 multiplier = 1.0
 exponent_base = 1.0
 base_cost = 1.0
@@ -18,10 +33,10 @@ base_resource_output = 0.0
 [resource]
 script = ExtResource("1_yux0g")
 Name = "Earth"
-OrbitalDistance = 152000000
-SurfaceGravity = 9.8
-AtmosphericDensity = 1.293
-DataMult = 1.0
-Buildings = Array[Resource("res://Buildings/BuildingClasses/BaseBuilding.gd")]([SubResource("Resource_knux0")])
-is_earth = false
-can_land = true
+OrbitalDistance = null
+SurfaceGravity = null
+AtmosphericDensity = null
+DataMult = null
+Buildings = Array[Resource("res://Buildings/BuildingClasses/BaseBuilding.gd")]([SubResource("Resource_co8fs")])
+is_earth = null
+can_land = null

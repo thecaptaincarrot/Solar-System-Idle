@@ -23,14 +23,10 @@ func _on_upgrade_button_pressed():
 
 
 func set_planet(new_planet : Planet):
-	print(new_planet)
-	for N in $LeftPanel/Build/ScrollContainer.get_children():
+	for N in $LeftPanel/Build/ScrollContainer/BuildOptionContainer.get_children():
 		N.queue_free()
 	
 	for building in new_planet.Buildings:
-		print("building",building)
 		var new_option = BUILDOPTION.instantiate()
 		new_option.BuildingResource = building
-		$LeftPanel/Build/ScrollContainer.add_child(new_option)
-		pass
-	
+		$LeftPanel/Build/ScrollContainer/BuildOptionContainer.add_child(new_option)

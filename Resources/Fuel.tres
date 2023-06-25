@@ -1,9 +1,0 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://g2u7kei0i2ap"]
-
-[ext_resource type="Resource" uid="uid://bhvxg7ndygfya" path="res://Buildings/Refinery.tres" id="1_hbmbi"]
-[ext_resource type="Script" path="res://Resources/Fuel_Resource.gd" id="1_tu8oy"]
-
-[resource]
-script = ExtResource("1_tu8oy")
-RefineryResource = ExtResource("1_hbmbi")
-name = "Fuel"

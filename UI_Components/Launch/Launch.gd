@@ -1,7 +1,5 @@
 extends Control
 
-var Money = preload("res://Resources/Money.tres")
-var Ore = preload("res://Resources/Ore.tres")
 
 var StagedRocket : Rocket
 
@@ -44,19 +42,19 @@ func get_can_launch():
 	if StagedRocket == null:
 		return false
 	
-	if Money.get_value() >= StagedRocket.get_money_cost() and Ore.get_value() >= StagedRocket.get_ore_cost():
-		return true
-	else:
-		return false
-
-func _on_launch_pressed():
-	
-	if Money.get_value() >= StagedRocket.get_money_cost() and Ore.get_value() >= StagedRocket.get_ore_cost():
-		Money.spend(StagedRocket.get_money_cost())
-		Ore.spend(StagedRocket.get_ore_cost())
-		
-		RocketsInSpace.rocket_launched(StagedRocket)
-		
-		$LaunchProgress.show()
-		$LaunchProgress.running = true
+#	if Money.get_value() >= StagedRocket.get_money_cost() and Ore.get_value() >= StagedRocket.get_ore_cost():
+#		return true
+#	else:
+#		return false
+#
+#func _on_launch_pressed():
+#
+#	if Money.get_value() >= StagedRocket.get_money_cost() and Ore.get_value() >= StagedRocket.get_ore_cost():
+#		Money.spend(StagedRocket.get_money_cost())
+#		Ore.spend(StagedRocket.get_ore_cost())
+#
+#		RocketsInSpace.rocket_launched(StagedRocket)
+#
+#		$LaunchProgress.show()
+#		$LaunchProgress.running = true
 		

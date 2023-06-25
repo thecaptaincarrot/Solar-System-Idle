@@ -7,7 +7,7 @@ class_name Planet
 @export var SurfaceGravity = 9.8 #m/s^2
 @export var AtmosphericDensity = 1.293 #kg/m^3
 
-@export var DataHere : Data
+#@export var DataHere : Data
 @export var DataMult = 1.0
 
 @export var mine : Building
@@ -18,10 +18,13 @@ var upgrades = [] #this should auto populate with upgrades that are possible for
 var orbit # orbit resource
 
 #resources
-var ore = Local_Resource.new()
-var alloy = Local_Resource.new()
-var volatiles = Local_Resource.new()
-var fuel = Local_Resource.new()
+#Global Resources
+var money = preload("res://Resources/Money.tres")
+#local resource
+var ore = LocalResource.new()
+var alloy = LocalResource.new()
+var volatiles = LocalResource.new()
+var fuel = LocalResource.new()
 
 var ships_here
 
@@ -33,14 +36,13 @@ var ships_here
 
 func initialize():
 	for building in Buildings:
-		print(building)
 		if building is ProducerBuilding:
 			building.produce_resource.connect(building_production)
 
 
 func building_production(resource_key, amount):
-	var resource_lower = resource_key.lower()
-	set(resource_lower,get(resource_lower) + amount)
+	var resource_lower = resource_key.to_lower()
+	get(resource_lower).add_value(amount)
 
 
 func tick():

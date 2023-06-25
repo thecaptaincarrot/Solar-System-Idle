@@ -1,6 +1,6 @@
 extends Control
 
-@export var terrestrial_data = preload("res://Resources/Data.tres")
+#@export var terrestrial_data = preload("res://Resources/Data.tres")
 
 var chosen_research_topic = null
 
@@ -22,7 +22,7 @@ func tick():
 		var data_array = chosen_research_topic.research_tick(research_increment)
 		var spent_data = data_array[0]
 		var finished = data_array[1]
-		terrestrial_data.value -= spent_data
+#		terrestrial_data.value -= spent_data
 
 
 func new_topic(research_resource):

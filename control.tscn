@@ -1,13 +1,11 @@
-[gd_scene load_steps=38 format=3 uid="uid://cvgv3iu1h6d6a"]
+[gd_scene load_steps=34 format=3 uid="uid://cvgv3iu1h6d6a"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_tn1u5"]
 [ext_resource type="Texture2D" uid="uid://d1qxs7itsei36" path="res://IDK.png" id="2_0xf61"]
 [ext_resource type="PackedScene" uid="uid://bacbhpainxqfk" path="res://UI_Components/Resource_Holder.tscn" id="2_8bt6t"]
-[ext_resource type="PackedScene" uid="uid://dryyhm4nephfb" path="res://Overview/BuildMenu/building_option.tscn" id="2_78hfj"]
 [ext_resource type="Script" path="res://Overview.gd" id="2_lugm6"]
 [ext_resource type="Script" path="res://Overview/BuildMenu/BuildOptionContainer.gd" id="2_ponxe"]
 [ext_resource type="Texture2D" uid="uid://c1rj06c18f50s" path="res://Textures/OilWell.png" id="3_c1unq"]
-[ext_resource type="Resource" uid="uid://cy2bukhtj71do" path="res://Resources/Money.tres" id="3_fad5r"]
 [ext_resource type="Texture2D" uid="uid://5bctktc516q6" path="res://Textures/mining-icon.png" id="4_g2dio"]
 [ext_resource type="Script" path="res://UI_Components/ResearchTab/Research.gd" id="5_co6l7"]
 [ext_resource type="Script" path="res://TopPanel.gd" id="6_410x6"]
@@ -28,13 +26,8 @@
 [ext_resource type="Script" path="res://UI_Components/Launch/RightPanel.gd" id="17_0kydw"]
 [ext_resource type="Script" path="res://UI_Components/OrbitalView/OrbitalView.gd" id="18_88sx1"]
 [ext_resource type="Texture2D" uid="uid://dvnnfblnw762r" path="res://Textures/Earf.png" id="18_fnudd"]
-[ext_resource type="Resource" path="res://Buildings/LobbyingOffice.tres" id="20_nr3vh"]
-[ext_resource type="Resource" path="res://Buildings/Smelter.tres" id="21_r7lhq"]
-[ext_resource type="Resource" path="res://Buildings/Telescope.tres" id="21_wpobg"]
-[ext_resource type="Resource" path="res://Buildings/OilWell.tres" id="22_gm5uk"]
-[ext_resource type="Resource" path="res://Buildings/Refinery.tres" id="23_8lu0n"]
-[ext_resource type="Resource" path="res://Buildings/Mines.tres" id="23_bh75r"]
 [ext_resource type="Script" path="res://UI_Components/Date.gd" id="26_q7fmr"]
+[ext_resource type="Script" path="res://Buildings/BuildingClasses/BaseBuilding.gd" id="29_vupcn"]
 [ext_resource type="Script" path="res://Test/ResearchLeft.gd" id="30_cusqq"]
 
 [sub_resource type="GDScript" id="GDScript_fthym"]
@@ -50,6 +43,41 @@ func _process(delta):
 	pass
 "
 
+[sub_resource type="Resource" id="Resource_3ap86"]
+script = ExtResource("29_vupcn")
+ResearchPrereqs = Array[Resource("res://Research/Research_Class.gd")]([])
+BuildingPrereqs = {}
+name = "Lobbying Office"
+description = "Generates Income"
+cost_curves = null
+multiplier = 1.0
+exponent_base = 1.0
+base_cost = 1.0
+base_resource_output = 1.0
+
+[sub_resource type="GDScript" id="GDScript_trsra"]
+script/source = "extends GlobalResource
+
+@export var LobbyOfficeResource : Building
+
+func initialize():
+	value = 100000.0
+
+
+#func get_base_per_tick():
+#	per_tick = LobbyOfficeResource.get_resource_output()
+#
+#	per_tick += RocketsInSpace.get_money_per_day()
+#
+#	return per_tick
+"
+
+[sub_resource type="Resource" id="Resource_83htt"]
+script = SubResource("GDScript_trsra")
+LobbyOfficeResource = SubResource("Resource_3ap86")
+name = "MONEY"
+value = 0.0
+
 [node name="Game" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -59,111 +87,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tn1u5")
 metadata/_edit_lock_ = true
-
-[node name="TopPanel" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 807.0
-offset_bottom = 143.0
-script = ExtResource("6_410x6")
-
-[node name="Date" type="Label" parent="TopPanel"]
-layout_mode = 0
-offset_right = 146.0
-offset_bottom = 23.0
-text = "Date: January 1 1970 00:00"
-script = ExtResource("26_q7fmr")
-
-[node name="NumDays" type="Label" parent="TopPanel"]
-visible = false
-layout_mode = 0
-offset_right = 146.0
-offset_bottom = 23.0
-text = "0
-"
-
-[node name="MoneyContainer" parent="TopPanel" instance=ExtResource("2_8bt6t")]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 26.0
-offset_right = 257.0
-offset_bottom = 52.0
-resource = ExtResource("3_fad5r")
-identity = "Money"
-
-[node name="LocalResources" type="Control" parent="TopPanel"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="OreContainer" parent="TopPanel/LocalResources" instance=ExtResource("2_8bt6t")]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 52.0
-offset_right = 262.0
-offset_bottom = 78.0
-resource = "ore"
-identity = "Ore"
-
-[node name="AlloyContainer" parent="TopPanel/LocalResources" instance=ExtResource("2_8bt6t")]
-layout_mode = 0
-offset_left = 3.0
-offset_top = 76.0
-offset_right = 256.0
-offset_bottom = 102.0
-resource = "alloy"
-identity = "Alloys"
-
-[node name="VolatilesContainer" parent="TopPanel/LocalResources" instance=ExtResource("2_8bt6t")]
-layout_mode = 0
-offset_left = 262.0
-offset_top = 52.0
-offset_right = 515.0
-offset_bottom = 78.0
-resource = "volatiles"
-identity = "Volatiles"
-
-[node name="FuelContainer" parent="TopPanel/LocalResources" instance=ExtResource("2_8bt6t")]
-layout_mode = 0
-offset_left = 266.0
-offset_top = 76.0
-offset_right = 519.0
-offset_bottom = 102.0
-resource = "fuel"
-identity = "Fuel"
-
-[node name="NavigationButtons" type="HBoxContainer" parent="TopPanel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0250313
-anchor_top = 1.31852
-anchor_right = 0.296621
-anchor_bottom = 1.31852
-offset_top = -40.0
-offset_right = 81.0
-grow_vertical = 0
-metadata/_edit_use_anchors_ = true
-
-[node name="OverviewNavButton" type="Button" parent="TopPanel/NavigationButtons"]
-layout_mode = 2
-text = "Overview"
-
-[node name="ResearchNavButton" type="Button" parent="TopPanel/NavigationButtons"]
-layout_mode = 2
-text = "Research"
-
-[node name="DesignNavButton" type="Button" parent="TopPanel/NavigationButtons"]
-layout_mode = 2
-text = "Design"
-
-[node name="LaunchNavButton" type="Button" parent="TopPanel/NavigationButtons"]
-layout_mode = 2
-text = "Launch"
-
-[node name="OrbitalNavButton" type="Button" parent="TopPanel/NavigationButtons"]
-layout_mode = 2
-text = "Orbital"
 
 [node name="Overview" type="Control" parent="."]
 layout_mode = 1
@@ -262,30 +185,6 @@ layout_mode = 2
 [node name="BuildOptionContainer" type="VBoxContainer" parent="Overview/LeftPanel/Build/ScrollContainer"]
 layout_mode = 2
 script = ExtResource("2_ponxe")
-
-[node name="BuildingOption" parent="Overview/LeftPanel/Build/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
-layout_mode = 2
-BuildingResource = ExtResource("20_nr3vh")
-
-[node name="BuildingOption2" parent="Overview/LeftPanel/Build/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
-layout_mode = 2
-BuildingResource = ExtResource("21_wpobg")
-
-[node name="BuildingOption4" parent="Overview/LeftPanel/Build/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
-layout_mode = 2
-BuildingResource = ExtResource("23_bh75r")
-
-[node name="BuildingOption5" parent="Overview/LeftPanel/Build/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
-layout_mode = 2
-BuildingResource = ExtResource("21_r7lhq")
-
-[node name="BuildingOption6" parent="Overview/LeftPanel/Build/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
-layout_mode = 2
-BuildingResource = ExtResource("22_gm5uk")
-
-[node name="BuildingOption7" parent="Overview/LeftPanel/Build/ScrollContainer/BuildOptionContainer" instance=ExtResource("2_78hfj")]
-layout_mode = 2
-BuildingResource = ExtResource("23_8lu0n")
 
 [node name="Upgrade" type="MarginContainer" parent="Overview/LeftPanel"]
 visible = false
@@ -1181,14 +1080,114 @@ position = Vector2(982, 569)
 scale = Vector2(0.0698242, 0.0698242)
 texture = ExtResource("18_fnudd")
 
+[node name="TopPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 807.0
+offset_bottom = 143.0
+script = ExtResource("6_410x6")
+
+[node name="Date" type="Label" parent="TopPanel"]
+layout_mode = 0
+offset_right = 146.0
+offset_bottom = 23.0
+text = "Date: January 1 1970 00:00"
+script = ExtResource("26_q7fmr")
+
+[node name="NumDays" type="Label" parent="TopPanel"]
+visible = false
+layout_mode = 0
+offset_right = 146.0
+offset_bottom = 23.0
+text = "0
+"
+
+[node name="MoneyContainer" parent="TopPanel" instance=ExtResource("2_8bt6t")]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 26.0
+offset_right = 257.0
+offset_bottom = 52.0
+resource = SubResource("Resource_83htt")
+identity = "Money"
+
+[node name="LocalResources" type="Control" parent="TopPanel"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="OreContainer" parent="TopPanel/LocalResources" instance=ExtResource("2_8bt6t")]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 52.0
+offset_right = 262.0
+offset_bottom = 78.0
+resource = "ore"
+identity = "Ore"
+
+[node name="AlloyContainer" parent="TopPanel/LocalResources" instance=ExtResource("2_8bt6t")]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 76.0
+offset_right = 256.0
+offset_bottom = 102.0
+resource = "alloy"
+identity = "Alloys"
+
+[node name="VolatilesContainer" parent="TopPanel/LocalResources" instance=ExtResource("2_8bt6t")]
+layout_mode = 0
+offset_left = 262.0
+offset_top = 52.0
+offset_right = 515.0
+offset_bottom = 78.0
+resource = "volatiles"
+identity = "Volatiles"
+
+[node name="FuelContainer" parent="TopPanel/LocalResources" instance=ExtResource("2_8bt6t")]
+layout_mode = 0
+offset_left = 266.0
+offset_top = 76.0
+offset_right = 519.0
+offset_bottom = 102.0
+resource = "fuel"
+identity = "Fuel"
+
+[node name="NavigationButtons" type="HBoxContainer" parent="TopPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0250313
+anchor_top = 1.31852
+anchor_right = 0.296621
+anchor_bottom = 1.31852
+offset_top = -40.0
+offset_right = 81.0
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="OverviewNavButton" type="Button" parent="TopPanel/NavigationButtons"]
+layout_mode = 2
+text = "Overview"
+
+[node name="ResearchNavButton" type="Button" parent="TopPanel/NavigationButtons"]
+layout_mode = 2
+text = "Research"
+
+[node name="DesignNavButton" type="Button" parent="TopPanel/NavigationButtons"]
+layout_mode = 2
+text = "Design"
+
+[node name="LaunchNavButton" type="Button" parent="TopPanel/NavigationButtons"]
+layout_mode = 2
+text = "Launch"
+
+[node name="OrbitalNavButton" type="Button" parent="TopPanel/NavigationButtons"]
+layout_mode = 2
+text = "Orbital"
+
 [node name="TickTimer" type="Timer" parent="."]
 autostart = true
 
-[connection signal="pressed" from="TopPanel/NavigationButtons/OverviewNavButton" to="." method="_on_overview_nav_button_pressed"]
-[connection signal="pressed" from="TopPanel/NavigationButtons/ResearchNavButton" to="." method="_on_research_nav_button_pressed"]
-[connection signal="pressed" from="TopPanel/NavigationButtons/DesignNavButton" to="." method="_on_design_nav_button_pressed"]
-[connection signal="pressed" from="TopPanel/NavigationButtons/LaunchNavButton" to="." method="_on_launch_nav_button_pressed"]
-[connection signal="pressed" from="TopPanel/NavigationButtons/OrbitalNavButton" to="." method="_on_orbital_nav_button_pressed"]
 [connection signal="pressed" from="Overview/LeftPanel/BuildButton" to="Overview" method="_on_build_button_pressed"]
 [connection signal="pressed" from="Overview/LeftPanel/UpgradeButton" to="Overview" method="_on_upgrade_button_pressed"]
 [connection signal="pressed" from="Overview/UPGRADETEST" to="." method="_on_upgradetest_pressed"]
@@ -1199,4 +1198,9 @@ autostart = true
 [connection signal="value_changed" from="Design/RightPanel/MarginContainer/VBoxContainer/HSlider" to="Design/RightPanel" method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="Design/RightPanel/SaveDesign" to="Design" method="_on_save_design_pressed"]
 [connection signal="pressed" from="Launch/RightPanel/Launch" to="Launch" method="_on_launch_pressed"]
+[connection signal="pressed" from="TopPanel/NavigationButtons/OverviewNavButton" to="." method="_on_overview_nav_button_pressed"]
+[connection signal="pressed" from="TopPanel/NavigationButtons/ResearchNavButton" to="." method="_on_research_nav_button_pressed"]
+[connection signal="pressed" from="TopPanel/NavigationButtons/DesignNavButton" to="." method="_on_design_nav_button_pressed"]
+[connection signal="pressed" from="TopPanel/NavigationButtons/LaunchNavButton" to="." method="_on_launch_nav_button_pressed"]
+[connection signal="pressed" from="TopPanel/NavigationButtons/OrbitalNavButton" to="." method="_on_orbital_nav_button_pressed"]
 [connection signal="timeout" from="TickTimer" to="." method="_on_tick_timer_timeout"]

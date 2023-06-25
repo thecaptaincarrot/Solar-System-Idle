@@ -1,9 +1,7 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cy2bukhtj71do"]
+[gd_resource type="Resource" script_class="LocalResource" load_steps=2 format=3 uid="uid://bua60lchrowdp"]
 
-[ext_resource type="Script" path="res://Resources/Money_Resource.gd" id="1_7blu0"]
-[ext_resource type="Resource" uid="uid://cj8fletrfg2xn" path="res://Buildings/LobbyingOffice.tres" id="1_ljeq3"]
+[ext_resource type="Script" path="res://Resources/Classes/LocalResource.gd" id="1_kwfyv"]
 
 [resource]
-script = ExtResource("1_7blu0")
-LobbyOfficeResource = ExtResource("1_ljeq3")
-name = "MONEY"
+script = ExtResource("1_kwfyv")
+value = 0.0

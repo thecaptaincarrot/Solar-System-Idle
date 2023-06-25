@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://t7km256q4yfx"]
+
+[ext_resource type="Script" path="res://Overview/BuildMenu/cost_container.gd" id="1_wwvqy"]
+
+[node name="CostContainer" type="HBoxContainer"]
+script = ExtResource("1_wwvqy")
+
+[node name="Resource" type="Label" parent="."]
+layout_mode = 2
+text = "$"
+
+[node name="Cost" type="Label" parent="."]
+layout_mode = 2
+text = "10"
