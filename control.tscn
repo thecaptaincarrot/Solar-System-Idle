@@ -1082,10 +1082,10 @@ offset_bottom = 40.0
 
 [node name="OreContainer" parent="TopPanel/LocalResources" instance=ExtResource("2_8bt6t")]
 layout_mode = 0
-offset_left = 9.0
-offset_top = 52.0
-offset_right = 262.0
-offset_bottom = 78.0
+offset_left = 4.0
+offset_top = 51.0
+offset_right = 257.0
+offset_bottom = 77.0
 resource = "ore"
 identity = "Ore"
 
@@ -1100,9 +1100,9 @@ identity = "Alloys"
 
 [node name="VolatilesContainer" parent="TopPanel/LocalResources" instance=ExtResource("2_8bt6t")]
 layout_mode = 0
-offset_left = 262.0
+offset_left = 269.0
 offset_top = 52.0
-offset_right = 515.0
+offset_right = 522.0
 offset_bottom = 78.0
 resource = "volatiles"
 identity = "Volatiles"
