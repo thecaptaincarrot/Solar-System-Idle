@@ -24,7 +24,7 @@ visible = false
 layout_mode = 2
 text = "M"
 
-[node name="Label2" type="Label" parent="."]
+[node name="PlusMinus" type="Label" parent="."]
 layout_mode = 2
 text = "+"
 

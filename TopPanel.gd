@@ -19,3 +19,10 @@ func _process(delta):
 		for container in $LocalResources.get_children():
 			var resource = container.resource
 			container.set_value(current_planet.get_resource_value(resource))
+			
+			container.set_pertick(current_planet.get_pertick(resource))
+	var money_pertick = 0.0
+	
+	for planet in PlanetHandler.planets:
+		money_pertick += planet.get_pertick("money")
+	$MoneyContainer.set_pertick(money_pertick)

@@ -68,6 +68,7 @@ func get_cost_curves():
 	return cost_curves
 
 
+
 func build(multiplier):
 	level += multiplier
 

@@ -2,6 +2,7 @@ extends Building
 class_name ProducerBuilding
 
 @export var resources_produced = {
+								"money":0,
 								"ore": 0,
 								"alloy" : 0,
 								"volatiles" : 0,
