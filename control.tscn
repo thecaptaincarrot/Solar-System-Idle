@@ -53,6 +53,7 @@ script = ExtResource("1_tn1u5")
 metadata/_edit_lock_ = true
 
 [node name="Overview" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -196,7 +197,6 @@ offset_bottom = 486.0
 text = "UPGRADE"
 
 [node name="Research" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -268,33 +268,28 @@ text = "1"
 layout_mode = 2
 text = "RP"
 
-[node name="MiddlePanel" type="Control" parent="Research"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ResearchOption" parent="Research/MiddlePanel" instance=ExtResource("8_w6dkj")]
-layout_mode = 2
-offset_left = 391.0
+[node name="ResearchContainer" type="GridContainer" parent="Research"]
+layout_mode = 0
+offset_left = 372.0
 offset_top = 199.0
-offset_right = 711.0
+offset_right = 1664.0
 offset_bottom = 359.0
+columns = 4
+
+[node name="ResearchOption" parent="Research/ResearchContainer" instance=ExtResource("8_w6dkj")]
+layout_mode = 2
 research_resource = ExtResource("6_cb7vf")
 
-[node name="ResearchOption2" parent="Research/MiddlePanel" instance=ExtResource("8_w6dkj")]
+[node name="ResearchOption2" parent="Research/ResearchContainer" instance=ExtResource("8_w6dkj")]
 layout_mode = 2
-offset_left = 390.0
-offset_top = 369.0
-offset_right = 710.0
-offset_bottom = 529.0
 research_resource = ExtResource("7_yr0ju")
 
-[node name="ResearchOption3" parent="Research/MiddlePanel" instance=ExtResource("8_w6dkj")]
+[node name="ResearchOption3" parent="Research/ResearchContainer" instance=ExtResource("8_w6dkj")]
 layout_mode = 2
-offset_left = 391.0
-offset_top = 540.0
-offset_right = 711.0
-offset_bottom = 700.0
+research_resource = ExtResource("7_yr0ju")
+
+[node name="ResearchOption4" parent="Research/ResearchContainer" instance=ExtResource("8_w6dkj")]
+layout_mode = 2
 research_resource = ExtResource("7_yr0ju")
 
 [node name="Design" type="Control" parent="."]
