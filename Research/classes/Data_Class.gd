@@ -1,8 +1,8 @@
 extends Resource
 class_name Data
 
-@export var DataType = "DEFAULT"
-@export var DataColor : Color
+@export var type = "DEFAULT"
+@export var color : Color
 
 var value = 0.0
 

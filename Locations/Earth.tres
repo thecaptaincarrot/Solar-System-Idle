@@ -22,7 +22,7 @@ resources_produced = {
 "ore": 2,
 "volatiles": 2
 }
-ResearchPrereqs = Array[Resource("res://Research/Research_Class.gd")]([])
+ResearchPrereqs = Array[Resource("res://Research/classes/Research_Class.gd")]([])
 BuildingPrereqs = {}
 name = "Mine"
 description = "It digs things"
@@ -54,7 +54,7 @@ output_resources = {
 "ore": 0,
 "volatiles": 0
 }
-ResearchPrereqs = Array[Resource("res://Research/Research_Class.gd")]([])
+ResearchPrereqs = Array[Resource("res://Research/classes/Research_Class.gd")]([])
 BuildingPrereqs = {}
 name = "Smelter"
 description = ""
@@ -86,7 +86,7 @@ output_resources = {
 "ore": 0,
 "volatiles": 0
 }
-ResearchPrereqs = Array[Resource("res://Research/Research_Class.gd")]([])
+ResearchPrereqs = Array[Resource("res://Research/classes/Research_Class.gd")]([])
 BuildingPrereqs = {}
 name = "Refinery"
 description = ""
@@ -110,7 +110,7 @@ output_resources = {
 "ore": 0,
 "volatiles": 0
 }
-ResearchPrereqs = Array[Resource("res://Research/Research_Class.gd")]([])
+ResearchPrereqs = Array[Resource("res://Research/classes/Research_Class.gd")]([])
 BuildingPrereqs = {}
 name = "Flash Furnace"
 description = ""

@@ -2,14 +2,18 @@ extends Control
 
 #@export var terrestrial_data = preload("res://Resources/Data.tres")
 
-var chosen_research_topic = null
+var researching = []
 
 var research_increment = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for N in $MiddlePanel.get_children():
-		N.connect("ResearchSignal",new_topic)
+	for N in $ResearchContainer.get_children():
+		N.connect("AddTopic",add_topic)
+		N.connect("RemoveTopic",remove_topic)
+		N.connect("TopicFinished",topic_finished)
+		
+		N.research_overview = self
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,16 +22,25 @@ func _process(delta):
 
 
 func tick():
-	if chosen_research_topic:
-		var data_array = chosen_research_topic.research_tick(research_increment)
-		var spent_data = data_array[0]
-		var finished = data_array[1]
-#		terrestrial_data.value -= spent_data
+	pass
+	for handler in researching:
+		handler.tick()
 
 
-func new_topic(research_resource):
-	chosen_research_topic = research_resource
+func add_topic(new_option):
+	if len(researching) < GlobalStats.max_research:
+		researching.append(new_option)
+		new_option.activate()
+		#
+	else:
+		pass
 
 
-func _on_h_slider_value_changed(value):
-	research_increment = value
+func remove_topic(option):
+	researching.erase(option)
+	option.dectivate()
+
+
+func topic_finished(option):
+	researching.erase(option)
+	#send option to archive?s

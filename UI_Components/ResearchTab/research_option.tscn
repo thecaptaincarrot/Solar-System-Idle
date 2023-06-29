@@ -3,7 +3,9 @@
 [ext_resource type="Script" path="res://UI_Components/ResearchTab/research_option.gd" id="1_lw5sm"]
 
 [node name="ResearchOption" type="Panel"]
-custom_minimum_size = Vector2(320, 160)
+custom_minimum_size = Vector2(320, 200)
+offset_right = 320.0
+offset_bottom = 238.0
 script = ExtResource("1_lw5sm")
 
 [node name="Title" type="Label" parent="."]
@@ -22,47 +24,44 @@ offset_right = 310.0
 offset_bottom = 77.0
 text = "DESCRIPTIONDESCRIPTIONDESCRIPTION"
 
-[node name="CostBox" type="HBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 5.0
-offset_top = 77.0
-offset_right = 45.0
-offset_bottom = 117.0
+offset_left = 6.0
+offset_top = 75.0
+offset_right = 302.0
+offset_bottom = 115.0
 
-[node name="Label" type="Label" parent="CostBox"]
+[node name="VboxCost" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-text = "Cost:"
 
-[node name="Cost" type="Label" parent="CostBox"]
+[node name="Label" type="Label" parent="VBoxContainer/VboxCost"]
 layout_mode = 2
-text = "100"
+text = "Data cost:"
 
-[node name="Label3" type="Label" parent="CostBox"]
+[node name="VBoxProgress" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-text = "RP"
 
 [node name="ResearchButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 214.0
-offset_top = 117.0
-offset_right = 315.0
-offset_bottom = 155.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -105.0
+offset_top = -46.0
+offset_right = -4.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
 text = "Research"
 
-[node name="Complete" type="Label" parent="."]
-visible = false
+[node name="Complete" type="Label" parent="ResearchButton"]
 layout_mode = 0
-offset_left = 223.0
-offset_top = 124.0
-offset_right = 308.0
-offset_bottom = 150.0
+offset_left = 11.0
+offset_top = -28.0
+offset_right = 96.0
+offset_bottom = -2.0
 text = "Completed"
-
-[node name="ProgressBar" type="ProgressBar" parent="."]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 125.0
-offset_right = 206.0
-offset_bottom = 152.0
 
 [connection signal="pressed" from="ResearchButton" to="." method="_on_research_button_pressed"]

@@ -4,28 +4,44 @@ class_name ResearchTopic
 #Resource resources
 var Money = load("res://Resources/Money.tres")
 
+var TerrestrialData : Data = preload("res://Research/Data/TerrestrialData.tres")
+var OrbitalData : Data = preload("res://Research/Data/OrbitalData.tres")
+
 @export var title : String
 @export_multiline var description : String
 
-@export var research_cost = 100.0
+@export var temp_research_cost = {
+							"TerrestrialData" : 0.0,
+							"OrbitalData" : 0.0,
+							}
+
+
+var research_cost = {}
+var research_spent = {}
+
 var current_research = 0.0
 
 @export var money_cost = 0.0
 
+@export_category("Prerequisites")
 @export var research_prereqs : Array[ResearchTopic] = [] #Array of Resources that must be unlocked to show this one
+@export var planet_prereqs : Array[Planet] = []
+@export var building_prereqs = {}
 @export var money_prereq = 0.0 #Amount of money that must be acquired before this unlocks for research
 
 var researched = false
 var unlocked = false
 
+func initialize():
+	for data_type in temp_research_cost.keys():
+		var data_key = get(data_type)
+		research_cost[data_key] = temp_research_cost[data_type]
+		research_spent[data_key] = 0
+	print(research_cost)
+
+
 func research():
 	researched = true
-
-
-func research_tick(research_amount): #This should split up when there are multiple data types
-	#Returns how much data is used
-	pass
-
 
 
 func get_researched():

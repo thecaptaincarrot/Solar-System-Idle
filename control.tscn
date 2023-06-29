@@ -1,19 +1,18 @@
-[gd_scene load_steps=30 format=3 uid="uid://cvgv3iu1h6d6a"]
+[gd_scene load_steps=29 format=3 uid="uid://bc5x5pgba18m6"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_tn1u5"]
 [ext_resource type="Texture2D" uid="uid://d1qxs7itsei36" path="res://IDK.png" id="2_0xf61"]
-[ext_resource type="PackedScene" uid="uid://bacbhpainxqfk" path="res://UI_Components/Resource_Holder.tscn" id="2_8bt6t"]
+[ext_resource type="PackedScene" uid="uid://dl4c3jevdbbvw" path="res://UI_Components/Resource_Holder.tscn" id="2_8bt6t"]
 [ext_resource type="Script" path="res://Overview.gd" id="2_lugm6"]
 [ext_resource type="Script" path="res://Overview/BuildMenu/BuildOptionContainer.gd" id="2_ponxe"]
 [ext_resource type="Texture2D" uid="uid://c1rj06c18f50s" path="res://Textures/OilWell.png" id="3_c1unq"]
 [ext_resource type="Texture2D" uid="uid://5bctktc516q6" path="res://Textures/mining-icon.png" id="4_g2dio"]
 [ext_resource type="Script" path="res://UI_Components/ResearchTab/Research.gd" id="5_co6l7"]
 [ext_resource type="Script" path="res://TopPanel.gd" id="6_410x6"]
-[ext_resource type="Resource" uid="uid://dqdabcosxvbrb" path="res://Research/TerrestrialBuildings/Mines.tres" id="6_cb7vf"]
 [ext_resource type="Script" path="res://UI_Components/Design/Design.gd" id="7_khrki"]
-[ext_resource type="Resource" uid="uid://oc1m8t260wcv" path="res://Research/Placeholder.tres" id="7_yr0ju"]
 [ext_resource type="PackedScene" uid="uid://bii5uov4240q0" path="res://UI_Components/ResearchTab/research_option.tscn" id="8_w6dkj"]
 [ext_resource type="Texture2D" uid="uid://ijtqdxhlm7px" path="res://Textures/LaunchPad.png" id="9_yrlpr"]
+[ext_resource type="Resource" uid="uid://bike58ngxmauh" path="res://Research/NewTopic.tres" id="10_xtgpx"]
 [ext_resource type="PackedScene" uid="uid://cp0gjc18q7ldl" path="res://UI_Components/Design/module_option.tscn" id="11_8xvpy"]
 [ext_resource type="Resource" uid="uid://h2ny7kaues1m" path="res://Modules/BasicCommSat.tres" id="12_r1i2b"]
 [ext_resource type="Script" path="res://RocketBuilder.gd" id="12_y3w3r"]
@@ -278,19 +277,7 @@ columns = 4
 
 [node name="ResearchOption" parent="Research/ResearchContainer" instance=ExtResource("8_w6dkj")]
 layout_mode = 2
-research_resource = ExtResource("6_cb7vf")
-
-[node name="ResearchOption2" parent="Research/ResearchContainer" instance=ExtResource("8_w6dkj")]
-layout_mode = 2
-research_resource = ExtResource("7_yr0ju")
-
-[node name="ResearchOption3" parent="Research/ResearchContainer" instance=ExtResource("8_w6dkj")]
-layout_mode = 2
-research_resource = ExtResource("7_yr0ju")
-
-[node name="ResearchOption4" parent="Research/ResearchContainer" instance=ExtResource("8_w6dkj")]
-layout_mode = 2
-research_resource = ExtResource("7_yr0ju")
+research_resource = ExtResource("10_xtgpx")
 
 [node name="Design" type="Control" parent="."]
 visible = false
@@ -1086,12 +1073,12 @@ identity = "Ore"
 
 [node name="AlloyContainer" parent="TopPanel/LocalResources" instance=ExtResource("2_8bt6t")]
 layout_mode = 0
-offset_left = 3.0
-offset_top = 76.0
-offset_right = 256.0
-offset_bottom = 102.0
+offset_left = 5.0
+offset_top = 78.0
+offset_right = 258.0
+offset_bottom = 104.0
 resource = "alloy"
-identity = "Alloys"
+identity = "Alloy"
 
 [node name="VolatilesContainer" parent="TopPanel/LocalResources" instance=ExtResource("2_8bt6t")]
 layout_mode = 0
@@ -1105,9 +1092,7 @@ identity = "Volatiles"
 [node name="FuelContainer" parent="TopPanel/LocalResources" instance=ExtResource("2_8bt6t")]
 layout_mode = 0
 offset_left = 266.0
-offset_top = 76.0
 offset_right = 519.0
-offset_bottom = 102.0
 resource = "fuel"
 identity = "Fuel"
 

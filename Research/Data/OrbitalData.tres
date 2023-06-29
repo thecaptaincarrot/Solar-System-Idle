@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Data" load_steps=2 format=3 uid="uid://dwjhh2cp40g0y"]
+
+[ext_resource type="Script" path="res://Research/classes/Data_Class.gd" id="1_t4lnk"]
+
+[resource]
+script = ExtResource("1_t4lnk")
+type = "Orbital"
+color = Color(0, 0.776471, 0.890196, 1)

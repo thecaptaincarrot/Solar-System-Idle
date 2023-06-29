@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ResearchTopic" load_steps=2 format=3 uid="uid://bike58ngxmauh"]
+
+[ext_resource type="Script" path="res://Research/classes/Research_Class.gd" id="1_2b4ov"]
+
+[resource]
+script = ExtResource("1_2b4ov")
+title = "Just a test"
+description = "Not a good one either"
+temp_research_cost = {
+"OrbitalData": 0.0,
+"TerrestrialData": 100.0
+}
+money_cost = 0.0
+research_prereqs = Array[ExtResource("1_2b4ov")]([])
+planet_prereqs = Array[Resource("res://Locations/BaseClasses/BasePlanet.gd")]([])
+building_prereqs = {}
+money_prereq = 0.0

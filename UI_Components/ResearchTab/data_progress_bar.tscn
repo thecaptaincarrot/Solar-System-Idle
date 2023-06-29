@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1kfsdtvn10eu"]
+
+[ext_resource type="Script" path="res://UI_Components/ResearchTab/DataProgressBar.gd" id="1_7evde"]
+
+[node name="DataProgressBar" type="ProgressBar"]
+step = 1.0
+script = ExtResource("1_7evde")

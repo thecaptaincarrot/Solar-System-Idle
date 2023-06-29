@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dryyhm4nephfb"]
+[gd_scene load_steps=3 format=3 uid="uid://wo46jey3kx0s"]
 
-[ext_resource type="Script" path="res://BuildingOption.gd" id="1_7kgiw"]
+[ext_resource type="Script" path="res://UI_Components/BuildingOption.gd" id="1_fyp0k"]
 [ext_resource type="PackedScene" uid="uid://t7km256q4yfx" path="res://Overview/BuildMenu/cost_container.tscn" id="2_sr4vo"]
 
 [node name="BuildingOption" type="Panel"]
 custom_minimum_size = Vector2(320, 160)
-script = ExtResource("1_7kgiw")
+script = ExtResource("1_fyp0k")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
