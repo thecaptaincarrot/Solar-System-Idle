@@ -8,8 +8,6 @@ var unlocked = true
 @export var BuildingResource : Building
 
 #Resources
-var Money = preload("res://Resources/Money.tres")
-
 const BUY_INCREMENTS= [1,5,10,25]
 
 var buy_quantity = 1
@@ -18,6 +16,7 @@ signal Build
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	hide()
 	$Title.text = BuildingResource.name
 	$Description.text = BuildingResource.description
 	update_cost()
@@ -52,6 +51,8 @@ func update_cost():
 	var costs = BuildingResource.get_cost(buy_quantity)
 	
 	for cost in costs.keys():
+		if costs[cost] < 0: #Skip costs less than 0
+			continue
 		var new_cost = COSTCONTAINER.instantiate()
 		new_cost.set_resource_name(cost)
 		new_cost.set_value(costs[cost])

@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="LocalResource" load_steps=2 format=3 uid="uid://bua60lchrowdp"]
-
-[ext_resource type="Script" path="res://Resources/Classes/LocalResource.gd" id="1_kwfyv"]
-
-[resource]
-script = ExtResource("1_kwfyv")
-value = 10.0

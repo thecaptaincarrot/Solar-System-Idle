@@ -7,7 +7,7 @@ class_name Planet
 @export var SurfaceGravity = 9.8 #m/s^2
 @export var AtmosphericDensity = 1.293 #kg/m^3
 
-#@export var DataHere : Data
+@export var data : Data
 @export var DataMult = 1.0
 
 @export var mine : Building
@@ -19,8 +19,7 @@ var orbit # orbit resource
 
 #resources
 #Global Resources
-var money = preload("res://Resources/Money.tres")
-var money_pertick = 0.0
+
 #local resource
 var ore = LocalResource.new()
 var ore_pertick = 0.0
@@ -43,7 +42,9 @@ func initialize():
 	for building in Buildings:
 		if building is ProducerBuilding:
 			building.produce_resource.connect(building_production)
-
+	
+	if is_earth:
+		ore.value = 10
 
 func building_production(resource_key, amount):
 	var resource_lower = resource_key.to_lower()
@@ -59,7 +60,6 @@ func add_pertick(resource_key, value):
 
 
 func tick():
-	money_pertick = 0.0
 	ore_pertick = 0.0
 	alloy_pertick = 0.0
 	volatiles_pertick = 0.0
@@ -152,7 +152,8 @@ func build_request(building, quantity):
 	for curve in building.cost_curves:
 		var resource = curve.resource
 		var cost = curve.get_cost(building.level,quantity)
-		get(resource).spend(cost)
+		if cost > 0: #Ignore 0 cost
+			get(resource).spend(cost)
 	
 	building.build(quantity)
 	return true

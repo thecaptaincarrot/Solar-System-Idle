@@ -1,7 +1,6 @@
 extends Control
 
 #Resources
-var Money = preload("res://Resources/Money.tres")
 
 var current_planet : Planet : set = set_planet
 
@@ -17,6 +16,8 @@ func _ready():
 	
 	set_planet(PlanetHandler.earth)
 	current_planet.initialize()
+	
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

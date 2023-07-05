@@ -1,9 +1,8 @@
 extends Panel
 
-var money = preload("res://Resources/Money.tres")
-
 var current_planet = null
 
+var data = load("res://Resources/Data/TerrestrialData.tres")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,7 +11,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$MoneyContainer.set_value(money.get_value())
 	#Should I do this every frame? Sure, why not
 	if current_planet:
 		for container in $LocalResources.get_children():
@@ -22,6 +20,4 @@ func _process(delta):
 			container.set_pertick(current_planet.get_pertick(resource))
 	var money_pertick = 0.0
 	
-	for planet in PlanetHandler.planets:
-		money_pertick += planet.get_pertick("money")
-	$MoneyContainer.set_pertick(money_pertick)
+	$DataContainer.set_value(data.get_value())

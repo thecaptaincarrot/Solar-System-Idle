@@ -2,10 +2,8 @@ extends Resource
 class_name ResearchTopic
 
 #Resource resources
-var Money = load("res://Resources/Money.tres")
-
-var TerrestrialData : Data = preload("res://Research/Data/TerrestrialData.tres")
-var OrbitalData : Data = preload("res://Research/Data/OrbitalData.tres")
+var TerrestrialData : Data = preload("res://Resources/Data/TerrestrialData.tres")
+var OrbitalData : Data = preload("res://Resources/Data/OrbitalData.tres")
 
 @export var title : String
 @export_multiline var description : String

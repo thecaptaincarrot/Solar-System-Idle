@@ -1,118 +1,58 @@
-[gd_resource type="Resource" script_class="Planet" load_steps=12 format=3 uid="uid://dog2q3vnwx17g"]
+[gd_resource type="Resource" script_class="Planet" load_steps=10 format=3 uid="uid://be1e20kiqxoq1"]
 
 [ext_resource type="Script" path="res://Buildings/BuildingClasses/CostCurve.gd" id="1_ck7hu"]
 [ext_resource type="Script" path="res://Buildings/BuildingClasses/ProducerBuilding.gd" id="1_s7503"]
+[ext_resource type="Resource" uid="uid://b22imsxmgxrni" path="res://Buildings/Earth/EarthMine.tres" id="1_wsnxs"]
 [ext_resource type="Script" path="res://Locations/BaseClasses/BasePlanet.gd" id="1_yux0g"]
-[ext_resource type="Script" path="res://Buildings/BuildingClasses/ConverterBuilding.gd" id="3_48v6l"]
+[ext_resource type="Resource" path="res://Resources/Data/TerrestrialData.tres" id="3_17cmt"]
 
-[sub_resource type="Resource" id="Resource_bq4as"]
+[sub_resource type="Resource" id="Resource_sl4l7"]
 script = ExtResource("1_ck7hu")
-CurveForm = 1
-resource = "money"
-term1 = 5.0
-x_offset = 0.0
-y_offset = 5.0
-
-[sub_resource type="Resource" id="Resource_co8fs"]
-script = ExtResource("1_s7503")
-resources_produced = {
-"alloy": 0,
-"fuel": 0,
-"money": 7,
-"ore": 2,
-"volatiles": 2
-}
-ResearchPrereqs = Array[Resource("res://Research/classes/Research_Class.gd")]([])
-BuildingPrereqs = {}
-name = "Mine"
-description = "It digs things"
-cost_curves = Array[ExtResource("1_ck7hu")]([SubResource("Resource_bq4as")])
-multiplier = 1.0
-exponent_base = 1.0
-base_cost = 1.0
-base_resource_output = 0.0
-
-[sub_resource type="Resource" id="Resource_xx8gu"]
-script = ExtResource("1_ck7hu")
-CurveForm = 0
-resource = "money"
-term1 = 1.0
+CurveForm = 2
+resource = "ore"
+term1 = 10.0
 x_offset = 0.0
 y_offset = 100.0
 
-[sub_resource type="Resource" id="Resource_xuo3e"]
-script = ExtResource("3_48v6l")
-input_resources = {
-"alloy": 0,
-"fuel": 0,
-"ore": 10,
-"volatiles": 0
-}
-output_resources = {
-"alloy": 1,
-"fuel": 0,
-"ore": 0,
-"volatiles": 0
-}
-ResearchPrereqs = Array[Resource("res://Research/classes/Research_Class.gd")]([])
-BuildingPrereqs = {}
-name = "Smelter"
-description = ""
-cost_curves = Array[ExtResource("1_ck7hu")]([SubResource("Resource_xx8gu")])
-multiplier = 1.0
-exponent_base = 1.0
-base_cost = 1.0
-base_resource_output = 0.0
-
-[sub_resource type="Resource" id="Resource_ko5we"]
+[sub_resource type="Resource" id="Resource_8xi24"]
 script = ExtResource("1_ck7hu")
 CurveForm = 1
-resource = "money"
-term1 = 1.0
+resource = "alloy"
+term1 = 50.0
 x_offset = 0.0
-y_offset = 1.0
+y_offset = -250.0
 
-[sub_resource type="Resource" id="Resource_tvgx7"]
-script = ExtResource("3_48v6l")
-input_resources = {
+[sub_resource type="Resource" id="Resource_7htwr"]
+script = ExtResource("1_s7503")
+resources_produced = {
 "alloy": 0,
+"data": 1,
 "fuel": 0,
-"ore": 0,
-"volatiles": 10
-}
-output_resources = {
-"alloy": 0,
-"fuel": 1,
 "ore": 0,
 "volatiles": 0
 }
 ResearchPrereqs = Array[Resource("res://Research/classes/Research_Class.gd")]([])
 BuildingPrereqs = {}
-name = "Refinery"
-description = ""
-cost_curves = Array[ExtResource("1_ck7hu")]([SubResource("Resource_ko5we")])
+name = "Telescope"
+description = "Produces Terrestrial Data"
+cost_curves = Array[ExtResource("1_ck7hu")]([SubResource("Resource_sl4l7"), SubResource("Resource_8xi24")])
 multiplier = 1.0
 exponent_base = 1.0
 base_cost = 1.0
 base_resource_output = 0.0
 
-[sub_resource type="Resource" id="Resource_jqtmn"]
-script = ExtResource("3_48v6l")
-input_resources = {
+[sub_resource type="Resource" id="Resource_k4hpj"]
+script = ExtResource("1_s7503")
+resources_produced = {
 "alloy": 0,
-"fuel": 0,
-"ore": 5,
-"volatiles": 5
-}
-output_resources = {
-"alloy": 3,
+"data": 0,
 "fuel": 0,
 "ore": 0,
 "volatiles": 0
 }
 ResearchPrereqs = Array[Resource("res://Research/classes/Research_Class.gd")]([])
 BuildingPrereqs = {}
-name = "Flash Furnace"
+name = "BUILDINGNAME"
 description = ""
 cost_curves = Array[ExtResource("1_ck7hu")]([])
 multiplier = 1.0
@@ -126,7 +66,9 @@ Name = "Earth"
 OrbitalDistance = 152000000
 SurfaceGravity = 9.8
 AtmosphericDensity = 1.293
+data = ExtResource("3_17cmt")
 DataMult = 1.0
-Buildings = Array[Resource("res://Buildings/BuildingClasses/BaseBuilding.gd")]([SubResource("Resource_co8fs"), SubResource("Resource_xuo3e"), SubResource("Resource_tvgx7"), SubResource("Resource_jqtmn")])
-is_earth = false
+mine = SubResource("Resource_k4hpj")
+Buildings = Array[Resource("res://Buildings/BuildingClasses/BaseBuilding.gd")]([ExtResource("1_wsnxs"), SubResource("Resource_7htwr")])
+is_earth = true
 can_land = true

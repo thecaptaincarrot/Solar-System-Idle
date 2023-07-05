@@ -2,7 +2,7 @@ extends Resource
 class_name CostCurve
 
 @export_enum("Zero","Linear", "Geometric", "Exponential", "Logarithmic") var CurveForm = 0
-@export_enum("money","ore","alloy","volatiles","fuel") var resource : String
+@export_enum("ore","alloy","volatiles","fuel") var resource : String
 
 @export var term1 = 1.0
 

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Planet" load_steps=2 format=3 uid="uid://dsh2gngfrp00e"]
+
+[ext_resource type="Script" path="res://Locations/BaseClasses/BasePlanet.gd" id="1_q7sbm"]
+
+[resource]
+script = ExtResource("1_q7sbm")
+Name = "Moon"
+OrbitalDistance = 153000000
+SurfaceGravity = 1.0
+AtmosphericDensity = 0.0
+DataMult = 1.0
+Buildings = Array[Resource("res://Buildings/BuildingClasses/BaseBuilding.gd")]([])
+is_earth = false
+can_land = true

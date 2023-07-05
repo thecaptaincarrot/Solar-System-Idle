@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bc5x5pgba18m6"]
+[gd_scene load_steps=31 format=3 uid="uid://bc5x5pgba18m6"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_tn1u5"]
 [ext_resource type="Texture2D" uid="uid://d1qxs7itsei36" path="res://IDK.png" id="2_0xf61"]
@@ -14,9 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://ijtqdxhlm7px" path="res://Textures/LaunchPad.png" id="9_yrlpr"]
 [ext_resource type="Resource" uid="uid://bike58ngxmauh" path="res://Research/NewTopic.tres" id="10_xtgpx"]
 [ext_resource type="PackedScene" uid="uid://cp0gjc18q7ldl" path="res://UI_Components/Design/module_option.tscn" id="11_8xvpy"]
-[ext_resource type="Resource" uid="uid://h2ny7kaues1m" path="res://Modules/BasicCommSat.tres" id="12_r1i2b"]
 [ext_resource type="Script" path="res://RocketBuilder.gd" id="12_y3w3r"]
+[ext_resource type="Script" path="res://Modules/BaseClasses/UtilityModule.gd" id="13_wy7hd"]
 [ext_resource type="Script" path="res://UI_Components/Design/ModulesContainer.gd" id="13_xa5wf"]
+[ext_resource type="Texture2D" uid="uid://t0ytpwn7glsm" path="res://Modules/Textures/CommsSat.png" id="14_kuxtr"]
 [ext_resource type="Script" path="res://UI_Components/Design/RightDesignPanel.gd" id="14_onrsj"]
 [ext_resource type="Script" path="res://UI_Components/Launch/RocketBox.gd" id="15_f8wll"]
 [ext_resource type="Script" path="res://UI_Components/Launch/Launch.gd" id="15_jetlc"]
@@ -40,6 +41,17 @@ func _ready():
 func _process(delta):
 	pass
 "
+
+[sub_resource type="Resource" id="Resource_o1lka"]
+script = ExtResource("13_wy7hd")
+money_per_day = 5.0
+name = "Comms Satellite"
+description = "Can You Hear Me Now"
+research_prereqs = Array[Resource("res://Research/classes/Research_Class.gd")]([])
+money_cost = 60.0
+ore_cost = 5.0
+mass = 5.0
+texture = ExtResource("14_kuxtr")
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -322,7 +334,7 @@ layout_mode = 2
 
 [node name="ModuleOption2" parent="Design/LeftPanel/DesignLeft/ScrollContainer/ModuleContainer" instance=ExtResource("11_8xvpy")]
 layout_mode = 2
-ModuleResource = ExtResource("12_r1i2b")
+ModuleResource = SubResource("Resource_o1lka")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Design"]
 layout_mode = 0
@@ -1034,6 +1046,15 @@ offset_right = 807.0
 offset_bottom = 143.0
 script = ExtResource("6_410x6")
 
+[node name="DataContainer" parent="TopPanel" instance=ExtResource("2_8bt6t")]
+layout_mode = 2
+offset_left = 271.0
+offset_top = 30.0
+offset_right = 485.0
+offset_bottom = 56.0
+resource = "Data"
+identity = "Data"
+
 [node name="Date" type="Label" parent="TopPanel"]
 layout_mode = 0
 offset_right = 146.0
@@ -1048,14 +1069,6 @@ offset_right = 146.0
 offset_bottom = 23.0
 text = "0
 "
-
-[node name="MoneyContainer" parent="TopPanel" instance=ExtResource("2_8bt6t")]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 26.0
-offset_right = 257.0
-offset_bottom = 52.0
-identity = "Money"
 
 [node name="LocalResources" type="Control" parent="TopPanel"]
 anchors_preset = 0
@@ -1091,8 +1104,10 @@ identity = "Volatiles"
 
 [node name="FuelContainer" parent="TopPanel/LocalResources" instance=ExtResource("2_8bt6t")]
 layout_mode = 0
-offset_left = 266.0
-offset_right = 519.0
+offset_left = 268.0
+offset_top = 73.0
+offset_right = 521.0
+offset_bottom = 99.0
 resource = "fuel"
 identity = "Fuel"
 

@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://t7km256q4yfx" path="res://Overview/BuildMenu/cost_container.tscn" id="2_sr4vo"]
 
 [node name="BuildingOption" type="Panel"]
+visible = false
 custom_minimum_size = Vector2(320, 160)
 script = ExtResource("1_fyp0k")
 

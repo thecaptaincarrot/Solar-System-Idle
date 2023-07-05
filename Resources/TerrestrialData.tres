@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="Data" load_steps=2 format=3]
-
-[ext_resource type="Script" path="res://Research/classes/Data_Class.gd" id="1_iy0vw"]
-
-[resource]
-script = ExtResource("1_iy0vw")
-DataType = "DEFAULT"
-DataColor = Color(0, 0, 0, 1)
