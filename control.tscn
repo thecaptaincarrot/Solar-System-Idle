@@ -1,8 +1,8 @@
-[gd_scene load_steps=32 format=3 uid="uid://b5ovmhirrdiod"]
+[gd_scene load_steps=32 format=3 uid="uid://bdfg0iao0cum1"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_tn1u5"]
 [ext_resource type="Texture2D" uid="uid://d1qxs7itsei36" path="res://IDK.png" id="2_0xf61"]
-[ext_resource type="PackedScene" uid="uid://b2hfjngeoxbpw" path="res://UI_Components/Overview/Resource_Holder.tscn" id="2_8bt6t"]
+[ext_resource type="PackedScene" uid="uid://b2hfjngeoxbpw" path="res://UI_Components/Overview/BuildMenu/Resource_Holder.tscn" id="2_8bt6t"]
 [ext_resource type="Script" path="res://Overview.gd" id="2_lugm6"]
 [ext_resource type="Texture2D" uid="uid://c1rj06c18f50s" path="res://Textures/OilWell.png" id="3_c1unq"]
 [ext_resource type="Texture2D" uid="uid://5bctktc516q6" path="res://Textures/mining-icon.png" id="4_g2dio"]

@@ -36,6 +36,10 @@ func get_unlocked():
 	return unlocked
 
 
+func get_cost():
+	return cost
+
+
 func get_bought():
 	return bought
 

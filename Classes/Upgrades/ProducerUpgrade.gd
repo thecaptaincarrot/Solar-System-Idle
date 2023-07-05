@@ -1,7 +1,7 @@
 extends Upgrade
 class_name ProducerUpgrade
 
-@export var building_affected : ProducerBuilding
+@export var buildings_affected : Array[ProducerBuilding]
 
 @export var resources_produced = {
 								"ore": 0,

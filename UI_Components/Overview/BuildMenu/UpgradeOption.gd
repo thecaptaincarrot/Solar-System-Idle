@@ -5,50 +5,38 @@ const COSTCONTAINER = preload("res://UI_Components/Overview/BuildMenu/cost_conta
 #Prereqs
 var unlocked = true
 
-@export var BuildingResource : Building
+@export var UpgradeResource : Upgrade
 
 #Resources
-const BUY_INCREMENTS= [1,5,10,25]
-
-var buy_quantity = 1
-
-signal Build
+signal Buy
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hide()
-	$Title.text = BuildingResource.name
-	$Description.text = BuildingResource.description
+	$Title.text = UpgradeResource.name
+	$Description.text = UpgradeResource.description
 	update_cost()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#Prereqs
-	if BuildingResource.get_unlocked():
+	if UpgradeResource.get_unlocked():
 		unlocked = true
 		show()
 	
+	if UpgradeResource.bought:
+		#Archive?
+		#PRobably don't do this every second
+		hide()
 	
-	#Buy Quantity
-	var quantity_index = 0
-	
-	if Input.is_key_pressed(KEY_SHIFT):
-		quantity_index += 1
-	if Input.is_key_pressed(KEY_CTRL):
-		quantity_index += 2
-	
-	buy_quantity = BUY_INCREMENTS[quantity_index]
-	$BuyButton.text = "Buy " + str(buy_quantity)
-	
-	update_num()
 	update_cost()
 
 
 func update_cost():
 	for N in $AllCosts.get_children():
 		N.queue_free()
-	var costs = BuildingResource.get_cost(buy_quantity)
+	var costs = UpgradeResource.get_cost()
 	
 	for cost in costs.keys():
 		if costs[cost] <= 0: #Skip costs less than 0
@@ -61,11 +49,5 @@ func update_cost():
 	custom_minimum_size.y = 124 + (16 * $AllCosts.get_child_count())
 
 
-func update_num():
-	$HBoxContainer/Number.text = str(BuildingResource.level)
-
-
 func _on_buy_button_pressed():
-	emit_signal("Build", BuildingResource, buy_quantity)
-	
-	update_cost()
+	emit_signal("Buy", UpgradeResource)

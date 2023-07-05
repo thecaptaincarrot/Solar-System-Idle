@@ -14,10 +14,9 @@ func _ready():
 	#tick signal connectiosn
 	$TickTimer.timeout.connect(Callable(PlanetHandler, "_on_tick"))
 	
+	
+	
 	set_planet(PlanetHandler.earth)
-	current_planet.initialize()
-	
-	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

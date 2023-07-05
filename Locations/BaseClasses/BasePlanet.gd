@@ -11,8 +11,8 @@ class_name Planet
 @export var DataMult = 1.0
 var data_pertick = 0
 
-@export var mine : Building
 @export var Buildings : Array[Building] #Ideally this should only be unique buildings for this location
+@export var Upgrades : Array[Upgrade] #Load from folder instead?
 
 var upgrades = [] #this should auto populate with upgrades that are possible for this location
 
@@ -43,6 +43,23 @@ func initialize():
 	for building in Buildings:
 		if building is ProducerBuilding:
 			building.produce_resource.connect(building_production)
+	
+	#Load Upgrades
+	#Fuck this hack TBH
+	var path = "res://Locations/" + Name + "/Upgrades/"
+	var upgrades_dir = DirAccess.open(path)
+	if upgrades_dir:
+		upgrades_dir.list_dir_begin()
+		var filename = upgrades_dir.get_next()
+		while filename != "":
+			if upgrades_dir.current_is_dir():
+				print("Foudn Directory")
+			else:
+				var potential_ugprade = load(path+filename)
+				if potential_ugprade is Upgrade:
+					Upgrades.append(potential_ugprade)
+					print(filename)
+			filename = upgrades_dir.get_next()
 	
 	if is_earth:
 		ore.value = 10
@@ -144,7 +161,6 @@ func tick():
 func build_request(building, quantity):
 	
 	#See if all costs are satisfied
-	var cost_satisfied = false
 	for curve in building.cost_curves:
 		var resource = curve.resource
 		var cost = curve.get_cost(building.level,quantity)
@@ -160,6 +176,30 @@ func build_request(building, quantity):
 	building.build(quantity)
 	return true
 
+
+func upgrade_request(upgrade):
+	for cost_key in upgrade.cost.keys():
+		if get_resource_value(cost_key) < upgrade.cost[cost_key]:
+			return false
+	
+	#pay resources
+	for cost_key in upgrade.cost.keys():
+		var resource = get(cost_key)
+		var value = upgrade.cost[cost_key]
+		resource.spend(value)
+	
+	upgrade.bought = true
+	print("Hello")
+	if upgrade is ProducerUpgrade:
+		print("2")
+		for building in upgrade.buildings_affected:
+			print(building)
+			if building is ProducerBuilding:
+				for resource_key in building.resources_produced.keys():
+					if upgrade.resources_produced.keys().has(resource_key):
+						building.resources_produced[resource_key] += upgrade.resources_produced[resource_key]
+				print(building.resources_produced)
+	return true
 
 func get_pertick(resource):
 	return get(resource + "_pertick")

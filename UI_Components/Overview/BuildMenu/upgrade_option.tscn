@@ -1,0 +1,79 @@
+[gd_scene load_steps=3 format=3 uid="uid://plic27umtc8v"]
+
+[ext_resource type="Script" path="res://UI_Components/Overview/BuildMenu/UpgradeOption.gd" id="1_xlchc"]
+[ext_resource type="PackedScene" path="res://UI_Components/Overview/BuildMenu/cost_container.tscn" id="2_2imcu"]
+
+[node name="UpgradeOption" type="Panel"]
+custom_minimum_size = Vector2(320, 160)
+script = ExtResource("1_xlchc")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 252.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 24
+text = "Lobbying Office"
+
+[node name="BuyButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -95.0
+offset_top = -44.0
+offset_right = -5.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Buy 1"
+
+[node name="Description" type="Label" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 42.0
+offset_right = 278.0
+offset_bottom = 68.0
+text = "Generates Income"
+
+[node name="CostLabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = 4.0
+offset_top = 68.0
+offset_right = 56.0
+offset_bottom = 94.0
+text = "Cost:"
+
+[node name="AllCosts" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 91.0
+offset_right = 100.0
+offset_bottom = 131.0
+
+[node name="CostContainer" parent="AllCosts" instance=ExtResource("2_2imcu")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = -32.0
+offset_right = 86.0
+offset_bottom = -6.0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Current:"
+
+[node name="Number" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[connection signal="pressed" from="BuyButton" to="." method="_on_buy_button_pressed"]

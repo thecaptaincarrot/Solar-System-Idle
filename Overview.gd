@@ -1,6 +1,7 @@
 extends Control
 
 const BUILDOPTION = preload("res://UI_Components/Overview/BuildMenu/building_option.tscn")
+const UPGRADEOPTION = preload("res://UI_Components/Overview/BuildMenu/upgrade_option.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,3 +34,15 @@ func set_planet(new_planet : Planet):
 		new_option.Build.connect(Callable(new_planet,"build_request"))
 		
 		$LeftPanel/Build/ScrollContainer/BuildOptionContainer.add_child(new_option)
+
+	for N in $LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer.get_children():
+		N.queue_free()
+	for upgrade in new_planet.Upgrades:
+		var new_option = UPGRADEOPTION.instantiate()
+		new_option.UpgradeResource = upgrade
+		
+		new_option.Buy.connect(Callable(new_planet,"upgrade_request"))
+		
+		$LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer.add_child(new_option)
+		
+		print(new_option)
