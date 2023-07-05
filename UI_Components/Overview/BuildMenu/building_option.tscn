@@ -1,12 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://wo46jey3kx0s"]
+[gd_scene load_steps=3 format=3 uid="uid://3t063uj4r7ow"]
 
-[ext_resource type="Script" path="res://UI_Components/BuildingOption.gd" id="1_fyp0k"]
-[ext_resource type="PackedScene" uid="uid://t7km256q4yfx" path="res://Overview/BuildMenu/cost_container.tscn" id="2_sr4vo"]
+[ext_resource type="Script" path="res://UI_Components/Overview/BuildingOption.gd" id="1_252bb"]
+[ext_resource type="PackedScene" path="res://UI_Components/Overview/BuildMenu/cost_container.tscn" id="2_1jmet"]
 
 [node name="BuildingOption" type="Panel"]
-visible = false
 custom_minimum_size = Vector2(320, 160)
-script = ExtResource("1_fyp0k")
+script = ExtResource("1_252bb")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
@@ -55,7 +54,7 @@ offset_top = 91.0
 offset_right = 100.0
 offset_bottom = 131.0
 
-[node name="CostContainer" parent="AllCosts" instance=ExtResource("2_sr4vo")]
+[node name="CostContainer" parent="AllCosts" instance=ExtResource("2_1jmet")]
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]

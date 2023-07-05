@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://t7km256q4yfx"]
+[gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://Overview/BuildMenu/cost_container.gd" id="1_wwvqy"]
+[ext_resource type="Script" path="res://UI_Components/Overview/BuildMenu/cost_container.gd" id="1_wwvqy"]
 
 [node name="CostContainer" type="HBoxContainer"]
 script = ExtResource("1_wwvqy")

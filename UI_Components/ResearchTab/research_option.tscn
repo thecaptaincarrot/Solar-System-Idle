@@ -57,6 +57,7 @@ grow_vertical = 0
 text = "Research"
 
 [node name="Complete" type="Label" parent="ResearchButton"]
+visible = false
 layout_mode = 0
 offset_left = 11.0
 offset_top = -28.0

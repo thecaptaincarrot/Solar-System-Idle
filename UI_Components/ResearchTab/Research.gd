@@ -6,6 +6,8 @@ var researching = []
 
 var research_increment = 1.0
 
+var data_per_day = 1
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for N in $ResearchContainer.get_children():
@@ -24,7 +26,7 @@ func _process(delta):
 func tick():
 	pass
 	for handler in researching:
-		handler.tick()
+		handler.tick(data_per_day)
 
 
 func add_topic(new_option):
@@ -38,9 +40,13 @@ func add_topic(new_option):
 
 func remove_topic(option):
 	researching.erase(option)
-	option.dectivate()
+	option.deactivate()
 
 
 func topic_finished(option):
 	researching.erase(option)
-	#send option to archive?s
+	#send option to archive?
+
+
+func _on_h_slider_value_changed(value):
+	data_per_day = value

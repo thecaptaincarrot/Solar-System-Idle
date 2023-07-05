@@ -1,6 +1,6 @@
 extends Panel
 
-const COSTCONTAINER = preload("res://Overview/BuildMenu/cost_container.tscn")
+const COSTCONTAINER = preload("res://UI_Components/Overview/BuildMenu/cost_container.tscn")
 
 #Prereqs
 var unlocked = true

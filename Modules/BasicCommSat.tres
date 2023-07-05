@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="UtilModule" load_steps=3 format=3 uid="uid://h2ny7kaues1m"]
+[gd_resource type="Resource" script_class="UtilModule" load_steps=3 format=3 uid="uid://bp1awklq6ryfk"]
 
-[ext_resource type="Script" path="res://Modules/BaseClasses/UtilityModule.gd" id="1_3j65d"]
+[ext_resource type="Script" path="res://Classes/Modules/UtilityModule.gd" id="1_3j65d"]
 [ext_resource type="Texture2D" uid="uid://t0ytpwn7glsm" path="res://Modules/Textures/CommsSat.png" id="2_cf0nl"]
 
 [resource]
@@ -8,7 +8,7 @@ script = ExtResource("1_3j65d")
 money_per_day = 5.0
 name = "Comms Satellite"
 description = "Can You Hear Me Now"
-research_prereqs = Array[Resource("res://Research/Research_Class.gd")]([])
+research_prereqs = Array[Resource("res://Classes/Research/Research_Class.gd")]([])
 money_cost = 60.0
 ore_cost = 5.0
 mass = 5.0

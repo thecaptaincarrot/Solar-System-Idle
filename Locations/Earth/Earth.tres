@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="Planet" load_steps=7 format=3 uid="uid://chifknvkcj65x"]
+
+[ext_resource type="Resource" uid="uid://bis8k5t12x68y" path="res://Locations/Earth/Buildings/EarthMine.tres" id="1_67nf0"]
+[ext_resource type="Resource" uid="uid://bm3h1gaa1laxy" path="res://Locations/Earth/Buildings/EarthTelescope.tres" id="2_q0df7"]
+[ext_resource type="Resource" path="res://Resources/Data/TerrestrialData.tres" id="3_3h0t8"]
+[ext_resource type="Script" path="res://Classes/Buildings/ProducerBuilding.gd" id="4_eiquo"]
+[ext_resource type="Script" path="res://Locations/BaseClasses/BasePlanet.gd" id="5_7xnag"]
+
+[sub_resource type="Resource" id="Resource_k4hpj"]
+script = ExtResource("4_eiquo")
+resources_produced = {
+"alloy": 0,
+"data": 0,
+"fuel": 0,
+"ore": 0,
+"volatiles": 0
+}
+ResearchPrereqs = Array[Resource("res://Classes/Research/Research_Class.gd")]([])
+BuildingPrereqs = {}
+name = "BUILDINGNAME"
+description = ""
+cost_curves = Array[Resource("res://Classes/Buildings/CostCurve.gd")]([])
+multiplier = 1.0
+exponent_base = 1.0
+base_cost = 1.0
+base_resource_output = 0.0
+
+[resource]
+script = ExtResource("5_7xnag")
+Name = "Earth"
+OrbitalDistance = 152000000
+SurfaceGravity = 9.8
+AtmosphericDensity = 1.293
+data = ExtResource("3_3h0t8")
+DataMult = 1.0
+mine = SubResource("Resource_k4hpj")
+Buildings = Array[Resource("res://Classes/Buildings/BaseBuilding.gd")]([ExtResource("1_67nf0"), ExtResource("2_q0df7")])
+is_earth = true
+can_land = true

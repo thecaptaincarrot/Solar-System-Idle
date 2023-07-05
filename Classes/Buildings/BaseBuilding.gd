@@ -41,10 +41,10 @@ func get_unlocked():
 			return false
 	
 	for building_key in BuildingPrereqs:
-		var number = building_key.get_number()
+		var number = building_key.get_level()
 		if number < BuildingPrereqs[building_key]:
 			return false
-	
+	print(name, " unlcoked")
 	unlocked = true
 	return unlocked
 

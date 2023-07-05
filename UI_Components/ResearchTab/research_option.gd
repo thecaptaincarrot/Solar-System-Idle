@@ -7,10 +7,11 @@ const DATABAR = preload("res://UI_Components/ResearchTab/data_progress_bar.tscn"
 
 var research_overview = null
 
+var active = false
+
 signal AddTopic
 signal RemoveTopic
 signal TopicFinished
-
 
 
 # Called when the node enters the scene tree for the first time.
@@ -44,23 +45,30 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if research_resource.get_researched() and research_resource.get_unlocked():
-		$ResearchButton.disabled = true
-		$Complete.show()
-	
-	
 	if research_resource.get_unlocked():
 		show()
 	else:
 		hide()
 
 
-func tick():
+func tick(data_spend):
 	var costs = research_resource.research_cost
 	var progress = research_resource.research_spent
+	var complete = true
 	for data_type in costs.keys():
-		if data_type.value > 0 and progress[data_type] < costs[data_type]:
-			costs[data_type] += 1
+		if progress[data_type] < costs[data_type]:
+			complete = false
+			if data_type.value >= data_spend:
+				progress[data_type] += data_spend
+				data_type.spend(data_spend)
+			else:
+				progress[data_type] += data_type.value
+				data_type.spend(data_type.value)
+	
+	if complete:
+		print("Complete")
+		complete()
+		emit_signal("TopicFinished",self)
 
 
 func resource_set(new_resource):
@@ -70,5 +78,26 @@ func resource_set(new_resource):
 	$Description.text = research_resource.description
 
 
+func activate():
+	active = true
+	$ResearchButton.text = "Researching"
+
+
+func deactivate():
+	active = false
+	$ResearchButton.text = "Research"
+
+
+func complete():
+	active = false
+	research_resource.research()
+	$ResearchButton/Complete.show()
+	$ResearchButton.disabled = true
+	
+
+
 func _on_research_button_pressed():
-	emit_signal("ResearchSignal", research_resource)
+	if active:
+		emit_signal("RemoveTopic", self)
+	else:
+		emit_signal("AddTopic", self)

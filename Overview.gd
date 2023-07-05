@@ -1,6 +1,6 @@
 extends Control
 
-const BUILDOPTION = preload("res://Overview/BuildMenu/building_option.tscn")
+const BUILDOPTION = preload("res://UI_Components/Overview/BuildMenu/building_option.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

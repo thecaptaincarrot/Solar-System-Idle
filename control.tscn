@@ -1,22 +1,22 @@
-[gd_scene load_steps=31 format=3 uid="uid://bc5x5pgba18m6"]
+[gd_scene load_steps=32 format=3 uid="uid://b5ovmhirrdiod"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_tn1u5"]
 [ext_resource type="Texture2D" uid="uid://d1qxs7itsei36" path="res://IDK.png" id="2_0xf61"]
-[ext_resource type="PackedScene" uid="uid://dl4c3jevdbbvw" path="res://UI_Components/Resource_Holder.tscn" id="2_8bt6t"]
+[ext_resource type="PackedScene" uid="uid://b2hfjngeoxbpw" path="res://UI_Components/Overview/Resource_Holder.tscn" id="2_8bt6t"]
 [ext_resource type="Script" path="res://Overview.gd" id="2_lugm6"]
-[ext_resource type="Script" path="res://Overview/BuildMenu/BuildOptionContainer.gd" id="2_ponxe"]
 [ext_resource type="Texture2D" uid="uid://c1rj06c18f50s" path="res://Textures/OilWell.png" id="3_c1unq"]
 [ext_resource type="Texture2D" uid="uid://5bctktc516q6" path="res://Textures/mining-icon.png" id="4_g2dio"]
 [ext_resource type="Script" path="res://UI_Components/ResearchTab/Research.gd" id="5_co6l7"]
 [ext_resource type="Script" path="res://TopPanel.gd" id="6_410x6"]
+[ext_resource type="Script" path="res://UI_Components/Overview/BuildMenu/BuildOptionContainer.gd" id="6_nhb03"]
 [ext_resource type="Script" path="res://UI_Components/Design/Design.gd" id="7_khrki"]
 [ext_resource type="PackedScene" uid="uid://bii5uov4240q0" path="res://UI_Components/ResearchTab/research_option.tscn" id="8_w6dkj"]
 [ext_resource type="Texture2D" uid="uid://ijtqdxhlm7px" path="res://Textures/LaunchPad.png" id="9_yrlpr"]
-[ext_resource type="Resource" uid="uid://bike58ngxmauh" path="res://Research/NewTopic.tres" id="10_xtgpx"]
+[ext_resource type="Script" path="res://Classes/Research/Research_Class.gd" id="10_voblw"]
 [ext_resource type="PackedScene" uid="uid://cp0gjc18q7ldl" path="res://UI_Components/Design/module_option.tscn" id="11_8xvpy"]
 [ext_resource type="Script" path="res://RocketBuilder.gd" id="12_y3w3r"]
-[ext_resource type="Script" path="res://Modules/BaseClasses/UtilityModule.gd" id="13_wy7hd"]
 [ext_resource type="Script" path="res://UI_Components/Design/ModulesContainer.gd" id="13_xa5wf"]
+[ext_resource type="Script" path="res://Classes/Modules/UtilityModule.gd" id="13_xdrps"]
 [ext_resource type="Texture2D" uid="uid://t0ytpwn7glsm" path="res://Modules/Textures/CommsSat.png" id="14_kuxtr"]
 [ext_resource type="Script" path="res://UI_Components/Design/RightDesignPanel.gd" id="14_onrsj"]
 [ext_resource type="Script" path="res://UI_Components/Launch/RocketBox.gd" id="15_f8wll"]
@@ -26,8 +26,22 @@
 [ext_resource type="Script" path="res://UI_Components/Launch/RightPanel.gd" id="17_0kydw"]
 [ext_resource type="Script" path="res://UI_Components/OrbitalView/OrbitalView.gd" id="18_88sx1"]
 [ext_resource type="Texture2D" uid="uid://dvnnfblnw762r" path="res://Textures/Earf.png" id="18_fnudd"]
-[ext_resource type="Script" path="res://UI_Components/Date.gd" id="26_q7fmr"]
+[ext_resource type="Script" path="res://UI_Components/Overview/Date.gd" id="28_sbl6e"]
 [ext_resource type="Script" path="res://Test/ResearchLeft.gd" id="30_cusqq"]
+
+[sub_resource type="Resource" id="Resource_25lqx"]
+script = ExtResource("10_voblw")
+title = "Just a test"
+description = "Not a good one either"
+temp_research_cost = {
+"OrbitalData": 0.0,
+"TerrestrialData": 100.0
+}
+money_cost = 0.0
+research_prereqs = Array[ExtResource("10_voblw")]([])
+planet_prereqs = Array[Resource("res://Locations/BaseClasses/BasePlanet.gd")]([])
+building_prereqs = {}
+money_prereq = 0.0
 
 [sub_resource type="GDScript" id="GDScript_fthym"]
 script/source = "extends VBoxContainer
@@ -43,11 +57,11 @@ func _process(delta):
 "
 
 [sub_resource type="Resource" id="Resource_o1lka"]
-script = ExtResource("13_wy7hd")
+script = ExtResource("13_xdrps")
 money_per_day = 5.0
 name = "Comms Satellite"
 description = "Can You Hear Me Now"
-research_prereqs = Array[Resource("res://Research/classes/Research_Class.gd")]([])
+research_prereqs = Array[ExtResource("10_voblw")]([])
 money_cost = 60.0
 ore_cost = 5.0
 mass = 5.0
@@ -160,7 +174,7 @@ layout_mode = 2
 
 [node name="BuildOptionContainer" type="VBoxContainer" parent="Overview/LeftPanel/Build/ScrollContainer"]
 layout_mode = 2
-script = ExtResource("2_ponxe")
+script = ExtResource("6_nhb03")
 
 [node name="Upgrade" type="MarginContainer" parent="Overview/LeftPanel"]
 visible = false
@@ -180,7 +194,7 @@ layout_mode = 2
 
 [node name="UpgradeOptionContainer" type="VBoxContainer" parent="Overview/LeftPanel/Upgrade/ScrollContainer"]
 layout_mode = 2
-script = ExtResource("2_ponxe")
+script = ExtResource("6_nhb03")
 
 [node name="BuildButton" type="Button" parent="Overview/LeftPanel"]
 layout_mode = 0
@@ -198,14 +212,6 @@ offset_top = 843.0
 offset_right = 318.0
 offset_bottom = 875.0
 text = "Upgrade"
-
-[node name="UPGRADETEST" type="Button" parent="Overview"]
-layout_mode = 0
-offset_left = 938.0
-offset_top = 478.0
-offset_right = 946.0
-offset_bottom = 486.0
-text = "UPGRADE"
 
 [node name="Research" type="Control" parent="."]
 layout_mode = 1
@@ -251,7 +257,9 @@ text = "Funding:"
 
 [node name="HSlider" type="HSlider" parent="Research/LeftPanel/ResearchLeft/ResearchOptionContainer"]
 layout_mode = 2
+min_value = 1.0
 max_value = 10.0
+value = 1.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Research/LeftPanel/ResearchLeft/ResearchOptionContainer"]
 layout_mode = 2
@@ -289,7 +297,7 @@ columns = 4
 
 [node name="ResearchOption" parent="Research/ResearchContainer" instance=ExtResource("8_w6dkj")]
 layout_mode = 2
-research_resource = ExtResource("10_xtgpx")
+research_resource = SubResource("Resource_25lqx")
 
 [node name="Design" type="Control" parent="."]
 visible = false
@@ -1047,20 +1055,21 @@ offset_bottom = 143.0
 script = ExtResource("6_410x6")
 
 [node name="DataContainer" parent="TopPanel" instance=ExtResource("2_8bt6t")]
+modulate = Color(0.8, 0.380392, 0.121569, 1)
 layout_mode = 2
-offset_left = 271.0
-offset_top = 30.0
-offset_right = 485.0
-offset_bottom = 56.0
+offset_left = 522.0
+offset_top = 26.0
+offset_right = 736.0
+offset_bottom = 52.0
 resource = "Data"
-identity = "Data"
+identity = "Terrestrial Data"
 
 [node name="Date" type="Label" parent="TopPanel"]
 layout_mode = 0
 offset_right = 146.0
 offset_bottom = 23.0
 text = "Date: January 1 1970 00:00"
-script = ExtResource("26_q7fmr")
+script = ExtResource("28_sbl6e")
 
 [node name="NumDays" type="Label" parent="TopPanel"]
 visible = false
@@ -1148,7 +1157,6 @@ autostart = true
 
 [connection signal="pressed" from="Overview/LeftPanel/BuildButton" to="Overview" method="_on_build_button_pressed"]
 [connection signal="pressed" from="Overview/LeftPanel/UpgradeButton" to="Overview" method="_on_upgrade_button_pressed"]
-[connection signal="pressed" from="Overview/UPGRADETEST" to="." method="_on_upgradetest_pressed"]
 [connection signal="value_changed" from="Research/LeftPanel/ResearchLeft/ResearchOptionContainer/HSlider" to="Research" method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="Research/LeftPanel/ResearchLeft/ResearchOptionContainer/HSlider" to="Research/LeftPanel/ResearchLeft" method="_on_h_slider_value_changed"]
 [connection signal="RocketChanged" from="Design/ScrollContainer/RocketContainer/RocketBuilder" to="Design/RightPanel" method="_on_rocket_builder_rocket_changed"]

@@ -9,6 +9,7 @@ class_name Planet
 
 @export var data : Data
 @export var DataMult = 1.0
+var data_pertick = 0
 
 @export var mine : Building
 @export var Buildings : Array[Building] #Ideally this should only be unique buildings for this location
@@ -64,6 +65,7 @@ func tick():
 	alloy_pertick = 0.0
 	volatiles_pertick = 0.0
 	fuel_pertick = 0.0
+	data_pertick = 0.0
 	
 	var converters = []
 	for building in Buildings:

@@ -18,6 +18,11 @@ func _process(delta):
 			container.set_value(current_planet.get_resource_value(resource))
 			
 			container.set_pertick(current_planet.get_pertick(resource))
-	var money_pertick = 0.0
+	
 	
 	$DataContainer.set_value(data.get_value())
+	#Get Data Per Tick
+	var data_per_tick = 0.0
+	for planet in PlanetHandler.planets:
+		data_per_tick += planet.get_pertick("data")
+	$DataContainer.set_pertick(data_per_tick)

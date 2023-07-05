@@ -1,12 +1,12 @@
 [gd_scene load_steps=2 format=3 uid="uid://b2hfjngeoxbpw"]
 
-[ext_resource type="Script" path="res://UI_Components/ResearchTab/Resource_Holder.gd" id="1_vrpkd"]
+[ext_resource type="Script" path="res://UI_Components/Overview/Resource_Holder.gd" id="1_1hknb"]
 
 [node name="ResourceContainer" type="HBoxContainer"]
 offset_top = 24.0
 offset_right = 181.0
 offset_bottom = 50.0
-script = ExtResource("1_vrpkd")
+script = ExtResource("1_1hknb")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
