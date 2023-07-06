@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ProducerUpgrade" load_steps=3 format=3 uid="uid://bblq4epcxv514"]
+
+[ext_resource type="Resource" uid="uid://bis8k5t12x68y" path="res://Locations/Earth/Buildings/EarthMine.tres" id="1_gvrw0"]
+[ext_resource type="Script" path="res://Classes/Upgrades/ProducerUpgrade.gd" id="2_ohh5a"]
+
+[resource]
+script = ExtResource("2_ohh5a")
+buildings_affected = Array[Resource("res://Classes/Buildings/ProducerBuilding.gd")]([ExtResource("1_gvrw0")])
+resources_produced = {
+"alloy": 0,
+"data": 0,
+"fuel": 0,
+"ore": 1,
+"volatiles": 0
+}
+name = "Upgrade Mine"
+description = "Makes each mine produce 1 more ore"
+ResearchPrereqs = Array[Resource("res://Classes/Research/Research_Class.gd")]([])
+BuildingPrereqs = {
+ExtResource("1_gvrw0"): 10
+}
+cost = {
+"alloy": 0,
+"fuel": 0,
+"ore": 250,
+"volatiles": 0
+}

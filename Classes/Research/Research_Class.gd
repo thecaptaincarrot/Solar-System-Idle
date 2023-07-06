@@ -17,15 +17,10 @@ var OrbitalData : Data = preload("res://Resources/Data/OrbitalData.tres")
 var research_cost = {}
 var research_spent = {}
 
-var current_research = 0.0
-
-@export var money_cost = 0.0
-
 @export_category("Prerequisites")
 @export var research_prereqs : Array[ResearchTopic] = [] #Array of Resources that must be unlocked to show this one
 @export var planet_prereqs : Array[Planet] = []
 @export var building_prereqs = {}
-@export var money_prereq = 0.0 #Amount of money that must be acquired before this unlocks for research
 
 var researched = false
 var unlocked = false

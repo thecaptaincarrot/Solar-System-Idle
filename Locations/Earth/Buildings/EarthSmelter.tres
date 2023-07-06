@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="ConverterBuilding" load_steps=5 format=3 uid="uid://cx4opfbpccbtc"]
+
+[ext_resource type="Script" path="res://Classes/Buildings/ConverterBuilding.gd" id="1_2kol2"]
+[ext_resource type="Resource" uid="uid://diw0how8kul1y" path="res://Locations/Earth/Research/EarthSmeltersResearch.tres" id="1_up1cl"]
+[ext_resource type="Script" path="res://Classes/Buildings/CostCurve.gd" id="2_fdud2"]
+
+[sub_resource type="Resource" id="Resource_7svp2"]
+script = ExtResource("2_fdud2")
+CurveForm = 1
+resource = "ore"
+term1 = 100.0
+x_offset = 0.0
+y_offset = 100.0
+
+[resource]
+script = ExtResource("1_2kol2")
+input_resources = {
+"alloy": 0,
+"fuel": 0,
+"ore": 10,
+"volatiles": 0
+}
+output_resources = {
+"alloy": 1,
+"fuel": 0,
+"ore": 0,
+"volatiles": 0
+}
+ResearchPrereqs = Array[Resource("res://Classes/Research/Research_Class.gd")]([ExtResource("1_up1cl")])
+BuildingPrereqs = {}
+name = "Smelter"
+description = "Turns Ore into Alloys very slowly"
+cost_curves = Array[ExtResource("2_fdud2")]([SubResource("Resource_7svp2")])
+multiplier = 1.0
+exponent_base = 1.0
+base_cost = 1.0
+base_resource_output = 0.0

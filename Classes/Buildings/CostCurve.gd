@@ -5,6 +5,7 @@ class_name CostCurve
 @export_enum("ore","alloy","volatiles","fuel") var resource : String
 
 @export var term1 = 1.0
+@export var term2 = 0.0
 
 @export var x_offset = 0.0
 @export var y_offset = 100.0
@@ -21,8 +22,8 @@ func get_cost(starting_value, amount):
 			2: #Geometric
 				value += pow(i,term1) + y_offset
 			3: #Exponential
-				value += pow(term1,i) + y_offset
+				value += term2*pow(term1,i) + y_offset
 			4: #logarithmic
 				value += 0 #TO DO???
-	return value
+	return round(value)
 	

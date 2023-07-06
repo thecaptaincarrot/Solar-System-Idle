@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="ProducerBuilding" load_steps=5 format=3 uid="uid://bm3h1gaa1laxy"]
+[gd_resource type="Resource" script_class="ProducerBuilding" load_steps=6 format=3 uid="uid://bm3h1gaa1laxy"]
 
+[ext_resource type="Resource" uid="uid://bis8k5t12x68y" path="res://Locations/Earth/Buildings/EarthMine.tres" id="1_f8c36"]
 [ext_resource type="Script" path="res://Classes/Buildings/CostCurve.gd" id="1_v5f84"]
 [ext_resource type="Script" path="res://Classes/Buildings/ProducerBuilding.gd" id="2_l0s1g"]
 
@@ -8,6 +9,7 @@ script = ExtResource("1_v5f84")
 CurveForm = 1
 resource = "ore"
 term1 = 10.0
+term2 = 0.0
 x_offset = 0.0
 y_offset = 10.0
 
@@ -16,6 +18,7 @@ script = ExtResource("1_v5f84")
 CurveForm = 1
 resource = "alloy"
 term1 = 50.0
+term2 = 0.0
 x_offset = 0.0
 y_offset = -250.0
 
@@ -29,7 +32,9 @@ resources_produced = {
 "volatiles": 0
 }
 ResearchPrereqs = Array[Resource("res://Classes/Research/Research_Class.gd")]([])
-BuildingPrereqs = {}
+BuildingPrereqs = {
+ExtResource("1_f8c36"): 15
+}
 name = "Telescope"
 description = "Produces Terrestrial Data"
 cost_curves = Array[ExtResource("1_v5f84")]([SubResource("Resource_sl4l7"), SubResource("Resource_8xi24")])
