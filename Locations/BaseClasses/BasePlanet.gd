@@ -13,6 +13,7 @@ var data_pertick = 0
 
 @export var Buildings : Array[Building] #Ideally this should only be unique buildings for this location
 @export var Upgrades : Array[Upgrade] #Load from folder instead?
+var 
 
 var upgrades = [] #this should auto populate with upgrades that are possible for this location
 
@@ -44,10 +45,32 @@ func initialize():
 		if building is ProducerBuilding:
 			building.produce_resource.connect(building_production)
 	
+	
 	#Load Upgrades
 	#Fuck this hack TBH
 	var path = "res://Locations/" + Name + "/Upgrades/"
 	var upgrades_dir = DirAccess.open(path)
+	if upgrades_dir:
+		upgrades_dir.list_dir_begin()
+		var filename = upgrades_dir.get_next()
+		while filename != "":
+			if upgrades_dir.current_is_dir():
+				print("Foudn Directory")
+			else:
+				var potential_ugprade = load(path+filename)
+				if potential_ugprade is Upgrade:
+					Upgrades.append(potential_ugprade)
+					print(filename)
+			filename = upgrades_dir.get_next()
+	
+	#Load Buildings
+	#I am going to have a stroke
+	
+	
+	#Load Research
+	#seriously, fuck this
+	path = "res://Locations/" + Name + "/Research/"
+	var research_dir = DirAccess.open(path)
 	if upgrades_dir:
 		upgrades_dir.list_dir_begin()
 		var filename = upgrades_dir.get_next()
