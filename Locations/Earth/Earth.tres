@@ -1,9 +1,6 @@
-[gd_resource type="Resource" script_class="Planet" load_steps=6 format=3 uid="uid://chifknvkcj65x"]
+[gd_resource type="Resource" script_class="Planet" load_steps=3 format=3 uid="uid://chifknvkcj65x"]
 
-[ext_resource type="Resource" uid="uid://bis8k5t12x68y" path="res://Locations/Earth/Buildings/EarthMine.tres" id="1_67nf0"]
-[ext_resource type="Resource" uid="uid://bm3h1gaa1laxy" path="res://Locations/Earth/Buildings/EarthTelescope.tres" id="2_q0df7"]
 [ext_resource type="Resource" path="res://Resources/Data/TerrestrialData.tres" id="3_3h0t8"]
-[ext_resource type="Resource" uid="uid://cx4opfbpccbtc" path="res://Locations/Earth/Buildings/EarthSmelter.tres" id="3_fot5r"]
 [ext_resource type="Script" path="res://Locations/BaseClasses/BasePlanet.gd" id="5_7xnag"]
 
 [resource]
@@ -14,7 +11,5 @@ SurfaceGravity = 9.8
 AtmosphericDensity = 1.293
 data = ExtResource("3_3h0t8")
 DataMult = 1.0
-Buildings = Array[Resource("res://Classes/Buildings/BaseBuilding.gd")]([ExtResource("1_67nf0"), ExtResource("2_q0df7"), ExtResource("3_fot5r")])
-Upgrades = Array[Resource("res://Classes/Upgrades/UpgradeClass.gd")]([])
 is_earth = true
 can_land = true

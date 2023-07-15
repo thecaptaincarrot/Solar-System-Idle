@@ -11,9 +11,9 @@ class_name Planet
 @export var DataMult = 1.0
 var data_pertick = 0
 
-@export var Buildings : Array[Building] #Ideally this should only be unique buildings for this location
-@export var Upgrades : Array[Upgrade] #Load from folder instead?
-var 
+var Buildings = [] #Ideally this should only be unique buildings for this location
+var Upgrades = [] #Load from folder instead?
+var Research = [] #is it better to track this here?
 
 var upgrades = [] #this should auto populate with upgrades that are possible for this location
 
@@ -41,11 +41,6 @@ var ships_here
 @export var can_land = true
 
 func initialize():
-	for building in Buildings:
-		if building is ProducerBuilding:
-			building.produce_resource.connect(building_production)
-	
-	
 	#Load Upgrades
 	#Fuck this hack TBH
 	var path = "res://Locations/" + Name + "/Upgrades/"
@@ -65,24 +60,42 @@ func initialize():
 	
 	#Load Buildings
 	#I am going to have a stroke
-	
+	path = "res://Locations/" + Name + "/Buildings/"
+	var buildings_dir = DirAccess.open(path)
+	if buildings_dir:
+		buildings_dir.list_dir_begin()
+		var filename = buildings_dir.get_next()
+		while filename != "":
+			if buildings_dir.current_is_dir():
+				print("Foudn Directory")
+			else:
+				var potential_building = load(path+filename)
+				if potential_building is Building:
+					Buildings.append(potential_building)
+					print(filename)
+			filename = buildings_dir.get_next()
 	
 	#Load Research
 	#seriously, fuck this
 	path = "res://Locations/" + Name + "/Research/"
 	var research_dir = DirAccess.open(path)
-	if upgrades_dir:
-		upgrades_dir.list_dir_begin()
-		var filename = upgrades_dir.get_next()
+	if research_dir:
+		research_dir.list_dir_begin()
+		var filename = research_dir.get_next()
 		while filename != "":
-			if upgrades_dir.current_is_dir():
+			if research_dir.current_is_dir():
 				print("Foudn Directory")
 			else:
-				var potential_ugprade = load(path+filename)
-				if potential_ugprade is Upgrade:
-					Upgrades.append(potential_ugprade)
+				var potential_research = load(path+filename)
+				if potential_research is ResearchTopic:
+					Research.append(potential_research)
 					print(filename)
-			filename = upgrades_dir.get_next()
+			filename = research_dir.get_next()
+	
+	for building in Buildings:
+		if building is ProducerBuilding:
+			building.produce_resource.connect(building_production)
+	
 	
 	if is_earth:
 		ore.value = 10
@@ -223,6 +236,11 @@ func upgrade_request(upgrade):
 						building.resources_produced[resource_key] += upgrade.resources_produced[resource_key]
 				print(building.resources_produced)
 	return true
+
+
+func get_research():
+	return Research
+
 
 func get_pertick(resource):
 	return get(resource + "_pertick")

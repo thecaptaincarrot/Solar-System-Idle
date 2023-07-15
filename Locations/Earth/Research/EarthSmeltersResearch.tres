@@ -10,6 +10,6 @@ temp_research_cost = {
 "OrbitalData": 0.0,
 "TerrestrialData": 250.0
 }
-research_prereqs = Array[ExtResource("1_cry57")]([])
-planet_prereqs = Array[Resource("res://Locations/BaseClasses/BasePlanet.gd")]([])
+research_prereqs = []
+planet_prereqs = []
 building_prereqs = {}
