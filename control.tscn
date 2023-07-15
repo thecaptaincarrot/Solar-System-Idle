@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bdfg0iao0cum1"]
+[gd_scene load_steps=29 format=3 uid="uid://bdfg0iao0cum1"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_tn1u5"]
 [ext_resource type="Texture2D" uid="uid://d1qxs7itsei36" path="res://IDK.png" id="2_0xf61"]
@@ -10,9 +10,7 @@
 [ext_resource type="Script" path="res://TopPanel.gd" id="6_410x6"]
 [ext_resource type="Script" path="res://UI_Components/Overview/BuildMenu/BuildOptionContainer.gd" id="6_nhb03"]
 [ext_resource type="Script" path="res://UI_Components/Design/Design.gd" id="7_khrki"]
-[ext_resource type="PackedScene" uid="uid://bii5uov4240q0" path="res://UI_Components/ResearchTab/research_option.tscn" id="8_w6dkj"]
 [ext_resource type="Texture2D" uid="uid://ijtqdxhlm7px" path="res://Textures/LaunchPad.png" id="9_yrlpr"]
-[ext_resource type="Resource" uid="uid://diw0how8kul1y" path="res://Locations/Earth/Research/EarthSmeltersResearch.tres" id="10_yvpf7"]
 [ext_resource type="PackedScene" uid="uid://cp0gjc18q7ldl" path="res://UI_Components/Design/module_option.tscn" id="11_8xvpy"]
 [ext_resource type="Script" path="res://RocketBuilder.gd" id="12_y3w3r"]
 [ext_resource type="Script" path="res://UI_Components/Design/ModulesContainer.gd" id="13_xa5wf"]
@@ -280,10 +278,6 @@ offset_top = 199.0
 offset_right = 1664.0
 offset_bottom = 359.0
 columns = 4
-
-[node name="ResearchOption2" parent="Research/ResearchContainer" instance=ExtResource("8_w6dkj")]
-layout_mode = 2
-research_resource = ExtResource("10_yvpf7")
 
 [node name="Design" type="Control" parent="."]
 visible = false

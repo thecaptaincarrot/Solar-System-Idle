@@ -29,7 +29,9 @@ func _ready():
 					print(filename)
 			filename = research_dir.get_next()
 	#Get topics from Planets
-	
+	for planet in PlanetHandler.get_planets():
+		for topic in planet.get_research():
+			research_topics.append(topic)
 	
 	
 	for topic in research_topics:

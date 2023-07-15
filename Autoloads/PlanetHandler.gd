@@ -12,3 +12,6 @@ func _ready():
 func _on_tick():
 	for planet in planets:
 		planet.tick()
+
+func get_planets():
+	return planets
