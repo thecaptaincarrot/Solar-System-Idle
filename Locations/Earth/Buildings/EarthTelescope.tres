@@ -29,7 +29,7 @@ resources_produced = {
 "data": 1,
 "fuel": 0,
 "ore": 0,
-"volatiles": 0
+"hydrocarbons": 0
 }
 ResearchPrereqs = Array[Resource("res://Classes/Research/Research_Class.gd")]([])
 BuildingPrereqs = {

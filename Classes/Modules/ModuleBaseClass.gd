@@ -6,9 +6,15 @@ class_name BaseModule
 
 @export var research_prereqs : Array[ResearchTopic]
 
-@export var money_cost = 0.0
-@export var ore_cost = 0.0
+@export var costs = {
+					"ore" : 0,
+					"alloy" : 0,
+					"hydrocarbons" : 0,
+					"fuel" : 0,
+					"electronics" : 0
+				}
 
 @export var mass = 0.0 #kg
+@export var aux_slots = 0
 
 @export var texture : Texture2D

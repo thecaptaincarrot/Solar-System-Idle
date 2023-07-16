@@ -14,8 +14,6 @@ func _ready():
 	#tick signal connectiosn
 	$TickTimer.timeout.connect(Callable(PlanetHandler, "_on_tick"))
 	
-	
-	
 	set_planet(PlanetHandler.earth)
 
 

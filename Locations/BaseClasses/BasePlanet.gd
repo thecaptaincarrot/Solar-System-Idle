@@ -27,14 +27,20 @@ var ore = LocalResource.new()
 var ore_pertick = 0.0
 var alloy = LocalResource.new()
 var alloy_pertick = 0.0
-var volatiles = LocalResource.new()
-var volatiles_pertick = 0.0
+var hydrocarbons = LocalResource.new()
+var hydrocarbons_pertick = 0.0
 var fuel = LocalResource.new()
 var fuel_pertick = 0.0
+var electronics  = LocalResource.new()
+var electronics_pertick = 0.0
 
 var ships_here
 
 #Life Support Placeholder
+var population = 0
+
+var power = 0
+var power_used = 0
 
 #booleans
 @export var is_earth = false #Should determine which base buildings are available
@@ -71,6 +77,7 @@ func initialize():
 			else:
 				var potential_building = load(path+filename)
 				if potential_building is Building:
+					potential_building.initialize()
 					Buildings.append(potential_building)
 					print(filename)
 			filename = buildings_dir.get_next()
@@ -116,7 +123,7 @@ func add_pertick(resource_key, value):
 func tick():
 	ore_pertick = 0.0
 	alloy_pertick = 0.0
-	volatiles_pertick = 0.0
+	hydrocarbons_pertick = 0.0
 	fuel_pertick = 0.0
 	data_pertick = 0.0
 	
@@ -137,9 +144,9 @@ func tick():
 	for converter in converters:
 		for resource_key in converter.input_resources.keys():
 			if !coverted_resource.keys().has(resource_key):
-				coverted_resource[resource_key] = converter.input_resources[resource_key] * converter.level
+				coverted_resource[resource_key] = converter.input_resources[resource_key] * converter.active_number
 			else:
-				coverted_resource[resource_key] += converter.input_resources[resource_key] * converter.level
+				coverted_resource[resource_key] += converter.input_resources[resource_key] * converter.active_number
 	
 	var contrained_resources = []
 	var constrained_converters = []
@@ -156,14 +163,14 @@ func tick():
 		if !constrained_converters.has(converter):
 			for key in converter.input_resources:
 				if !used_resources.keys().has(key):
-					used_resources[key] = converter.input_resources[key] * converter.get_level()
+					used_resources[key] = converter.input_resources[key] * converter.active_number
 				else:
-					used_resources[key] += converter.input_resources[key] * converter.get_level()
-				get(key).spend(converter.input_resources[key] * converter.get_level())
+					used_resources[key] += converter.input_resources[key] * converter.active_number
+				get(key).spend(converter.input_resources[key] * converter.active_number)
 				
-				add_pertick(key, -converter.input_resources[key] * converter.get_level())
+				add_pertick(key, -converter.input_resources[key] * converter.active_number)
 			for key in converter.output_resources:
-				building_production(key, converter.output_resources[key] * converter.get_level())
+				building_production(key, converter.output_resources[key] * converter.active_number)
 	
 	#Activate constrained converters
 	var allowed_converters = {}
@@ -179,7 +186,7 @@ func tick():
 					used_resources[key] = 0
 				if  get_resource_value(key) < converter.input_resources[key] + used_resources[key]:
 					can_add = false
-			if can_add and allowed_converters[converter] < converter.get_level():
+			if can_add and allowed_converters[converter] < converter.active_number:
 				allowed_converters[converter] += 1
 				activating_converters = true
 				for key in converter.input_resources.keys():
@@ -235,6 +242,19 @@ func upgrade_request(upgrade):
 					if upgrade.resources_produced.keys().has(resource_key):
 						building.resources_produced[resource_key] += upgrade.resources_produced[resource_key]
 				print(building.resources_produced)
+		
+	elif upgrade is ConverterUpgrade:
+		print("2")
+		for building in upgrade.buildings_affected:
+			print(building)
+			if building is ConverterBuilding:
+				for resource_key in building.input_resources.keys():
+					if upgrade.input_resources.keys().has(resource_key):
+						building.input_resources[resource_key] += upgrade.input_resources[resource_key]
+				for resource_key in building.output_resources.keys():
+					if upgrade.output_resources.keys().has(resource_key):
+						building.output_resources[resource_key] += upgrade.output_resources[resource_key]
+
 	return true
 
 

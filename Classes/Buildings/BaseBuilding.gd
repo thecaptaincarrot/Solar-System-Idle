@@ -25,8 +25,10 @@ var resourrce_output_adder = 0.0
 
 var cost_multiplier = 1.0
 
-func _ready():
-	get_unlocked()
+signal OnBuild
+
+func initialize():
+	OnBuild.connect(on_build)
 
 
 func on_tick():
@@ -71,6 +73,11 @@ func get_cost_curves():
 
 func build(multiplier):
 	level += multiplier
+	emit_signal("OnBuild")
+
+
+func on_build():
+	pass
 
 
 func upgrade(upgrade_dict):

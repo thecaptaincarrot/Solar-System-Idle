@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ConverterUpgrade" load_steps=3 format=3 uid="uid://llbxykh1ctyw"]
+
+[ext_resource type="Script" path="res://Classes/Upgrades/ConverterUpgrade.gd" id="1_nvfre"]
+[ext_resource type="Resource" uid="uid://cx4opfbpccbtc" path="res://Locations/Earth/Buildings/EarthSmelter.tres" id="1_r2mtv"]
+
+[resource]
+script = ExtResource("1_nvfre")
+buildings_affected = Array[Resource("res://Classes/Buildings/ConverterBuilding.gd")]([ExtResource("1_r2mtv")])
+input_resources = {
+"alloy": 0,
+"electronics": 0,
+"fuel": 0,
+"hydrocarbons": 0,
+"ore": -2
+}
+output_resources = {
+"alloy": 0,
+"electronics": 0,
+"fuel": 0,
+"hydrocarbons": 0,
+"ore": 0
+}
+name = "Slag Recycling"
+description = "Each Alloy requires 8 ore instead of 10"
+ResearchPrereqs = Array[Resource("res://Classes/Research/Research_Class.gd")]([])
+BuildingPrereqs = {
+ExtResource("1_r2mtv"): 1
+}
+cost = {
+"alloy": 0,
+"fuel": 0,
+"hydrocarbons": 0,
+"ore": 0
+}

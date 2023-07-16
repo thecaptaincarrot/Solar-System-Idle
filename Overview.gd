@@ -2,6 +2,7 @@ extends Control
 
 const BUILDOPTION = preload("res://UI_Components/Overview/BuildMenu/building_option.tscn")
 const UPGRADEOPTION = preload("res://UI_Components/Overview/BuildMenu/upgrade_option.tscn")
+const CONVERTERSLIDER = preload("res://UI_Components/Overview/converter_slider.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -37,6 +38,7 @@ func set_planet(new_planet : Planet):
 
 	for N in $LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer.get_children():
 		N.queue_free()
+	
 	for upgrade in new_planet.Upgrades:
 		var new_option = UPGRADEOPTION.instantiate()
 		new_option.UpgradeResource = upgrade
@@ -44,5 +46,18 @@ func set_planet(new_planet : Planet):
 		new_option.Buy.connect(Callable(new_planet,"upgrade_request"))
 		
 		$LeftPanel/Upgrade/ScrollContainer/UpgradeOptionContainer.add_child(new_option)
-		
-		print(new_option)
+	
+	#Right Panel
+	#Set number of active converter buildings
+	#For each converter building, initialize a new bar
+	for N in $RightPanel/MarginContainer/ConverterContainer.get_children():
+		N.queue_free()
+	
+	for building in new_planet.Buildings:
+		if building is ConverterBuilding:
+			var new_slider = CONVERTERSLIDER.instantiate()
+			new_slider.connected_building = building
+			building.OnBuild.connect(new_slider.on_build)
+			
+			$RightPanel/MarginContainer/ConverterContainer.add_child(new_slider)
+

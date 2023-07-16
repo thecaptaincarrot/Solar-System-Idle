@@ -9,6 +9,7 @@ script = ExtResource("2_fdud2")
 CurveForm = 1
 resource = "ore"
 term1 = 100.0
+term2 = 0.0
 x_offset = 0.0
 y_offset = 100.0
 
@@ -17,14 +18,14 @@ script = ExtResource("1_2kol2")
 input_resources = {
 "alloy": 0,
 "fuel": 0,
-"ore": 10,
-"volatiles": 0
+"hydrocarbons": 0,
+"ore": 10
 }
 output_resources = {
 "alloy": 1,
 "fuel": 0,
-"ore": 0,
-"volatiles": 0
+"hydrocarbons": 0,
+"ore": 0
 }
 ResearchPrereqs = Array[Resource("res://Classes/Research/Research_Class.gd")]([ExtResource("1_up1cl")])
 BuildingPrereqs = {}

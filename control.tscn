@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://cp0gjc18q7ldl" path="res://UI_Components/Design/module_option.tscn" id="11_8xvpy"]
 [ext_resource type="Script" path="res://RocketBuilder.gd" id="12_y3w3r"]
 [ext_resource type="Script" path="res://UI_Components/Design/ModulesContainer.gd" id="13_xa5wf"]
-[ext_resource type="Script" path="res://Classes/Modules/UtilityModule.gd" id="13_xdrps"]
 [ext_resource type="Texture2D" uid="uid://t0ytpwn7glsm" path="res://Modules/Textures/CommsSat.png" id="14_kuxtr"]
 [ext_resource type="Script" path="res://UI_Components/Design/RightDesignPanel.gd" id="14_onrsj"]
 [ext_resource type="Script" path="res://UI_Components/Launch/RocketBox.gd" id="15_f8wll"]
@@ -40,8 +39,15 @@ func _process(delta):
 	pass
 "
 
+[sub_resource type="GDScript" id="GDScript_8da76"]
+script/source = "extends BaseModule
+class_name UtilModule
+
+@export var money_per_day = 0.0
+"
+
 [sub_resource type="Resource" id="Resource_o1lka"]
-script = ExtResource("13_xdrps")
+script = SubResource("GDScript_8da76")
 money_per_day = 5.0
 name = "Comms Satellite"
 description = "Can You Hear Me Now"
@@ -195,6 +201,32 @@ offset_top = 843.0
 offset_right = 318.0
 offset_bottom = 875.0
 text = "Upgrade"
+
+[node name="RightPanel" type="Panel" parent="Overview"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -325.0
+offset_top = -926.0
+offset_right = -13.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Overview/RightPanel"]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ConverterContainer" type="VBoxContainer" parent="Overview/RightPanel/MarginContainer"]
+layout_mode = 2
 
 [node name="Research" type="Control" parent="."]
 visible = false
@@ -1033,6 +1065,8 @@ offset_top = 8.0
 offset_right = 807.0
 offset_bottom = 143.0
 script = ExtResource("6_410x6")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="DataContainer" parent="TopPanel" instance=ExtResource("2_8bt6t")]
 modulate = Color(0.8, 0.380392, 0.121569, 1)
@@ -1063,6 +1097,7 @@ text = "0
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_lock_ = true
 
 [node name="OreContainer" parent="TopPanel/LocalResources" instance=ExtResource("2_8bt6t")]
 layout_mode = 0
@@ -1082,21 +1117,30 @@ offset_bottom = 104.0
 resource = "alloy"
 identity = "Alloy"
 
-[node name="VolatilesContainer" parent="TopPanel/LocalResources" instance=ExtResource("2_8bt6t")]
+[node name="HydrocarbonsContainer" parent="TopPanel/LocalResources" instance=ExtResource("2_8bt6t")]
 layout_mode = 0
 offset_left = 269.0
 offset_top = 52.0
 offset_right = 522.0
 offset_bottom = 78.0
-resource = "volatiles"
-identity = "Volatiles"
+resource = "hydrocarbons"
+identity = "Hydrocarbons"
 
-[node name="FuelContainer" parent="TopPanel/LocalResources" instance=ExtResource("2_8bt6t")]
+[node name="Electronics Container" parent="TopPanel/LocalResources" instance=ExtResource("2_8bt6t")]
 layout_mode = 0
 offset_left = 268.0
 offset_top = 73.0
 offset_right = 521.0
 offset_bottom = 99.0
+resource = "electronics"
+identity = "Electronics"
+
+[node name="FuelContainer" parent="TopPanel/LocalResources" instance=ExtResource("2_8bt6t")]
+layout_mode = 0
+offset_left = 269.0
+offset_top = 99.0
+offset_right = 522.0
+offset_bottom = 125.0
 resource = "fuel"
 identity = "Fuel"
 
@@ -1133,6 +1177,7 @@ layout_mode = 2
 text = "Orbital"
 
 [node name="TickTimer" type="Timer" parent="."]
+wait_time = 0.1
 autostart = true
 
 [connection signal="pressed" from="Overview/LeftPanel/BuildButton" to="Overview" method="_on_build_button_pressed"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhgnhji30h7cc"]
+
+[ext_resource type="Script" path="res://UI_Components/Overview/ConverterSlider.gd" id="1_2wxn7"]
+
+[node name="ConverterSlider" type="PanelContainer"]
+script = ExtResource("1_2wxn7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "CONVERTER NAME
+"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Number" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "99"
+
+[connection signal="value_changed" from="VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]

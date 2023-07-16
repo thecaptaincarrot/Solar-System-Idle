@@ -41,26 +41,16 @@ func get_ore_cost():
 
 func get_thrust():
 	var sum = 0.0
-	for module in modules:
-		if module is ThrustModule:
-			sum += module.thrust
-	
+
 	return sum
 
 
 func get_fuel_consumption():
 	var sum = 0.0
-	for module in modules:
-		if module is ThrustModule:
-			sum += module.fuel_consumption
-	
 	return sum
 
 
 func get_money_per_day():
 	var sum = 0.0
-	for module in modules:
-		if module is UtilModule:
-			sum += module.money_per_day
-	
+
 	return sum

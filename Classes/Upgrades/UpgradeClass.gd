@@ -11,7 +11,7 @@ class_name Upgrade
 
 @export var cost = {"ore" : 0,
 					"alloy" : 0,
-					"volatiles" : 0,
+					"hydrocarbons" : 0,
 					"fuel" : 0,
 					
 					}

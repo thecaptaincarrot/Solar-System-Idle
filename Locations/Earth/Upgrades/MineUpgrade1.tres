@@ -11,7 +11,7 @@ resources_produced = {
 "data": 0,
 "fuel": 0,
 "ore": 1,
-"volatiles": 0
+"hydrocarbons": 0
 }
 name = "Upgrade Mine"
 description = "Makes each mine produce 1 more ore"
@@ -23,5 +23,5 @@ cost = {
 "alloy": 0,
 "fuel": 0,
 "ore": 250,
-"volatiles": 0
+"hydrocarbons": 0
 }
