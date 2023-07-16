@@ -22,10 +22,6 @@ func _on_rocket_builder_rocket_changed(modules_list):
 	
 	for module in modules_list:
 		total_mass += module.mass
-		if module is ThrustModule:
-			total_thrust += module.thrust
-		if module is UtilModule:
-			total_mpd += module.money_per_day #Money per day
 		total_money_cost += module.money_cost #money
 		total_ore_cost += module.ore_cost
 	

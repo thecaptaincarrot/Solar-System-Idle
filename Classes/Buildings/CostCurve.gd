@@ -20,10 +20,10 @@ func get_cost(starting_value, amount):
 			1:#Linear
 				value += term1*(i - x_offset) + y_offset
 			2: #Geometric
-				value += pow(i,term1) + y_offset
+				value += pow(i - x_offset,term1) + y_offset
 			3: #Exponential
-				value += term2*pow(term1,i) + y_offset
+				value += term2*pow(term1,i - x_offset) + y_offset
 			4: #logarithmic
 				value += 0 #TO DO???
 	return round(value)
-	
+

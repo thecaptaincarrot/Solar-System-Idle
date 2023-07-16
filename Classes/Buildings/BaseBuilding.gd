@@ -2,6 +2,8 @@
 extends Resource
 class_name Building
 
+@export var name = "BUILDINGNAME"
+@export_multiline var description : String
 
 var level = 0 #number of buildings built
 var unlocked = false
@@ -9,19 +11,9 @@ var unlocked = false
 @export var ResearchPrereqs : Array[ResearchTopic]
 @export var BuildingPrereqs : Dictionary #Building Class : int number needed to unlock
 
-@export var name = "BUILDINGNAME"
-@export_multiline var description : String
 
 #Placeholder for cost curves
 @export var cost_curves : Array[CostCurve]
-
-@export var multiplier = 1.0
-@export var exponent_base = 1.0
-@export var base_cost = 1.0
-
-@export var base_resource_output = 0.0
-var resource_output_multiplier = 1.0
-var resourrce_output_adder = 0.0
 
 var cost_multiplier = 1.0
 
@@ -55,10 +47,6 @@ func get_level():
 	return level
 
 
-func get_resource_output():
-	return level * (base_resource_output + resourrce_output_adder) * resource_output_multiplier
-
-
 func get_cost(buy_quantity): #returns a dictionary of resource keys per the cost curve
 	var cost_dict = {}
 	for curve in cost_curves:
@@ -78,13 +66,3 @@ func build(multiplier):
 
 func on_build():
 	pass
-
-
-func upgrade(upgrade_dict):
-	print(upgrade_dict)
-	resource_output_multiplier += upgrade_dict["Multiplier"]
-	resourrce_output_adder += upgrade_dict["Adder"]
-	
-	cost_multiplier *= upgrade_dict["CostMultiplier"]
-	
-	print(name,upgrade_dict, resource_output_multiplier, resourrce_output_adder, cost_multiplier)

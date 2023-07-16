@@ -28,15 +28,15 @@ resources_produced = {
 "alloy": 0,
 "data": 1,
 "fuel": 0,
-"ore": 0,
-"hydrocarbons": 0
+"hydrocarbons": 0,
+"ore": 0
 }
+name = "Telescope"
+description = "Produces Terrestrial Data"
 ResearchPrereqs = Array[Resource("res://Classes/Research/Research_Class.gd")]([])
 BuildingPrereqs = {
 ExtResource("1_f8c36"): 15
 }
-name = "Telescope"
-description = "Produces Terrestrial Data"
 cost_curves = Array[ExtResource("1_v5f84")]([SubResource("Resource_sl4l7"), SubResource("Resource_8xi24")])
 multiplier = 1.0
 exponent_base = 1.0

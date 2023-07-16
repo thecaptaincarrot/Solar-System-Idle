@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bdfg0iao0cum1"]
+[gd_scene load_steps=25 format=3 uid="uid://bdfg0iao0cum1"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_tn1u5"]
 [ext_resource type="Texture2D" uid="uid://d1qxs7itsei36" path="res://IDK.png" id="2_0xf61"]
@@ -11,10 +11,8 @@
 [ext_resource type="Script" path="res://UI_Components/Overview/BuildMenu/BuildOptionContainer.gd" id="6_nhb03"]
 [ext_resource type="Script" path="res://UI_Components/Design/Design.gd" id="7_khrki"]
 [ext_resource type="Texture2D" uid="uid://ijtqdxhlm7px" path="res://Textures/LaunchPad.png" id="9_yrlpr"]
-[ext_resource type="PackedScene" uid="uid://cp0gjc18q7ldl" path="res://UI_Components/Design/module_option.tscn" id="11_8xvpy"]
 [ext_resource type="Script" path="res://RocketBuilder.gd" id="12_y3w3r"]
 [ext_resource type="Script" path="res://UI_Components/Design/ModulesContainer.gd" id="13_xa5wf"]
-[ext_resource type="Texture2D" uid="uid://t0ytpwn7glsm" path="res://Modules/Textures/CommsSat.png" id="14_kuxtr"]
 [ext_resource type="Script" path="res://UI_Components/Design/RightDesignPanel.gd" id="14_onrsj"]
 [ext_resource type="Script" path="res://UI_Components/Launch/RocketBox.gd" id="15_f8wll"]
 [ext_resource type="Script" path="res://UI_Components/Launch/Launch.gd" id="15_jetlc"]
@@ -38,24 +36,6 @@ func _ready():
 func _process(delta):
 	pass
 "
-
-[sub_resource type="GDScript" id="GDScript_8da76"]
-script/source = "extends BaseModule
-class_name UtilModule
-
-@export var money_per_day = 0.0
-"
-
-[sub_resource type="Resource" id="Resource_o1lka"]
-script = SubResource("GDScript_8da76")
-money_per_day = 5.0
-name = "Comms Satellite"
-description = "Can You Hear Me Now"
-research_prereqs = Array[Resource("res://Classes/Research/Research_Class.gd")]([])
-money_cost = 60.0
-ore_cost = 5.0
-mass = 5.0
-texture = ExtResource("14_kuxtr")
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -348,13 +328,6 @@ layout_mode = 2
 [node name="ModuleContainer" type="VBoxContainer" parent="Design/LeftPanel/DesignLeft/ScrollContainer"]
 layout_mode = 2
 script = SubResource("GDScript_fthym")
-
-[node name="ModuleOption" parent="Design/LeftPanel/DesignLeft/ScrollContainer/ModuleContainer" instance=ExtResource("11_8xvpy")]
-layout_mode = 2
-
-[node name="ModuleOption2" parent="Design/LeftPanel/DesignLeft/ScrollContainer/ModuleContainer" instance=ExtResource("11_8xvpy")]
-layout_mode = 2
-ModuleResource = SubResource("Resource_o1lka")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Design"]
 layout_mode = 0
@@ -1177,7 +1150,6 @@ layout_mode = 2
 text = "Orbital"
 
 [node name="TickTimer" type="Timer" parent="."]
-wait_time = 0.1
 autostart = true
 
 [connection signal="pressed" from="Overview/LeftPanel/BuildButton" to="Overview" method="_on_build_button_pressed"]

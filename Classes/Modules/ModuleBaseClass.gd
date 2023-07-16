@@ -6,7 +6,7 @@ class_name BaseModule
 
 @export var research_prereqs : Array[ResearchTopic]
 
-@export var costs = {
+@export var costs = { #Add as needed
 					"ore" : 0,
 					"alloy" : 0,
 					"hydrocarbons" : 0,

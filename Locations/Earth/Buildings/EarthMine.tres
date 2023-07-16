@@ -17,13 +17,13 @@ script = ExtResource("2_imqvb")
 resources_produced = {
 "alloy": 0,
 "fuel": 0,
-"ore": 1,
-"hydrocarbons": 0
+"hydrocarbons": 0,
+"ore": 1
 }
-ResearchPrereqs = Array[Resource("res://Classes/Research/Research_Class.gd")]([])
-BuildingPrereqs = {}
 name = "Mine"
 description = "Produces Ore"
+ResearchPrereqs = Array[Resource("res://Classes/Research/Research_Class.gd")]([])
+BuildingPrereqs = {}
 cost_curves = Array[ExtResource("1_x46hh")]([SubResource("Resource_6ttui")])
 multiplier = 1.0
 exponent_base = 1.0

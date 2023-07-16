@@ -27,10 +27,10 @@ output_resources = {
 "hydrocarbons": 0,
 "ore": 0
 }
-ResearchPrereqs = Array[Resource("res://Classes/Research/Research_Class.gd")]([ExtResource("1_up1cl")])
-BuildingPrereqs = {}
 name = "Smelter"
 description = "Turns Ore into Alloys very slowly"
+ResearchPrereqs = Array[Resource("res://Classes/Research/Research_Class.gd")]([ExtResource("1_up1cl")])
+BuildingPrereqs = {}
 cost_curves = Array[ExtResource("2_fdud2")]([SubResource("Resource_7svp2")])
 multiplier = 1.0
 exponent_base = 1.0
