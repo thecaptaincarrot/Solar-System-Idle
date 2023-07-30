@@ -1,7 +1,7 @@
 @tool
 extends TextureRect
 
-@export var ModuleResource : BaseModule : set = set_module
+@export var ModuleResource : Module : set = set_module
 
 signal Remove
 

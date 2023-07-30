@@ -1,7 +1,6 @@
-@tool
 extends Panel
 
-@export var ModuleResource : BaseModule : set = module_changed
+var ModuleResource : Module : set = module_changed
 
 signal AddToRocket
 
@@ -9,11 +8,14 @@ signal AddToRocket
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	update_fields()
+	hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if !is_visible_in_tree():
+		if ModuleResource.get_unlocked():
+			show()
 
 
 func module_changed(new_module):
@@ -27,8 +29,11 @@ func update_fields():
 	$Title.text = ModuleResource.name
 	$Description.text = ModuleResource.description
 	
-	$VBoxContainer/OreBox/OreCost.text = str(ModuleResource.ore_cost)
-	$VBoxContainer/MoneyBox/MoneyCost.text = str(ModuleResource.money_cost)
+	for cost_key in ModuleResource.costs.keys():
+		if ModuleResource.costs[cost_key] > 0:
+			var new_label = Label.new()
+			new_label.text = cost_key + ": " + str(ModuleResource.costs[cost_key])
+			$VBoxContainer.add_child(new_label)
 
 
 func _on_button_pressed():

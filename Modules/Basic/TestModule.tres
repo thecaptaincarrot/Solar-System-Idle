@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Module" load_steps=3 format=3 uid="uid://do18e1dsglju1"]
+
+[ext_resource type="Script" path="res://Classes/Modules/ModuleBaseClass.gd" id="1_2immi"]
+[ext_resource type="Texture2D" uid="uid://clx4v8rxw7oym" path="res://Modules/Textures/Sputnik.png" id="2_grepl"]
+
+[resource]
+script = ExtResource("1_2immi")
+name = "DEFAULT NAME"
+description = "DEFAULT DESCRIPTION"
+category = "Basic"
+research_prereqs = Array[Resource("res://Classes/Research/Research_Class.gd")]([])
+costs = {
+"alloy": 5,
+"electronics": 10,
+"fuel": 0,
+"hydrocarbons": 0,
+"ore": 0
+}
+mass = 0.0
+aux_slots = 0
+texture = ExtResource("2_grepl")
