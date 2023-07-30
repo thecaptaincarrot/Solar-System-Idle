@@ -426,65 +426,12 @@ text = "10.0"
 layout_mode = 2
 text = "Mg"
 
-[node name="ThrustBox" type="HBoxContainer" parent="Design/RightPanel/MarginContainer/VBoxContainer"]
+[node name="CostContainer" type="VBoxContainer" parent="Design/RightPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/ThrustBox"]
+[node name="COST" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/CostContainer"]
 layout_mode = 2
-text = "Trust"
-
-[node name="Thrust" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/ThrustBox"]
-layout_mode = 2
-text = "10.00"
-
-[node name="Label3" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/ThrustBox"]
-layout_mode = 2
-text = "Generic Thrust Units"
-
-[node name="MPDBox" type="HBoxContainer" parent="Design/RightPanel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/MPDBox"]
-layout_mode = 2
-text = "Money Per Day: $"
-
-[node name="MoneyPerDay" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/MPDBox"]
-layout_mode = 2
-text = "10.00"
-
-[node name="MPD Exponent" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/MPDBox"]
-layout_mode = 2
-text = "M"
-
-[node name="MoneyBox" type="HBoxContainer" parent="Design/RightPanel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/MoneyBox"]
-layout_mode = 2
-text = "Cost: $"
-
-[node name="MoneyCost" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/MoneyBox"]
-layout_mode = 2
-text = "10.0"
-
-[node name="Label3" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/MoneyBox"]
-layout_mode = 2
-text = "M"
-
-[node name="OreBox" type="HBoxContainer" parent="Design/RightPanel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/OreBox"]
-layout_mode = 2
-text = "Ore Required:"
-
-[node name="OreCost" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/OreBox"]
-layout_mode = 2
-text = "10.0"
-
-[node name="Label3" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/OreBox"]
-layout_mode = 2
-text = "t"
+text = "Cost:"
 
 [node name="OptionButton" type="OptionButton" parent="Design/RightPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
