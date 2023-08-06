@@ -335,10 +335,12 @@ offset_left = 352.0
 offset_top = 149.0
 offset_right = 1379.0
 offset_bottom = 1077.0
+metadata/_edit_lock_ = true
 
 [node name="RocketContainer" type="Control" parent="Design/ScrollContainer"]
 custom_minimum_size = Vector2(1024, 932)
 layout_mode = 2
+metadata/_edit_lock_ = true
 
 [node name="LaunchPad" type="TextureRect" parent="Design/ScrollContainer/RocketContainer"]
 layout_mode = 1
