@@ -23,20 +23,17 @@ func get_mass():
 	return sum
 
 
-func get_money_cost():
-	var sum = 0.0
+func get_cost_dict():
+	var cost_dict = {}
 	for module in modules:
-		sum += module.money_cost
-	
-	return sum
-
-
-func get_ore_cost():
-	var sum = 0.0
-	for module in modules:
-		sum += module.ore_cost
-	
-	return sum
+		for cost_key in module.costs.keys():
+			if module.costs[cost_key] > 0:
+				if cost_dict.keys().has(cost_key):
+					cost_dict[cost_key] += module.costs[cost_key]
+				else:
+					cost_dict[cost_key] = module.costs[cost_key]
+	print(cost_dict)
+	return cost_dict
 
 
 func get_thrust():

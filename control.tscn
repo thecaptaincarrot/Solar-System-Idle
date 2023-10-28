@@ -293,6 +293,7 @@ offset_bottom = 359.0
 columns = 4
 
 [node name="Design" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -426,7 +427,8 @@ text = "10.0"
 
 [node name="Label3" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/MassBox"]
 layout_mode = 2
-text = "Mg"
+text = "kg
+"
 
 [node name="CostContainer" type="VBoxContainer" parent="Design/RightPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -445,6 +447,7 @@ popup/item_1/text = "Moon"
 popup/item_1/id = 1
 
 [node name="Insufficient" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer"]
+visible = false
 self_modulate = Color(0.972549, 0, 0.180392, 1)
 layout_mode = 2
 text = "Insufficient ΔV"
@@ -468,7 +471,8 @@ text = "Time to Destination"
 
 [node name="TimeToDestination" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/TTDBox"]
 layout_mode = 2
-text = "5.0"
+text = "Placeholder
+"
 
 [node name="Label2" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/TTDBox"]
 layout_mode = 2
@@ -483,11 +487,8 @@ text = "Fuel Needed:"
 
 [node name="FuelNeeded" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/ConsumptionBox"]
 layout_mode = 2
-text = "10.0"
-
-[node name="Label2" type="Label" parent="Design/RightPanel/MarginContainer/VBoxContainer/ConsumptionBox"]
-layout_mode = 2
-text = "kGal"
+text = "Placeholder
+"
 
 [node name="SaveDesign" type="Button" parent="Design/RightPanel"]
 layout_mode = 1
@@ -505,7 +506,6 @@ grow_vertical = 0
 text = "Save Design"
 
 [node name="Launch" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -596,67 +596,19 @@ text = "10.0"
 
 [node name="Label3" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/MassBox"]
 layout_mode = 2
-text = "Mg"
+text = "kg"
 
-[node name="ThrustBox" type="HBoxContainer" parent="Launch/RightPanel/MarginContainer/VBoxContainer"]
+[node name="CostBox" type="HBoxContainer" parent="Launch/RightPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/ThrustBox"]
+[node name="Label" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/CostBox"]
 layout_mode = 2
-text = "Thrust"
+text = "Cost:
+"
 
-[node name="Thrust" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/ThrustBox"]
+[node name="MoneyCost" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/CostBox"]
 layout_mode = 2
-text = "10.00"
-
-[node name="Label3" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/ThrustBox"]
-layout_mode = 2
-text = "Generic Thrust Units"
-
-[node name="MPDBox" type="HBoxContainer" parent="Launch/RightPanel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/MPDBox"]
-layout_mode = 2
-text = "Money Per Day: $"
-
-[node name="MoneyPerDay" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/MPDBox"]
-layout_mode = 2
-text = "10.00"
-
-[node name="MPD Exponent" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/MPDBox"]
-layout_mode = 2
-text = "M"
-
-[node name="MoneyBox" type="HBoxContainer" parent="Launch/RightPanel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/MoneyBox"]
-layout_mode = 2
-text = "Cost: $"
-
-[node name="MoneyCost" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/MoneyBox"]
-layout_mode = 2
-text = "10.0"
-
-[node name="Label3" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/MoneyBox"]
-layout_mode = 2
-text = "M"
-
-[node name="OreBox" type="HBoxContainer" parent="Launch/RightPanel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/OreBox"]
-layout_mode = 2
-text = "Ore Required:"
-
-[node name="OreCost" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/OreBox"]
-layout_mode = 2
-text = "10.0"
-
-[node name="Label3" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/OreBox"]
-layout_mode = 2
-text = "t"
+text = "{}"
 
 [node name="Destination" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -695,11 +647,7 @@ text = "Time to Destination"
 
 [node name="TimeToDestination" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/TTDBox"]
 layout_mode = 2
-text = "5.0"
-
-[node name="Label2" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/TTDBox"]
-layout_mode = 2
-text = "Days"
+text = "Placeholder"
 
 [node name="ConsumptionBox" type="HBoxContainer" parent="Launch/RightPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -710,11 +658,8 @@ text = "Fuel Needed:"
 
 [node name="FuelNeeded" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/ConsumptionBox"]
 layout_mode = 2
-text = "10.0"
-
-[node name="Label2" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/ConsumptionBox"]
-layout_mode = 2
-text = "kGal"
+text = "Placeholder
+"
 
 [node name="BuildTimeBox" type="HBoxContainer" parent="Launch/RightPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -725,11 +670,7 @@ text = "Time to Build:"
 
 [node name="FuelNeeded" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/BuildTimeBox"]
 layout_mode = 2
-text = "30.0"
-
-[node name="Label2" type="Label" parent="Launch/RightPanel/MarginContainer/VBoxContainer/BuildTimeBox"]
-layout_mode = 2
-text = "Days"
+text = "Placeholder"
 
 [node name="CargoPanel" type="Panel" parent="Launch/RightPanel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 160)

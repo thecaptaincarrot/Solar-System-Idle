@@ -17,6 +17,7 @@ func _process(delta):
 func set_rocket(new_rocket):
 	RocketResource = new_rocket
 	$Title.text = new_rocket.name
+	$VBoxContainer/Label.text = str(new_rocket.get_cost_dict())
 
 
 func _on_launch_pressed():

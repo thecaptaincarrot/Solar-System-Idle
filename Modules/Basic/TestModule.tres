@@ -10,12 +10,12 @@ description = "DEFAULT DESCRIPTION"
 category = "Basic"
 research_prereqs = Array[Resource("res://Classes/Research/Research_Class.gd")]([])
 costs = {
-"alloy": 5,
-"electronics": 10,
+"alloy": 0,
+"electronics": 0,
 "fuel": 0,
 "hydrocarbons": 0,
-"ore": 0
+"ore": 1
 }
-mass = 0.0
+mass = 20.0
 aux_slots = 0
 texture = ExtResource("2_grepl")
